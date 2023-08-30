@@ -69,6 +69,8 @@ class OnboardingPageContentViewController: UIViewController {
                 parent.setViewControllers([parent.viewControllerAtIndex(index: parent.currentIndex)!], direction: .forward, animated: false, completion: nil)
             } else {
                 let signInVC = SignInViewController(nibName: "SignInViewController", bundle: nil)
+                let signInViewModel = SignInViewModel(signInUseCase: Injection().provideSignInUseCase())
+                signInVC.viewModel = signInViewModel
                 parent.navigationController?.pushViewController(signInVC, animated: true)
             }
         }

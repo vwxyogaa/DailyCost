@@ -10,6 +10,11 @@ final class Injection {
         let repository = provideRepository()
         return SignUpUseCase(repository: repository)
     }
+    
+    func provideSignInUseCase() -> SignInUseCaseProtocol {
+        let repository = provideRepository()
+        return SignInUseCase(repository: repository)
+    }
 }
 
 extension Injection {
