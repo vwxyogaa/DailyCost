@@ -68,8 +68,8 @@ class OnboardingPageContentViewController: UIViewController {
             if parent.currentIndex < parent.pages.count {
                 parent.setViewControllers([parent.viewControllerAtIndex(index: parent.currentIndex)!], direction: .forward, animated: false, completion: nil)
             } else {
-//                let signInVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SignInViewController") as! SignInViewController
-//                parent.navigationController?.pushViewController(signInVC, animated: true)
+                let signInVC = SignInViewController(nibName: "SignInViewController", bundle: nil)
+                parent.navigationController?.pushViewController(signInVC, animated: true)
             }
         }
     }
@@ -78,8 +78,8 @@ class OnboardingPageContentViewController: UIViewController {
     func skipButtonTapped() {
         if let parent = self.parent as? OnboardingViewController {
             if parent.currentIndex == parent.pages.count - 1 {
-//                let signUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
-//                parent.navigationController?.pushViewController(signUpVC, animated: true)
+                let signUpVC = SignUpViewController(nibName: "SignUpViewController", bundle: nil)
+                parent.navigationController?.pushViewController(signUpVC, animated: true)
             } else {
                 parent.currentIndex = parent.pages.count - 1
                 parent.setViewControllers([parent.viewControllerAtIndex(index: parent.currentIndex)!], direction: .forward, animated: false, completion: nil)
