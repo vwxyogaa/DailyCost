@@ -38,15 +38,18 @@ class SignUpViewController: UIViewController {
         initListener()
     }
     
+    // MARK: - Helpers
     private func configureViews() {
         usernameTextField.layer.borderColor = UIColor.bg200.cgColor
         usernameTextField.layer.borderWidth = 1
         usernameTextField.layer.cornerRadius = 9
         usernameTextField.layer.masksToBounds = true
+        
         emailTextField.layer.borderColor = UIColor.bg200.cgColor
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.cornerRadius = 9
         emailTextField.layer.masksToBounds = true
+        
         passwordTextField.layer.borderColor = UIColor.bg200.cgColor
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.cornerRadius = 9
@@ -59,9 +62,16 @@ class SignUpViewController: UIViewController {
     
     private func initListener() {
         visiblePasswordButton.addTarget(self, action: #selector(self.eyeButtonTapped), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
     }
     
     // MARK: - Actions
+    @objc
+    private func signInButtonTapped() {
+        let signInVC = SignInViewController(nibName: "SignInViewController", bundle: nil)
+        navigationController?.pushViewController(signInVC, animated: true)
+    }
+    
     @objc
     private func eyeButtonTapped() {
         if isPasswordVisible {

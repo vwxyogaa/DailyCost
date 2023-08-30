@@ -202,7 +202,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wEb-gI-lwn" secondAttribute="trailing" constant="16" id="iRM-GV-395"/>
                 <constraint firstItem="MsE-tf-VaZ" firstAttribute="top" secondItem="Xrx-kY-em9" secondAttribute="bottom" constant="18" id="nNq-rC-zuI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MsE-tf-VaZ" secondAttribute="trailing" constant="26" id="rm3-bH-np8"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MsE-tf-VaZ" secondAttribute="bottom" constant="35" id="s7u-vv-4HA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MsE-tf-VaZ" secondAttribute="bottom" constant="26" id="s7u-vv-4HA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KNG-xX-BxY" secondAttribute="trailing" constant="16" id="uFS-dR-tak"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-11"/>
