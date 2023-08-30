@@ -26,6 +26,11 @@
 		BCC68D942A9F384500E45602 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC68D922A9F384500E45602 /* SignInViewController.xib */; };
 		BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D972A9F482800E45602 /* UITextField+Ext.swift */; };
 		BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */; };
+		E1F134132A9F9C38008A4AB1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134122A9F9C38008A4AB1 /* Alamofire */; };
+		E1F134162A9F9C59008A4AB1 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134152A9F9C59008A4AB1 /* netfox */; };
+		E1F134192A9F9CB7008A4AB1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134182A9F9CB7008A4AB1 /* RxCocoa */; };
+		E1F1341B2A9F9CB7008A4AB1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E1F1341A2A9F9CB7008A4AB1 /* RxSwift */; };
+		E1F1341E2A9F9CD6008A4AB1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E1F1341D2A9F9CD6008A4AB1 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F1341E2A9F9CD6008A4AB1 /* IQKeyboardManagerSwift in Frameworks */,
+				E1F134192A9F9CB7008A4AB1 /* RxCocoa in Frameworks */,
+				E1F134162A9F9C59008A4AB1 /* netfox in Frameworks */,
+				E1F1341B2A9F9CB7008A4AB1 /* RxSwift in Frameworks */,
+				E1F134132A9F9C38008A4AB1 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +311,13 @@
 			dependencies = (
 			);
 			name = DailyCost;
+			packageProductDependencies = (
+				E1F134122A9F9C38008A4AB1 /* Alamofire */,
+				E1F134152A9F9C59008A4AB1 /* netfox */,
+				E1F134182A9F9CB7008A4AB1 /* RxCocoa */,
+				E1F1341A2A9F9CB7008A4AB1 /* RxSwift */,
+				E1F1341D2A9F9CD6008A4AB1 /* IQKeyboardManagerSwift */,
+			);
 			productName = DailyCost;
 			productReference = BCC68D332A9F111400E45602 /* DailyCost.app */;
 			productType = "com.apple.product-type.application";
@@ -373,6 +390,12 @@
 				Base,
 			);
 			mainGroup = BCC68D2A2A9F111400E45602;
+			packageReferences = (
+				E1F134112A9F9C38008A4AB1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E1F134142A9F9C59008A4AB1 /* XCRemoteSwiftPackageReference "netfox" */,
+				E1F134172A9F9CB7008A4AB1 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E1F1341C2A9F9CD6008A4AB1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = BCC68D342A9F111400E45602 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -764,6 +787,69 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1F134112A9F9C38008A4AB1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E1F134142A9F9C59008A4AB1 /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		E1F134172A9F9CB7008A4AB1 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		E1F1341C2A9F9CD6008A4AB1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1F134122A9F9C38008A4AB1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1F134112A9F9C38008A4AB1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E1F134152A9F9C59008A4AB1 /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1F134142A9F9C59008A4AB1 /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+		E1F134182A9F9CB7008A4AB1 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1F134172A9F9CB7008A4AB1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		E1F1341A2A9F9CB7008A4AB1 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1F134172A9F9CB7008A4AB1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		E1F1341D2A9F9CD6008A4AB1 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1F1341C2A9F9CD6008A4AB1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BCC68D3F2A9F111400E45602 /* DailyCost.xcdatamodeld */ = {
