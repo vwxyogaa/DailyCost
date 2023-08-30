@@ -31,6 +31,19 @@ class OnboardingViewController: UIPageViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let currentVC = viewControllers?.first as? OnboardingPageContentViewController {
+            currentIndex = currentVC.pageIndex
+        }
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // MARK: - Helpers
     func viewControllerAtIndex(index: Int) -> OnboardingPageContentViewController? {
         if index >= pages.count { return nil }

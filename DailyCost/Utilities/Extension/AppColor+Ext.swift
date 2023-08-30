@@ -8,7 +8,7 @@
 import UIKit
 
 private enum AppColor: String {
-    case primary100, accent100, accent200, accent300, accent400, bg100, bg200, bg300, text100, text200
+    case primary100, accent100, accent200, accent300, accent400, accent401, bg100, bg200, bg300, text100, text200
 }
 
 private extension AppColor {
@@ -32,6 +32,8 @@ private extension AppColor {
             return color(named: AppColor.accent200.title)
         case .accent400:
             return color(named: AppColor.accent200.title)
+        case .accent401:
+            return color(named: AppColor.accent401.title)
         case .bg100:
             return color(named: AppColor.bg100.title)
         case .bg200:
@@ -52,6 +54,7 @@ let _defaultColors : [String:UIColor] = [
     "accent200" : UIColor(red: 89/255, green: 231/255, blue: 137/255, alpha: 1),
     "accent300" : UIColor(red: 255/255, green: 72/255, blue: 72/255, alpha: 1),
     "accent400" : UIColor(red: 255/255, green: 191/255, blue: 171/255, alpha: 1),
+    "accent401" : UIColor(red: 165/255, green: 233/255, blue: 188/255, alpha: 0.3),
     "bg100" : UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1),
     "bg200" : UIColor(red: 126/255, green: 126/255, blue: 126/255, alpha: 1),
     "bg300" : UIColor(red: 41/255, green: 45/255, blue: 50/255, alpha: 0.5),
@@ -87,6 +90,10 @@ extension UIColor {
     
     public class var accent400: UIColor {
         return AppColor.accent400.color
+    }
+    
+    public class var accent401: UIColor {
+        return AppColor.accent401.color
     }
     
     public class var bg100: UIColor {
