@@ -7,10 +7,12 @@
 
 import UIKit
 import CoreData
+import netfox
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        configureNetfox()
         return true
     }
     
@@ -20,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) { }
+    
+    // MARK: - Configure Netfox
+    fileprivate func configureNetfox() {
+#if DEBUG
+        NFX.sharedInstance().start()
+#endif
+    }
     
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
