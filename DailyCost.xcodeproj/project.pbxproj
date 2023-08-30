@@ -26,6 +26,19 @@
 		BCC68D942A9F384500E45602 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC68D922A9F384500E45602 /* SignInViewController.xib */; };
 		BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D972A9F482800E45602 /* UITextField+Ext.swift */; };
 		BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */; };
+		E1AE615B2A9F9E2D00ED4BC8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE615A2A9F9E2D00ED4BC8 /* APIManager.swift */; };
+		E1AE615E2A9FA14200ED4BC8 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE615D2A9FA14200ED4BC8 /* RemoteDataSource.swift */; };
+		E1AE61602A9FA18F00ED4BC8 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE615F2A9FA18F00ED4BC8 /* Register.swift */; };
+		E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61612A9FA2F100ED4BC8 /* Utils.swift */; };
+		E1AE61652A9FA39400ED4BC8 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61642A9FA39400ED4BC8 /* Repository.swift */; };
+		E1AE616B2A9FA42E00ED4BC8 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE616A2A9FA42E00ED4BC8 /* Injection.swift */; };
+		E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE616E2A9FA48900ED4BC8 /* SignUpViewModel.swift */; };
+		E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61702A9FA4BA00ED4BC8 /* BaseViewModel.swift */; };
+		E1AE61732A9FA53F00ED4BC8 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61722A9FA53F00ED4BC8 /* SignUpUseCase.swift */; };
+		E1AE61772A9FA72800ED4BC8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61752A9FA72800ED4BC8 /* DashboardViewController.swift */; };
+		E1AE61782A9FA72800ED4BC8 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AE61762A9FA72800ED4BC8 /* DashboardViewController.xib */; };
+		E1AE617B2A9FA81200ED4BC8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE617A2A9FA81200ED4BC8 /* Toast.swift */; };
+		E1AE617D2A9FA82F00ED4BC8 /* TTGSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE617C2A9FA82F00ED4BC8 /* TTGSnackbar.swift */; };
 		E1F134132A9F9C38008A4AB1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134122A9F9C38008A4AB1 /* Alamofire */; };
 		E1F134162A9F9C59008A4AB1 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134152A9F9C59008A4AB1 /* netfox */; };
 		E1F134192A9F9CB7008A4AB1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134182A9F9CB7008A4AB1 /* RxCocoa */; };
@@ -74,6 +87,19 @@
 		BCC68D922A9F384500E45602 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
 		BCC68D972A9F482800E45602 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		E1AE615A2A9F9E2D00ED4BC8 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		E1AE615D2A9FA14200ED4BC8 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		E1AE615F2A9FA18F00ED4BC8 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		E1AE61612A9FA2F100ED4BC8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		E1AE61642A9FA39400ED4BC8 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		E1AE616A2A9FA42E00ED4BC8 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
+		E1AE616E2A9FA48900ED4BC8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		E1AE61702A9FA4BA00ED4BC8 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		E1AE61722A9FA53F00ED4BC8 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		E1AE61752A9FA72800ED4BC8 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		E1AE61762A9FA72800ED4BC8 /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		E1AE617A2A9FA81200ED4BC8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		E1AE617C2A9FA82F00ED4BC8 /* TTGSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGSnackbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +196,7 @@
 		BCC68D6A2A9F12C600E45602 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E1AE61662A9FA3C500ED4BC8 /* UseCase */,
 				BCC68D7F2A9F1FB000E45602 /* Entities */,
 			);
 			path = Domain;
@@ -178,8 +205,12 @@
 		BCC68D6B2A9F12CA00E45602 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E1AE61692A9FA42900ED4BC8 /* DI */,
+				E1AE61632A9FA38D00ED4BC8 /* Repository */,
+				E1AE61592A9F9E1400ED4BC8 /* Network */,
 				BCC68D6E2A9F132400E45602 /* DataSource */,
 				BCC68D702A9F134D00E45602 /* PersistentStorage */,
+				E1AE61702A9FA4BA00ED4BC8 /* BaseViewModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -206,6 +237,7 @@
 		BCC68D6E2A9F132400E45602 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				E1AE615C2A9FA13000ED4BC8 /* Remote */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -221,6 +253,7 @@
 		BCC68D712A9F141B00E45602 /* DailyCost */ = {
 			isa = PBXGroup;
 			children = (
+				E1AE61742A9FA71A00ED4BC8 /* Dashboard */,
 			);
 			path = DailyCost;
 			sourceTree = "<group>";
@@ -228,7 +261,9 @@
 		BCC68D772A9F161200E45602 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E1AE61792A9FA80600ED4BC8 /* ThirdPartyLibrary */,
 				BCC68D782A9F161900E45602 /* Extension */,
+				E1AE61612A9FA2F100ED4BC8 /* Utils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -247,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				BCC68D802A9F1FB800E45602 /* OnboardingPage.swift */,
+				E1AE615F2A9FA18F00ED4BC8 /* Register.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -280,6 +316,7 @@
 		BCC68D8B2A9F382A00E45602 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				E1AE616D2A9FA47C00ED4BC8 /* ViewModel */,
 				BCC68D8D2A9F383C00E45602 /* SignUpViewController.swift */,
 				BCC68D8E2A9F383C00E45602 /* SignUpViewController.xib */,
 			);
@@ -293,6 +330,72 @@
 				BCC68D922A9F384500E45602 /* SignInViewController.xib */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		E1AE61592A9F9E1400ED4BC8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE615A2A9F9E2D00ED4BC8 /* APIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E1AE615C2A9FA13000ED4BC8 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE615D2A9FA14200ED4BC8 /* RemoteDataSource.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		E1AE61632A9FA38D00ED4BC8 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE61642A9FA39400ED4BC8 /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		E1AE61662A9FA3C500ED4BC8 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE61722A9FA53F00ED4BC8 /* SignUpUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		E1AE61692A9FA42900ED4BC8 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE616A2A9FA42E00ED4BC8 /* Injection.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		E1AE616D2A9FA47C00ED4BC8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE616E2A9FA48900ED4BC8 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1AE61742A9FA71A00ED4BC8 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE61752A9FA72800ED4BC8 /* DashboardViewController.swift */,
+				E1AE61762A9FA72800ED4BC8 /* DashboardViewController.xib */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E1AE61792A9FA80600ED4BC8 /* ThirdPartyLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E1AE617A2A9FA81200ED4BC8 /* Toast.swift */,
+				E1AE617C2A9FA82F00ED4BC8 /* TTGSnackbar.swift */,
+			);
+			path = ThirdPartyLibrary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +520,7 @@
 				BCC68D432A9F111600E45602 /* Assets.xcassets in Resources */,
 				BCC68D902A9F383C00E45602 /* SignUpViewController.xib in Resources */,
 				BCC68D882A9F20F500E45602 /* OnboardingPageContentViewController.xib in Resources */,
+				E1AE61782A9FA72800ED4BC8 /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,16 +545,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AE615B2A9F9E2D00ED4BC8 /* APIManager.swift in Sources */,
+				E1AE61772A9FA72800ED4BC8 /* DashboardViewController.swift in Sources */,
+				E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */,
 				BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */,
 				BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */,
 				BCC68D412A9F111400E45602 /* DailyCost.xcdatamodeld in Sources */,
+				E1AE617D2A9FA82F00ED4BC8 /* TTGSnackbar.swift in Sources */,
+				E1AE61602A9FA18F00ED4BC8 /* Register.swift in Sources */,
+				E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */,
+				E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */,
 				BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */,
 				BCC68D8F2A9F383C00E45602 /* SignUpViewController.swift in Sources */,
 				BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */,
+				E1AE615E2A9FA14200ED4BC8 /* RemoteDataSource.swift in Sources */,
 				BCC68D8A2A9F266F00E45602 /* OnboardingViewController.swift in Sources */,
+				E1AE61652A9FA39400ED4BC8 /* Repository.swift in Sources */,
 				BCC68D932A9F384500E45602 /* SignInViewController.swift in Sources */,
 				BCC68D812A9F1FB800E45602 /* OnboardingPage.swift in Sources */,
 				BCC68D872A9F20F500E45602 /* OnboardingPageContentViewController.swift in Sources */,
+				E1AE61732A9FA53F00ED4BC8 /* SignUpUseCase.swift in Sources */,
+				E1AE617B2A9FA81200ED4BC8 /* Toast.swift in Sources */,
+				E1AE616B2A9FA42E00ED4BC8 /* Injection.swift in Sources */,
 				BCC68D7A2A9F162400E45602 /* AppColor+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SignUpViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
@@ -28,7 +29,8 @@ class SignUpViewController: UIViewController {
         return button
     }()
     
-    var isPasswordVisible: Bool = false
+    private let disposeBag = DisposeBag()
+    var viewModel: SignUpViewModel!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,6 +38,8 @@ class SignUpViewController: UIViewController {
         shouldHideBackButtonText = true
         configureViews()
         initListener()
+        configureRxValidation()
+        initObserver()
     }
     
     // MARK: - Helpers
@@ -58,14 +62,126 @@ class SignUpViewController: UIViewController {
         
         signUpButton.layer.cornerRadius = 12
         signUpButton.layer.masksToBounds = true
+        
+        usernameErrorLabel.isHidden = true
+        emailErrorLabel.isHidden = true
+        passwordErrorLabel.isHidden = true
     }
     
     private func initListener() {
         visiblePasswordButton.addTarget(self, action: #selector(self.eyeButtonTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
     }
     
+    private func initObserver() {
+        viewModel.register.drive(onNext: { [weak self] register in
+            if register != nil {
+                self?.goToDashboard()
+            }
+        }).disposed(by: disposeBag)
+        
+        viewModel.isLoading.drive(onNext: { [weak self] isLoading in
+            self?.manageLoadingActivity(isLoading: isLoading)
+        }).disposed(by: disposeBag)
+        
+        viewModel.errorMessage.drive(onNext: { [weak self] errorMessage in
+            self?.showErrorSnackBar(message: errorMessage)
+        }).disposed(by: disposeBag)
+    }
+    
+    func configureRxValidation() {
+        let usernameStream = usernameTextField.rx.text
+            .orEmpty
+            .skip(1)
+            .map { !$0.isEmpty }
+        usernameStream.subscribe(
+            onNext: { value in
+                self.usernameErrorLabel.isHidden = value
+            }
+        ).disposed(by: disposeBag)
+        
+        let emailStream = emailTextField.rx.text
+            .orEmpty
+            .skip(1)
+            .map { self.isValidEmail(from: $0)}
+        
+        emailStream.subscribe(
+            onNext: { value in
+                self.emailErrorLabel.isHidden = value
+            }
+        ).disposed(by: disposeBag)
+        
+        let passwordStream = passwordTextField.rx.text
+            .orEmpty
+            .skip(1)
+            .map { self.isValidPassword($0) }
+        passwordStream.subscribe(
+            onNext: { value in
+                self.passwordErrorLabel.isHidden = value
+            }
+        ).disposed(by: disposeBag)
+        
+        let validateFieldsStream = Observable.combineLatest(
+            usernameStream,
+            emailStream,
+            passwordStream
+        ) { username, email, password in
+            username && email && password
+        }
+        
+        validateFieldsStream.subscribe(
+            onNext: { isValid in
+                self.signUpButton.isEnabled = isValid
+                self.signUpButton.backgroundColor = isValid ? .primary100 : .text100
+            }
+        ).disposed(by: disposeBag)
+    }
+    
+    private func isValidEmail(from email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    private func isValidPassword(_ password: String) -> Bool {
+        let containsNumber = password.rangeOfCharacter(from: .decimalDigits) != nil
+        let specialCharacterRegEx  = ".*[!&^%$#@()/]+.*"
+        let texttest = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
+        let containsSpecialCharacter = texttest.evaluate(with: password)
+        return password.count > 8 && containsNumber && containsSpecialCharacter
+    }
+    
+    private func goToDashboard() {
+        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let firstWindow = firstScene.windows.first else { return }
+        
+        let rootController = DashboardViewController(nibName: "DashboardViewController", bundle: nil)
+        let snapshot = firstWindow.snapshotView(afterScreenUpdates: true)!
+        rootController.view.addSubview(snapshot)
+        
+        firstWindow.rootViewController = rootController
+        
+        UIView.transition(with: snapshot,
+                          duration: 0.3,
+                          options: .curveEaseInOut,
+                          animations: {
+            snapshot.layer.opacity = 0
+        },
+                          completion: { status in
+            snapshot.removeFromSuperview()
+        })
+        firstWindow.makeKeyAndVisible()
+    }
+    
     // MARK: - Actions
+    @objc
+    private func signUpButtonTapped() {
+        if let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
+            viewModel.postRegister(name: username, email: email, password: password)
+        }
+    }
+    
     @objc
     private func signInButtonTapped() {
         let signInVC = SignInViewController(nibName: "SignInViewController", bundle: nil)
@@ -74,14 +190,14 @@ class SignUpViewController: UIViewController {
     
     @objc
     private func eyeButtonTapped() {
-        if isPasswordVisible {
+        if viewModel.isPasswordVisible {
             passwordTextField.isSecureTextEntry = true
             visiblePasswordButton.setImage(UIImage(named: "icon_eye")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            isPasswordVisible = false
+            viewModel.isPasswordVisible = false
         } else {
             passwordTextField.isSecureTextEntry = false
             visiblePasswordButton.setImage(UIImage(named: "icon_eye_slash")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            isPasswordVisible = true
+            viewModel.isPasswordVisible = true
         }
     }
 }
