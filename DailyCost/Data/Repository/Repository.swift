@@ -10,6 +10,7 @@ import RxSwift
 
 protocol RepositoryProtocol {
     func postRegister( name: String, email: String, password: String) -> Observable<RegisterResponse>
+    func postLogin(email: String, password: String) -> Observable<LoginResponse>
 }
 
 final class Repository: NSObject {
@@ -28,5 +29,9 @@ final class Repository: NSObject {
 extension Repository: RepositoryProtocol {
     func postRegister( name: String, email: String, password: String) -> Observable<RegisterResponse> {
         return remote.postRegister(name: name, email: email, password: password)
+    }
+    
+    func postLogin(email: String, password: String) -> Observable<LoginResponse> {
+        return remote.postLogin(email: email, password: password)
     }
 }
