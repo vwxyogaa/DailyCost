@@ -24,6 +24,8 @@
 		BCC68D902A9F383C00E45602 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC68D8E2A9F383C00E45602 /* SignUpViewController.xib */; };
 		BCC68D932A9F384500E45602 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D912A9F384500E45602 /* SignInViewController.swift */; };
 		BCC68D942A9F384500E45602 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC68D922A9F384500E45602 /* SignInViewController.xib */; };
+		BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D972A9F482800E45602 /* UITextField+Ext.swift */; };
+		BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		BCC68D8E2A9F383C00E45602 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		BCC68D912A9F384500E45602 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		BCC68D922A9F384500E45602 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		BCC68D972A9F482800E45602 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				BCC68D792A9F162400E45602 /* AppColor+Ext.swift */,
+				BCC68D972A9F482800E45602 /* UITextField+Ext.swift */,
+				BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -413,7 +419,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */,
+				BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */,
 				BCC68D412A9F111400E45602 /* DailyCost.xcdatamodeld in Sources */,
+				BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */,
 				BCC68D8F2A9F383C00E45602 /* SignUpViewController.swift in Sources */,
 				BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */,
 				BCC68D8A2A9F266F00E45602 /* OnboardingViewController.swift in Sources */,
