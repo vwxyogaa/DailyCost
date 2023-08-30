@@ -17,6 +17,7 @@
 		BCC68D5D2A9F111700E45602 /* DailyCostUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D5C2A9F111700E45602 /* DailyCostUITestsLaunchTests.swift */; };
 		BCC68D752A9F144700E45602 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D732A9F144700E45602 /* OnboardingViewController.swift */; };
 		BCC68D762A9F144700E45602 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC68D742A9F144700E45602 /* OnboardingViewController.xib */; };
+		BCC68D7A2A9F162400E45602 /* AppColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D792A9F162400E45602 /* AppColor+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		BCC68D5C2A9F111700E45602 /* DailyCostUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCostUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BCC68D732A9F144700E45602 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		BCC68D742A9F144700E45602 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
+		BCC68D792A9F162400E45602 /* AppColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppColor+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				BCC68D6B2A9F12CA00E45602 /* Data */,
 				BCC68D6A2A9F12C600E45602 /* Domain */,
 				BCC68D6C2A9F12CE00E45602 /* Presentation */,
+				BCC68D772A9F161200E45602 /* Utilities */,
 				BCC68D6D2A9F12FB00E45602 /* SupportingFiles */,
 				BCC68D472A9F111600E45602 /* Info.plist */,
 				BCC68D442A9F111600E45602 /* LaunchScreen.storyboard */,
@@ -200,6 +203,22 @@
 				BCC68D742A9F144700E45602 /* OnboardingViewController.xib */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		BCC68D772A9F161200E45602 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BCC68D782A9F161900E45602 /* Extension */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		BCC68D782A9F161900E45602 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BCC68D792A9F162400E45602 /* AppColor+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +356,7 @@
 				BCC68D412A9F111400E45602 /* DailyCost.xcdatamodeld in Sources */,
 				BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */,
 				BCC68D752A9F144700E45602 /* OnboardingViewController.swift in Sources */,
+				BCC68D7A2A9F162400E45602 /* AppColor+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
