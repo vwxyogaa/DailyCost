@@ -79,6 +79,8 @@ class OnboardingPageContentViewController: UIViewController {
         if let parent = self.parent as? OnboardingViewController {
             if parent.currentIndex == parent.pages.count - 1 {
                 let signUpVC = SignUpViewController(nibName: "SignUpViewController", bundle: nil)
+                let signUpViewModel = SignUpViewModel(signUpUseCase: Injection().provideSignUpUseCase())
+                signUpVC.viewModel = signUpViewModel
                 parent.navigationController?.pushViewController(signUpVC, animated: true)
             } else {
                 parent.currentIndex = parent.pages.count - 1
