@@ -166,7 +166,6 @@ class SignInViewController: UIViewController {
     private func signInButtonTapped() {
         if let email = emailTextField.text, let password = passwordTextField.text {
             LoginKey.stateLogin = checkboxRememberMeButton.isSelected
-            print("checkbox isselected: \(checkboxRememberMeButton.isSelected), Loginkey.statelogin: \(LoginKey.stateLogin)")
             viewModel.postLogin(email: email, password: password)
         }
     }
