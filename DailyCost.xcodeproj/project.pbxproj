@@ -49,6 +49,12 @@
 		E1AE61782A9FA72800ED4BC8 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AE61762A9FA72800ED4BC8 /* DashboardViewController.xib */; };
 		E1AE617B2A9FA81200ED4BC8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE617A2A9FA81200ED4BC8 /* Toast.swift */; };
 		E1AE617D2A9FA82F00ED4BC8 /* TTGSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE617C2A9FA82F00ED4BC8 /* TTGSnackbar.swift */; };
+		E1EECB8E2AAA32E50095E668 /* DepoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EECB8D2AAA32E50095E668 /* DepoDataSource.swift */; };
+		E1EECB902AAA33690095E668 /* DepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EECB8F2AAA33690095E668 /* DepoResponse.swift */; };
+		E1EECB922AAA35190095E668 /* DepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EECB912AAA35190095E668 /* DepoModel.swift */; };
+		E1EECB952AAA35CC0095E668 /* DepoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EECB942AAA35CC0095E668 /* DepoRepository.swift */; };
+		E1EECB972AAA36F80095E668 /* DashboardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EECB962AAA36F80095E668 /* DashboardUseCase.swift */; };
+		E1EECB9A2AAA38FD0095E668 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EECB992AAA38FD0095E668 /* DashboardViewModel.swift */; };
 		E1F134132A9F9C38008A4AB1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134122A9F9C38008A4AB1 /* Alamofire */; };
 		E1F134162A9F9C59008A4AB1 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134152A9F9C59008A4AB1 /* netfox */; };
 		E1F134192A9F9CB7008A4AB1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E1F134182A9F9CB7008A4AB1 /* RxCocoa */; };
@@ -120,6 +126,12 @@
 		E1AE61762A9FA72800ED4BC8 /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		E1AE617A2A9FA81200ED4BC8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E1AE617C2A9FA82F00ED4BC8 /* TTGSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGSnackbar.swift; sourceTree = "<group>"; };
+		E1EECB8D2AAA32E50095E668 /* DepoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepoDataSource.swift; sourceTree = "<group>"; };
+		E1EECB8F2AAA33690095E668 /* DepoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepoResponse.swift; sourceTree = "<group>"; };
+		E1EECB912AAA35190095E668 /* DepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepoModel.swift; sourceTree = "<group>"; };
+		E1EECB942AAA35CC0095E668 /* DepoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepoRepository.swift; sourceTree = "<group>"; };
+		E1EECB962AAA36F80095E668 /* DashboardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardUseCase.swift; sourceTree = "<group>"; };
+		E1EECB992AAA38FD0095E668 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +194,7 @@
 			children = (
 				BC33BFC02AA9F6E80028BE38 /* RegisterResponse.swift */,
 				BC33BFC22AA9F7020028BE38 /* LoginResponse.swift */,
+				E1EECB8F2AAA33690095E668 /* DepoResponse.swift */,
 			);
 			path = DataResponse;
 			sourceTree = "<group>";
@@ -191,6 +204,7 @@
 			children = (
 				BC33BFC42AA9F7190028BE38 /* RegisterModel.swift */,
 				BC33BFC62AA9F71E0028BE38 /* LoginModel.swift */,
+				E1EECB912AAA35190095E668 /* DepoModel.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -419,6 +433,7 @@
 		E1AE615C2A9FA13000ED4BC8 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				E1EECB8C2AAA32D70095E668 /* Depo */,
 				BC33BFB52AA9D4F40028BE38 /* LoginRegister */,
 			);
 			path = Remote;
@@ -427,6 +442,7 @@
 		E1AE61632A9FA38D00ED4BC8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				E1EECB932AAA35C40095E668 /* Depo */,
 				BC33BFB62AA9D52B0028BE38 /* LoginRegister */,
 			);
 			path = Repository;
@@ -437,6 +453,7 @@
 			children = (
 				E1AE61722A9FA53F00ED4BC8 /* SignUpUseCase.swift */,
 				E19FBE232A9FB69400D4C276 /* SignInUseCase.swift */,
+				E1EECB962AAA36F80095E668 /* DashboardUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -460,6 +477,7 @@
 		E1AE61742A9FA71A00ED4BC8 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E1EECB982AAA38F20095E668 /* ViewModel */,
 				BC33BFB92AA9EB6A0028BE38 /* Cell */,
 				E1AE61752A9FA72800ED4BC8 /* DashboardViewController.swift */,
 				E1AE61762A9FA72800ED4BC8 /* DashboardViewController.xib */,
@@ -474,6 +492,30 @@
 				E1AE617C2A9FA82F00ED4BC8 /* TTGSnackbar.swift */,
 			);
 			path = ThirdPartyLibrary;
+			sourceTree = "<group>";
+		};
+		E1EECB8C2AAA32D70095E668 /* Depo */ = {
+			isa = PBXGroup;
+			children = (
+				E1EECB8D2AAA32E50095E668 /* DepoDataSource.swift */,
+			);
+			path = Depo;
+			sourceTree = "<group>";
+		};
+		E1EECB932AAA35C40095E668 /* Depo */ = {
+			isa = PBXGroup;
+			children = (
+				E1EECB942AAA35CC0095E668 /* DepoRepository.swift */,
+			);
+			path = Depo;
+			sourceTree = "<group>";
+		};
+		E1EECB982AAA38F20095E668 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1EECB992AAA38FD0095E668 /* DashboardViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,6 +670,7 @@
 				E1AE61772A9FA72800ED4BC8 /* DashboardViewController.swift in Sources */,
 				BC33BFBC2AA9EB850028BE38 /* WalletCollectionViewCell.swift in Sources */,
 				BC33BFC12AA9F6E80028BE38 /* RegisterResponse.swift in Sources */,
+				E1EECB902AAA33690095E668 /* DepoResponse.swift in Sources */,
 				E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */,
 				BC33BFB42AA9D4D70028BE38 /* LoginRegisterDataSource.swift in Sources */,
 				BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */,
@@ -638,6 +681,7 @@
 				E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */,
 				E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */,
 				BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */,
+				E1EECB8E2AAA32E50095E668 /* DepoDataSource.swift in Sources */,
 				BC33BFC72AA9F71E0028BE38 /* LoginModel.swift in Sources */,
 				BCC68D8F2A9F383C00E45602 /* SignUpViewController.swift in Sources */,
 				BC33BFC32AA9F7020028BE38 /* LoginResponse.swift in Sources */,
@@ -645,10 +689,14 @@
 				E19FBE262A9FB87D00D4C276 /* LoginKey.swift in Sources */,
 				BCC68D8A2A9F266F00E45602 /* OnboardingViewController.swift in Sources */,
 				BCC68DA72AA0A25E00E45602 /* CardData.swift in Sources */,
+				E1EECB9A2AAA38FD0095E668 /* DashboardViewModel.swift in Sources */,
 				E19FBE242A9FB69400D4C276 /* SignInUseCase.swift in Sources */,
 				BCC68D932A9F384500E45602 /* SignInViewController.swift in Sources */,
 				BCC68D812A9F1FB800E45602 /* OnboardingPage.swift in Sources */,
+				E1EECB972AAA36F80095E668 /* DashboardUseCase.swift in Sources */,
 				BCC68D872A9F20F500E45602 /* OnboardingPageContentViewController.swift in Sources */,
+				E1EECB952AAA35CC0095E668 /* DepoRepository.swift in Sources */,
+				E1EECB922AAA35190095E668 /* DepoModel.swift in Sources */,
 				BC33BFB82AA9D5360028BE38 /* LoginRegisterRepository.swift in Sources */,
 				E1AE61732A9FA53F00ED4BC8 /* SignUpUseCase.swift in Sources */,
 				E19FBE1E2A9FB4D900D4C276 /* SignInViewModel.swift in Sources */,

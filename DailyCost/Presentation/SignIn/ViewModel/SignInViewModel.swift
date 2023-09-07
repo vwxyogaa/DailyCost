@@ -24,6 +24,10 @@ class SignInViewModel: BaseViewModel {
         return _login.asDriver()
     }
     
+    var loginValue: LoginModel? {
+        return _login.value
+    }
+    
     func postLogin(email: String, password: String) {
         self._isLoading.accept(true)
         signInUseCase.postLogin(email: email, password: password)
@@ -31,6 +35,7 @@ class SignInViewModel: BaseViewModel {
             .subscribe { result in
                 self._isLoading.accept(false)
                 self._login.accept(result)
+                LoginKey.userId = String(result.dataId ?? 0)
             } onError: { error in
                 self._isLoading.accept(false)
                 self._errorMessage.accept(error.localizedDescription)

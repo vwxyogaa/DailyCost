@@ -14,6 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         if LoginKey.stateLogin {
             let viewController = DashboardViewController()
+            let dashboardViewModel = DashboardViewModel(dashboardUseCase: Injection().provideDashboardUseCase(), userId: Int(LoginKey.userId) ?? 0)
+            viewController.viewModel = dashboardViewModel
             let navigationController = UINavigationController(rootViewController: viewController)
             window = UIWindow(frame: windowScene.coordinateSpace.bounds)
             window?.windowScene = windowScene
