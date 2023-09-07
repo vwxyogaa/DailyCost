@@ -22,4 +22,15 @@ final class DataMapper {
             dataNama: data.data?.nama
         )
     }
+    
+    static func mapDepoResponseToModel(data: DepoResponse) -> DepoModel {
+        return DepoModel(
+            status: data.status,
+            message: data.message,
+            dataUserId: data.data?.userId,
+            dataUangGopay: data.data?.uangGopay,
+            dataUangCash: data.data?.uangCash,
+            dataUangRekening: data.data?.uangRekening
+        )
+    }
 }

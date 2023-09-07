@@ -7,9 +7,9 @@
 
 struct RegisterResponse: Codable {
     let message, token: String?
-    let data: DataClass?
+    let data: RegisterData?
     
-    struct DataClass: Codable {
+    struct RegisterData: Codable {
         let id: Int?
     }
 }

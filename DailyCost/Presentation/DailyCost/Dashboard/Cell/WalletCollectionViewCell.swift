@@ -14,7 +14,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var expenseWalletLabel: UILabel!
     
-    private var currentData: CardData?
+    private var currentData: DepoModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,27 +30,13 @@ class WalletCollectionViewCell: UICollectionViewCell {
         eyeButton.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
     }
     
-    func configureContent(with data: CardData) {
-        currentData = data
+    func configureContent(depo: DepoModel?) {
+        currentData = depo
         
-        containerWalletView.backgroundColor = backgroundColor(forTitle: data.title)
-        titleWalletLabel.text = data.title
-        let secureText = String(repeating: "•", count: data.balance?.count ?? 0)
+        titleWalletLabel.text = String(depo?.dataUangRekening ?? 0) 
+        let secureText = String(repeating: "•", count: Int(depo?.dataUangRekening ?? 0))
         balanceWalletLabel.text = "Rp \(secureText)"
-        expenseWalletLabel.text = "Monthly expenses Rp \(data.monthlyExpense ?? "0")"
-    }
-    
-    private func backgroundColor(forTitle title: String?) -> UIColor {
-        switch title {
-        case "Subscribtion’s wallet":
-            return UIColor.systemOrange
-        case "E-Wallet":
-            return UIColor.systemGreen
-        case "Bank Account":
-            return UIColor.systemBlue
-        default:
-            return UIColor.systemGray
-        }
+        expenseWalletLabel.text = "Monthly expenses Rp \(depo?.dataUangRekening ?? 0)"
     }
     
     // MARK: - Actions
@@ -58,10 +44,10 @@ class WalletCollectionViewCell: UICollectionViewCell {
     private func eyeButtonTapped() {
         eyeButton.isSelected = !eyeButton.isSelected
         
-        if eyeButton.isSelected, let balance = currentData?.balance {
+        if eyeButton.isSelected, let balance = currentData?.dataUangRekening {
             balanceWalletLabel.text = "Rp \(balance)"
-        } else if let secureLength = currentData?.balance?.count {
-            let secureText = String(repeating: "•", count: secureLength)
+        } else if let secureLength = currentData?.dataUangRekening {
+            let secureText = String(repeating: "•", count: Int(secureLength))
             balanceWalletLabel.text = "Rp \(secureText)"
         }
     }
