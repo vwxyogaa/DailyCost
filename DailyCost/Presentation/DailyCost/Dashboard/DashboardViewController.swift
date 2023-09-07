@@ -9,16 +9,11 @@ import UIKit
 
 class DashboardViewController: UIViewController {
     @IBOutlet weak var containerCardWallet: UIView!
-    @IBOutlet weak var cardWalletView: UIView!
-    @IBOutlet weak var titleWalletLabel: UILabel!
-    @IBOutlet weak var balanceWalletLabel: UILabel!
-    @IBOutlet weak var eyeButton: UIButton!
-    @IBOutlet weak var expenseWalletLabel: UILabel!
+    @IBOutlet weak var walletCollectionView: UICollectionView!
     @IBOutlet weak var addWalletButton: UIButton!
     @IBOutlet weak var topupButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
     
-    private var cards: [UIView] = []
     private var cardDatas: [CardData] = []
     
     // MARK: - Lifecycle
@@ -27,13 +22,13 @@ class DashboardViewController: UIViewController {
         configureButtonNavBar()
         loadDataFromAPI()
         configureViews()
-        setupCards()
+        initListerner()
     }
     
     // MARK: - Helpers
     private func loadDataFromAPI() {
         cardDatas = [
-            CardData(title: "Subscribtion’s wallet", balance: "300.000", monthlyExpense: "100.000"),
+            CardData(title: "Subscribtion’s wallet", balance: "3.000.000.000", monthlyExpense: "100.000"),
             CardData(title: "E-Wallet", balance: "500.000", monthlyExpense: "250.000"),
             CardData(title: "Bank Account", balance: "900.000", monthlyExpense: "500.000")
         ]
@@ -43,40 +38,15 @@ class DashboardViewController: UIViewController {
         containerCardWallet.layer.cornerRadius = 18
         containerCardWallet.layer.masksToBounds = true
         
-        eyeButton.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
+        walletCollectionView.register(UINib(nibName: "WalletCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WalletCollectionViewCell")
+        walletCollectionView.dataSource = self
+        walletCollectionView.delegate = self
     }
     
-    private func setupCards() {
-        for data in cardDatas {
-            let card = createCard(with: data)
-            cards.append(card)
-            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
-            card.addGestureRecognizer(panGesture)
-        }
-    }
-    
-    private func createCard(with data: CardData) -> UIView {
-        switch data.title {
-        case "Subscribtion’s wallet":
-            cardWalletView.backgroundColor = .systemOrange
-        case "E-Wallet":
-            cardWalletView.backgroundColor = .systemPurple
-        case "Bank Account":
-            cardWalletView.backgroundColor = .systemGreen
-        default:
-            cardWalletView.backgroundColor = .systemGray
-        }
-        cardWalletView.layer.cornerRadius = 15
-        cardWalletView.layer.shadowOpacity = 0.1
-        cardWalletView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cardWalletView.layer.shadowRadius = 5
-        
-        titleWalletLabel.text = data.title
-        let secureText = String(repeating: "•", count: data.balance?.count ?? 0)
-        balanceWalletLabel.text = "Rp \(secureText)"
-        expenseWalletLabel.text = "Monthly expenses Rp \(data.monthlyExpense ?? "0")"
-        
-        return cardWalletView
+    private func initListerner() {
+        addWalletButton.addTarget(self, action: #selector(addWalletButtonTapped), for: .touchUpInside)
+        topupButton.addTarget(self, action: #selector(topupButtonTapped), for: .touchUpInside)
+        moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
     }
     
     private func configureButtonNavBar() {
@@ -89,31 +59,7 @@ class DashboardViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
     }
     
-    private func rearrangeCardOrder(for card: UIView) {
-        guard let cardIndex = cards.firstIndex(of: card) else { return }
-        
-        cards.remove(at: cardIndex)
-        cards.append(card)
-        
-        for cardView in cards {
-            containerCardWallet.sendSubviewToBack(cardView)
-        }
-    }
-    
     // MARK: - Actions
-    @objc
-    private func eyeButtonTapped() {
-        eyeButton.isSelected = !eyeButton.isSelected
-        if let data = cardDatas.first {
-            if eyeButton.isSelected {
-                balanceWalletLabel.text = "Rp \(data.balance ?? "0")"
-            } else {
-                let secureText = String(repeating: "•", count: data.balance?.count ?? 0)
-                balanceWalletLabel.text = "Rp \(secureText)"
-            }
-        }
-    }
-    
     @objc
     private func leftButtonTapped() {
         showSuccessSnackBar(message: "Dashboard Button Clicked!")
@@ -125,29 +71,41 @@ class DashboardViewController: UIViewController {
     }
     
     @objc
-    private func handlePan(gesture: UIPanGestureRecognizer) {
-        guard let card = gesture.view else { return }
+    private func addWalletButtonTapped() {
+        showSuccessSnackBar(message: "Add wallet Button Clicked!")
+    }
+    
+    @objc
+    private func topupButtonTapped() {
+        showSuccessSnackBar(message: "Top up Button Clicked!")
+    }
+    
+    @objc
+    private func moreButtonTapped() {
+        showSuccessSnackBar(message: "More Button Clicked!")
+    }
+}
+
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+extension DashboardViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cardDatas.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCollectionViewCell", for: indexPath) as? WalletCollectionViewCell else { return UICollectionViewCell() }
+        cell.configureContent(with: cardDatas[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthPerItem = collectionView.frame.width
+        let heightPerItem: CGFloat = 118
         
-        switch gesture.state {
-        case .changed:
-            let translation = gesture.translation(in: self.view)
-            card.transform = CGAffineTransform(translationX: 0, y: translation.y)
-        case .ended:
-            if abs(gesture.velocity(in: self.view).y) > 500 {
-                let destination: CGFloat = gesture.velocity(in: self.view).y > 0 ? self.view.bounds.height : -self.view.bounds.height
-                UIView.animate(withDuration: 0.3, animations: {
-                    card.transform = CGAffineTransform(translationX: 0, y: destination)
-                }) { _ in
-                    card.transform = .identity
-                    self.rearrangeCardOrder(for: card)
-                }
-            } else {
-                UIView.animate(withDuration: 0.3) {
-                    card.transform = .identity
-                }
-            }
-        default:
-            break
-        }
+        return CGSize(width: widthPerItem, height: heightPerItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

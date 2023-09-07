@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC33BFB42AA9D4D70028BE38 /* LoginRegisterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFB32AA9D4D70028BE38 /* LoginRegisterDataSource.swift */; };
+		BC33BFB82AA9D5360028BE38 /* LoginRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFB72AA9D5360028BE38 /* LoginRegisterRepository.swift */; };
+		BC33BFBC2AA9EB850028BE38 /* WalletCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFBA2AA9EB850028BE38 /* WalletCollectionViewCell.swift */; };
+		BC33BFBD2AA9EB850028BE38 /* WalletCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC33BFBB2AA9EB850028BE38 /* WalletCollectionViewCell.xib */; };
+		BC33BFC12AA9F6E80028BE38 /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC02AA9F6E80028BE38 /* RegisterResponse.swift */; };
+		BC33BFC32AA9F7020028BE38 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC22AA9F7020028BE38 /* LoginResponse.swift */; };
+		BC33BFC52AA9F7190028BE38 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC42AA9F7190028BE38 /* RegisterModel.swift */; };
+		BC33BFC72AA9F71E0028BE38 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC62AA9F71E0028BE38 /* LoginModel.swift */; };
+		BC33BFC92AA9F7B30028BE38 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC82AA9F7B30028BE38 /* DataMapper.swift */; };
 		BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D362A9F111400E45602 /* AppDelegate.swift */; };
 		BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D382A9F111400E45602 /* SceneDelegate.swift */; };
 		BCC68D412A9F111400E45602 /* DailyCost.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D3F2A9F111400E45602 /* DailyCost.xcdatamodeld */; };
@@ -28,14 +37,10 @@
 		BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */; };
 		BCC68DA72AA0A25E00E45602 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68DA62AA0A25E00E45602 /* CardData.swift */; };
 		E19FBE1E2A9FB4D900D4C276 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FBE1D2A9FB4D900D4C276 /* SignInViewModel.swift */; };
-		E19FBE202A9FB56900D4C276 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FBE1F2A9FB56900D4C276 /* Login.swift */; };
 		E19FBE242A9FB69400D4C276 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FBE232A9FB69400D4C276 /* SignInUseCase.swift */; };
 		E19FBE262A9FB87D00D4C276 /* LoginKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FBE252A9FB87D00D4C276 /* LoginKey.swift */; };
 		E1AE615B2A9F9E2D00ED4BC8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE615A2A9F9E2D00ED4BC8 /* APIManager.swift */; };
-		E1AE615E2A9FA14200ED4BC8 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE615D2A9FA14200ED4BC8 /* RemoteDataSource.swift */; };
-		E1AE61602A9FA18F00ED4BC8 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE615F2A9FA18F00ED4BC8 /* Register.swift */; };
 		E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61612A9FA2F100ED4BC8 /* Utils.swift */; };
-		E1AE61652A9FA39400ED4BC8 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61642A9FA39400ED4BC8 /* Repository.swift */; };
 		E1AE616B2A9FA42E00ED4BC8 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE616A2A9FA42E00ED4BC8 /* Injection.swift */; };
 		E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE616E2A9FA48900ED4BC8 /* SignUpViewModel.swift */; };
 		E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AE61702A9FA4BA00ED4BC8 /* BaseViewModel.swift */; };
@@ -69,6 +74,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC33BFB32AA9D4D70028BE38 /* LoginRegisterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterDataSource.swift; sourceTree = "<group>"; };
+		BC33BFB72AA9D5360028BE38 /* LoginRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterRepository.swift; sourceTree = "<group>"; };
+		BC33BFBA2AA9EB850028BE38 /* WalletCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC33BFBB2AA9EB850028BE38 /* WalletCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCollectionViewCell.xib; sourceTree = "<group>"; };
+		BC33BFC02AA9F6E80028BE38 /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		BC33BFC22AA9F7020028BE38 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		BC33BFC42AA9F7190028BE38 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
+		BC33BFC62AA9F71E0028BE38 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		BC33BFC82AA9F7B30028BE38 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		BCC68D332A9F111400E45602 /* DailyCost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyCost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC68D362A9F111400E45602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCC68D382A9F111400E45602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,14 +108,10 @@
 		BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		BCC68DA62AA0A25E00E45602 /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		E19FBE1D2A9FB4D900D4C276 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		E19FBE1F2A9FB56900D4C276 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E19FBE232A9FB69400D4C276 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		E19FBE252A9FB87D00D4C276 /* LoginKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginKey.swift; sourceTree = "<group>"; };
 		E1AE615A2A9F9E2D00ED4BC8 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		E1AE615D2A9FA14200ED4BC8 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
-		E1AE615F2A9FA18F00ED4BC8 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		E1AE61612A9FA2F100ED4BC8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		E1AE61642A9FA39400ED4BC8 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		E1AE616A2A9FA42E00ED4BC8 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		E1AE616E2A9FA48900ED4BC8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E1AE61702A9FA4BA00ED4BC8 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +152,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC33BFB52AA9D4F40028BE38 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				BC33BFB32AA9D4D70028BE38 /* LoginRegisterDataSource.swift */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+		BC33BFB62AA9D52B0028BE38 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				BC33BFB72AA9D5360028BE38 /* LoginRegisterRepository.swift */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+		BC33BFB92AA9EB6A0028BE38 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC33BFBA2AA9EB850028BE38 /* WalletCollectionViewCell.swift */,
+				BC33BFBB2AA9EB850028BE38 /* WalletCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BC33BFBE2AA9F6950028BE38 /* DataResponse */ = {
+			isa = PBXGroup;
+			children = (
+				BC33BFC02AA9F6E80028BE38 /* RegisterResponse.swift */,
+				BC33BFC22AA9F7020028BE38 /* LoginResponse.swift */,
+			);
+			path = DataResponse;
+			sourceTree = "<group>";
+		};
+		BC33BFBF2AA9F6A00028BE38 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC33BFC42AA9F7190028BE38 /* RegisterModel.swift */,
+				BC33BFC62AA9F71E0028BE38 /* LoginModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		BCC68D2A2A9F111400E45602 = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +327,7 @@
 				E1AE61792A9FA80600ED4BC8 /* ThirdPartyLibrary */,
 				BCC68D782A9F161900E45602 /* Extension */,
 				E1AE61612A9FA2F100ED4BC8 /* Utils.swift */,
+				BC33BFC82AA9F7B30028BE38 /* DataMapper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -291,11 +345,11 @@
 		BCC68D7F2A9F1FB000E45602 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				BCC68D802A9F1FB800E45602 /* OnboardingPage.swift */,
-				E1AE615F2A9FA18F00ED4BC8 /* Register.swift */,
-				E19FBE1F2A9FB56900D4C276 /* Login.swift */,
-				E19FBE252A9FB87D00D4C276 /* LoginKey.swift */,
 				BCC68DA62AA0A25E00E45602 /* CardData.swift */,
+				BCC68D802A9F1FB800E45602 /* OnboardingPage.swift */,
+				E19FBE252A9FB87D00D4C276 /* LoginKey.swift */,
+				BC33BFBF2AA9F6A00028BE38 /* DataModel */,
+				BC33BFBE2AA9F6950028BE38 /* DataResponse */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -365,7 +419,7 @@
 		E1AE615C2A9FA13000ED4BC8 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				E1AE615D2A9FA14200ED4BC8 /* RemoteDataSource.swift */,
+				BC33BFB52AA9D4F40028BE38 /* LoginRegister */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -373,7 +427,7 @@
 		E1AE61632A9FA38D00ED4BC8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				E1AE61642A9FA39400ED4BC8 /* Repository.swift */,
+				BC33BFB62AA9D52B0028BE38 /* LoginRegister */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -406,6 +460,7 @@
 		E1AE61742A9FA71A00ED4BC8 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				BC33BFB92AA9EB6A0028BE38 /* Cell */,
 				E1AE61752A9FA72800ED4BC8 /* DashboardViewController.swift */,
 				E1AE61762A9FA72800ED4BC8 /* DashboardViewController.xib */,
 			);
@@ -539,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCC68D942A9F384500E45602 /* SignInViewController.xib in Resources */,
+				BC33BFBD2AA9EB850028BE38 /* WalletCollectionViewCell.xib in Resources */,
 				BCC68D462A9F111600E45602 /* LaunchScreen.storyboard in Resources */,
 				BCC68D432A9F111600E45602 /* Assets.xcassets in Resources */,
 				BCC68D902A9F383C00E45602 /* SignUpViewController.xib in Resources */,
@@ -570,29 +626,33 @@
 			files = (
 				E1AE615B2A9F9E2D00ED4BC8 /* APIManager.swift in Sources */,
 				E1AE61772A9FA72800ED4BC8 /* DashboardViewController.swift in Sources */,
+				BC33BFBC2AA9EB850028BE38 /* WalletCollectionViewCell.swift in Sources */,
+				BC33BFC12AA9F6E80028BE38 /* RegisterResponse.swift in Sources */,
 				E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */,
+				BC33BFB42AA9D4D70028BE38 /* LoginRegisterDataSource.swift in Sources */,
 				BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */,
 				BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */,
 				BCC68D412A9F111400E45602 /* DailyCost.xcdatamodeld in Sources */,
 				E1AE617D2A9FA82F00ED4BC8 /* TTGSnackbar.swift in Sources */,
-				E1AE61602A9FA18F00ED4BC8 /* Register.swift in Sources */,
+				BC33BFC92AA9F7B30028BE38 /* DataMapper.swift in Sources */,
 				E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */,
 				E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */,
 				BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */,
+				BC33BFC72AA9F71E0028BE38 /* LoginModel.swift in Sources */,
 				BCC68D8F2A9F383C00E45602 /* SignUpViewController.swift in Sources */,
+				BC33BFC32AA9F7020028BE38 /* LoginResponse.swift in Sources */,
 				BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */,
 				E19FBE262A9FB87D00D4C276 /* LoginKey.swift in Sources */,
-				E1AE615E2A9FA14200ED4BC8 /* RemoteDataSource.swift in Sources */,
 				BCC68D8A2A9F266F00E45602 /* OnboardingViewController.swift in Sources */,
-				E1AE61652A9FA39400ED4BC8 /* Repository.swift in Sources */,
 				BCC68DA72AA0A25E00E45602 /* CardData.swift in Sources */,
 				E19FBE242A9FB69400D4C276 /* SignInUseCase.swift in Sources */,
 				BCC68D932A9F384500E45602 /* SignInViewController.swift in Sources */,
 				BCC68D812A9F1FB800E45602 /* OnboardingPage.swift in Sources */,
 				BCC68D872A9F20F500E45602 /* OnboardingPageContentViewController.swift in Sources */,
+				BC33BFB82AA9D5360028BE38 /* LoginRegisterRepository.swift in Sources */,
 				E1AE61732A9FA53F00ED4BC8 /* SignUpUseCase.swift in Sources */,
 				E19FBE1E2A9FB4D900D4C276 /* SignInViewModel.swift in Sources */,
-				E19FBE202A9FB56900D4C276 /* Login.swift in Sources */,
+				BC33BFC52AA9F7190028BE38 /* RegisterModel.swift in Sources */,
 				E1AE617B2A9FA81200ED4BC8 /* Toast.swift in Sources */,
 				E1AE616B2A9FA42E00ED4BC8 /* Injection.swift in Sources */,
 				BCC68D7A2A9F162400E45602 /* AppColor+Ext.swift in Sources */,

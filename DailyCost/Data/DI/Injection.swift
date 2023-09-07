@@ -18,8 +18,8 @@ final class Injection {
 }
 
 extension Injection {
-    func provideRepository() -> RepositoryProtocol {
-        let remoteDataSource = RemoteDataSource()
-        return Repository.sharedInstance(remoteDataSource)
+    func provideRepository() -> LoginRegisterRepositoryProtocol {
+        let loginRegisterDataSource = LoginRegisterDataSource()
+        return LoginRegisterRepository.sharedInstance(loginRegisterDataSource)
     }
 }

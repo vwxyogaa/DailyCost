@@ -12,7 +12,7 @@ class SignInViewModel: BaseViewModel {
     private let disposeBag = DisposeBag()
     private let signInUseCase: SignInUseCaseProtocol
     
-    private let _login = BehaviorRelay<LoginResponse?>(value: nil)
+    private let _login = BehaviorRelay<LoginModel?>(value: nil)
     
     var isPasswordVisible: Bool = false
     
@@ -20,7 +20,7 @@ class SignInViewModel: BaseViewModel {
         self.signInUseCase = signInUseCase
     }
     
-    var login: Driver<LoginResponse?> {
+    var login: Driver<LoginModel?> {
         return _login.asDriver()
     }
     
