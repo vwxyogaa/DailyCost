@@ -157,10 +157,11 @@ class SignUpViewController: UIViewController {
         guard let firstWindow = firstScene.windows.first else { return }
         
         let rootController = DashboardViewController(nibName: "DashboardViewController", bundle: nil)
+        let navigationController = UINavigationController(rootViewController: rootController)
         let snapshot = firstWindow.snapshotView(afterScreenUpdates: true)!
-        rootController.view.addSubview(snapshot)
+        navigationController.view.addSubview(snapshot)
         
-        firstWindow.rootViewController = rootController
+        firstWindow.rootViewController = navigationController
         
         UIView.transition(with: snapshot,
                           duration: 0.3,
@@ -185,6 +186,8 @@ class SignUpViewController: UIViewController {
     @objc
     private func signInButtonTapped() {
         let signInVC = SignInViewController(nibName: "SignInViewController", bundle: nil)
+        let signInViewModel = SignInViewModel(signInUseCase: Injection().provideSignInUseCase())
+        signInVC.viewModel = signInViewModel
         navigationController?.pushViewController(signInVC, animated: true)
     }
     

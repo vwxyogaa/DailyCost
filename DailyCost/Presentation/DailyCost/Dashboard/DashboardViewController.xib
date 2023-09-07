@@ -13,15 +13,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="DailyCost" customModuleProvider="target">
             <connections>
                 <outlet property="addWalletButton" destination="wzH-jm-pwt" id="Cfq-fv-RUl"/>
-                <outlet property="balanceWalletLabel" destination="Jnc-00-qdd" id="gL7-bZ-x0e"/>
-                <outlet property="cardWalletView" destination="nCY-Mk-IvW" id="1m8-Eq-xQS"/>
                 <outlet property="containerCardWallet" destination="CEb-Uw-3ek" id="xWG-mC-KiE"/>
-                <outlet property="expenseWalletLabel" destination="eyk-Do-fLY" id="Nvh-kk-kfZ"/>
-                <outlet property="eyeButton" destination="UUK-q6-LiL" id="5dh-Uf-Id8"/>
                 <outlet property="moreButton" destination="Nu7-ij-Nzj" id="YTt-Kt-s51"/>
-                <outlet property="titleWalletLabel" destination="vdd-c0-yip" id="plN-3I-9Nr"/>
                 <outlet property="topupButton" destination="Mph-ZG-hbQ" id="tWy-My-vtt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="walletCollectionView" destination="owf-OB-chX" id="Ilb-NY-asf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -41,73 +37,24 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEb-Uw-3ek">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="169.33333333333334"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nCY-Mk-IvW">
-                                                    <rect key="frame" x="9" y="8.9999999999999929" width="343" height="118.33333333333331"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QNb-0v-Ou1">
-                                                            <rect key="frame" x="20" y="20" width="303" height="78.333333333333329"/>
-                                                            <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="k8W-0x-rVP">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="303" height="16"/>
-                                                                    <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_empty_wallet" translatesAutoresizingMaskIntoConstraints="NO" id="c5C-ZJ-BcZ">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="16" id="3Bu-k2-mhh"/>
-                                                                                <constraint firstAttribute="width" constant="16" id="E6g-3s-EnZ"/>
-                                                                            </constraints>
-                                                                        </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdd-c0-yip">
-                                                                            <rect key="frame" x="24" y="0.0" width="279" height="16"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4g5-rD-eaG">
-                                                                    <rect key="frame" x="0.0" y="28" width="303" height="24"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnc-00-qdd">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="271" height="24"/>
-                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUK-q6-LiL">
-                                                                            <rect key="frame" x="279" y="0.0" width="24" height="24"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="24" id="bYk-QC-60V"/>
-                                                                                <constraint firstAttribute="width" constant="24" id="h51-mB-nYk"/>
-                                                                            </constraints>
-                                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                            <state key="normal" image="icon_eye_slash_white"/>
-                                                                            <state key="selected" image="icon_eye_white"/>
-                                                                        </button>
-                                                                    </subviews>
-                                                                </stackView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyk-Do-fLY">
-                                                                    <rect key="frame" x="0.0" y="64" width="303" height="14.333333333333329"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                                                    <color key="textColor" name="bg100"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" name="accent400"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="owf-OB-chX">
+                                                    <rect key="frame" x="0.0" y="9" width="361" height="118"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="QNb-0v-Ou1" firstAttribute="top" secondItem="nCY-Mk-IvW" secondAttribute="top" constant="20" id="BOE-PK-p8U"/>
-                                                        <constraint firstAttribute="trailing" secondItem="QNb-0v-Ou1" secondAttribute="trailing" constant="20" id="kWC-C6-ia7"/>
-                                                        <constraint firstItem="QNb-0v-Ou1" firstAttribute="leading" secondItem="nCY-Mk-IvW" secondAttribute="leading" constant="20" id="nCg-Yh-gIZ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="QNb-0v-Ou1" secondAttribute="bottom" constant="20" id="r61-cW-1xB"/>
+                                                        <constraint firstAttribute="height" constant="118" id="bAR-4L-fb8"/>
                                                     </constraints>
-                                                </view>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e2d-zc-w6u">
+                                                        <size key="itemSize" width="128" height="128"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                </collectionView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCo-9h-VrQ">
-                                                    <rect key="frame" x="15" y="135.33333333333334" width="331" height="24"/>
+                                                    <rect key="frame" x="15" y="135" width="331" height="24.333333333333343"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzH-jm-pwt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="24.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="  Add wallet" image="icon_wallet_add">
@@ -115,7 +62,7 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mph-ZG-hbQ">
-                                                            <rect key="frame" x="145.33333333333334" y="0.0" width="70" height="24"/>
+                                                            <rect key="frame" x="145.33333333333334" y="0.0" width="70" height="24.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="  Top up" image="icon_money_send">
@@ -123,7 +70,7 @@
                                                             </state>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nu7-ij-Nzj">
-                                                            <rect key="frame" x="270.66666666666669" y="0.0" width="60.333333333333314" height="24"/>
+                                                            <rect key="frame" x="270.66666666666669" y="0.0" width="60.333333333333314" height="24.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="  More" image="icon_more">
@@ -135,13 +82,13 @@
                                             </subviews>
                                             <color key="backgroundColor" name="accent401"/>
                                             <constraints>
-                                                <constraint firstItem="nCY-Mk-IvW" firstAttribute="top" secondItem="CEb-Uw-3ek" secondAttribute="top" constant="9" id="B3X-a6-I8J"/>
+                                                <constraint firstItem="dCo-9h-VrQ" firstAttribute="top" secondItem="owf-OB-chX" secondAttribute="bottom" constant="8" id="0lx-bp-r4W"/>
                                                 <constraint firstItem="dCo-9h-VrQ" firstAttribute="leading" secondItem="CEb-Uw-3ek" secondAttribute="leading" constant="15" id="Dlm-fo-f3b"/>
-                                                <constraint firstAttribute="trailing" secondItem="nCY-Mk-IvW" secondAttribute="trailing" constant="9" id="VNl-S3-b3R"/>
-                                                <constraint firstItem="dCo-9h-VrQ" firstAttribute="top" secondItem="nCY-Mk-IvW" secondAttribute="bottom" constant="8" id="fHp-vf-mZW"/>
+                                                <constraint firstItem="owf-OB-chX" firstAttribute="leading" secondItem="CEb-Uw-3ek" secondAttribute="leading" id="F3p-ES-qY9"/>
+                                                <constraint firstItem="owf-OB-chX" firstAttribute="top" secondItem="CEb-Uw-3ek" secondAttribute="top" constant="9" id="f04-gj-Dfq"/>
                                                 <constraint firstAttribute="bottom" secondItem="dCo-9h-VrQ" secondAttribute="bottom" constant="10" id="kQK-p8-72C"/>
                                                 <constraint firstAttribute="trailing" secondItem="dCo-9h-VrQ" secondAttribute="trailing" constant="15" id="krZ-L0-wjf"/>
-                                                <constraint firstItem="nCY-Mk-IvW" firstAttribute="leading" secondItem="CEb-Uw-3ek" secondAttribute="leading" constant="9" id="rdu-Z3-IPg"/>
+                                                <constraint firstAttribute="trailing" secondItem="owf-OB-chX" secondAttribute="trailing" id="xGc-BI-Btg"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -170,20 +117,11 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_empty_wallet" width="16" height="16.333333969116211"/>
-        <image name="icon_eye_slash_white" width="24" height="24"/>
-        <image name="icon_eye_white" width="24" height="24.333333969116211"/>
         <image name="icon_money_send" width="24" height="24"/>
         <image name="icon_more" width="24.333333969116211" height="24"/>
         <image name="icon_wallet_add" width="24" height="24"/>
-        <namedColor name="accent400">
-            <color red="1" green="0.74901960784313726" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="accent401">
             <color red="0.6470588235294118" green="0.9137254901960784" blue="0.73725490196078436" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="bg100">
-            <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text200">
             <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
