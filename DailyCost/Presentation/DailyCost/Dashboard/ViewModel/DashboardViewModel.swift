@@ -15,6 +15,7 @@ class DashboardViewModel: BaseViewModel {
     private let _saldo = BehaviorRelay<DepoModel?>(value: nil)
     
     var userId: Int
+    var isOpen: Bool = false
     
     init(dashboardUseCase: DashboardUseCaseProtocol, userId: Int) {
         self.dashboardUseCase = dashboardUseCase
