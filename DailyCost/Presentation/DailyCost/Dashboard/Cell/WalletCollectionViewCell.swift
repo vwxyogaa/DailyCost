@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol WalletCollectionViewCellDelegate {
+    func eyeButtonWasTapped()
+}
+
 class WalletCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerWalletView: UIView!
     @IBOutlet weak var titleWalletLabel: UILabel!
@@ -14,6 +18,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var expenseWalletLabel: UILabel!
     
+    var delegate: WalletCollectionViewCellDelegate?
     private var currentData: DepoModel?
     
     override func awakeFromNib() {
@@ -50,5 +55,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
             let secureText = String(repeating: "•", count: Int(secureLength))
             balanceWalletLabel.text = "Rp \(secureText)"
         }
+        
+        delegate?.eyeButtonWasTapped()
     }
 }
