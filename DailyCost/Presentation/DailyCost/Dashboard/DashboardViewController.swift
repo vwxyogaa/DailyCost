@@ -164,7 +164,8 @@ class DashboardViewController: UIViewController {
         if viewModel.isOpen {
             mainFloatingButtonTapped()
         }
-        showSuccessSnackBar(message: "Dashboard Button Clicked!")
+        let drawerMenuViewController = DrawerMenuViewController()
+        present(drawerMenuViewController, animated: true)
     }
     
     @objc
