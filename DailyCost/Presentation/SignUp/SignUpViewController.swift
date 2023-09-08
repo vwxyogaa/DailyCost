@@ -157,6 +157,8 @@ class SignUpViewController: UIViewController {
         guard let firstWindow = firstScene.windows.first else { return }
         
         let rootController = DashboardViewController(nibName: "DashboardViewController", bundle: nil)
+        let dashboardViewModel = DashboardViewModel(dashboardUseCase: Injection().provideDashboardUseCase(), userId: viewModel.registerValue?.dataId ?? 0)
+        rootController.viewModel = dashboardViewModel
         let navigationController = UINavigationController(rootViewController: rootController)
         let snapshot = firstWindow.snapshotView(afterScreenUpdates: true)!
         navigationController.view.addSubview(snapshot)

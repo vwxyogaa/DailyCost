@@ -7,9 +7,9 @@
 
 struct LoginResponse: Codable {
     let status, token: String?
-    let data: DataClass?
+    let data: LoginData?
     
-    struct DataClass: Codable {
+    struct LoginData: Codable {
         let id: Int?
         let nama: String?
     }

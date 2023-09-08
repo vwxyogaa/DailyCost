@@ -24,6 +24,10 @@ class SignUpViewModel: BaseViewModel {
         return _register.asDriver()
     }
     
+    var registerValue: RegisterModel? {
+        return _register.value
+    }
+    
     func postRegister(name: String, email: String, password: String) {
         self._isLoading.accept(true)
         signUpUseCase.postRegister(name: name, email: email, password: password)

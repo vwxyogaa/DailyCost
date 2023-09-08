@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class DashboardViewController: UIViewController {
     @IBOutlet weak var containerCardWallet: UIView!
@@ -14,24 +15,36 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var topupButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
     
-    private var cardDatas: [CardData] = []
+    private let disposeBag = DisposeBag()
+    var viewModel: DashboardViewModel!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureButtonNavBar()
-        loadDataFromAPI()
         configureViews()
         initListerner()
+        initObserver()
+        loadData()
     }
     
     // MARK: - Helpers
-    private func loadDataFromAPI() {
-        cardDatas = [
-            CardData(title: "Subscribtion’s wallet", balance: "3.000.000.000", monthlyExpense: "100.000"),
-            CardData(title: "E-Wallet", balance: "500.000", monthlyExpense: "250.000"),
-            CardData(title: "Bank Account", balance: "900.000", monthlyExpense: "500.000")
-        ]
+    private func loadData() {
+        viewModel.getSaldo(id: viewModel.userId)
+    }
+    
+    private func initObserver() {
+        viewModel.saldo.drive(onNext: { [weak self] saldo in
+            self?.walletCollectionView.reloadData()
+        }).disposed(by: disposeBag)
+        
+        viewModel.isLoading.drive(onNext: { [weak self] isLoading in
+            self?.manageLoadingActivity(isLoading: isLoading)
+        }).disposed(by: disposeBag)
+        
+        viewModel.errorMessage.drive(onNext: { [weak self] errorMessage in
+            self?.showErrorSnackBar(message: errorMessage)
+        }).disposed(by: disposeBag)
     }
     
     private func configureViews() {
@@ -89,12 +102,13 @@ class DashboardViewController: UIViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension DashboardViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cardDatas.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCollectionViewCell", for: indexPath) as? WalletCollectionViewCell else { return UICollectionViewCell() }
-        cell.configureContent(with: cardDatas[indexPath.row])
+        let depo = viewModel.saldoValue
+        cell.configureContent(depo: depo)
         return cell
     }
     
