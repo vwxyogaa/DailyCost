@@ -10,6 +10,7 @@ import Foundation
 struct LoginKey {
     static let stateLoginKey = "stateLoginKey"
     static let userIdKey = "userIdKey"
+    static let userNameKey = "userNameKey"
     
     static var stateLogin: Bool {
         get {
@@ -24,6 +25,14 @@ struct LoginKey {
             return UserDefaults.standard.string(forKey: userIdKey) ?? "0"
         } set {
             UserDefaults.standard.set(newValue, forKey: userIdKey)
+        }
+    }
+    
+    static var userName: String {
+        get {
+            return UserDefaults.standard.string(forKey: userNameKey) ?? ""
+        } set {
+            UserDefaults.standard.set(newValue, forKey: userNameKey)
         }
     }
     

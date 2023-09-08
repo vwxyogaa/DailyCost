@@ -16,6 +16,11 @@
 		BC33BFC52AA9F7190028BE38 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC42AA9F7190028BE38 /* RegisterModel.swift */; };
 		BC33BFC72AA9F71E0028BE38 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC62AA9F71E0028BE38 /* LoginModel.swift */; };
 		BC33BFC92AA9F7B30028BE38 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33BFC82AA9F7B30028BE38 /* DataMapper.swift */; };
+		BC33C0052AAB32950028BE38 /* DrawerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33C0032AAB32950028BE38 /* DrawerMenuViewController.swift */; };
+		BC33C0062AAB32950028BE38 /* DrawerMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC33C0042AAB32950028BE38 /* DrawerMenuViewController.xib */; };
+		BC33C0082AAB32F90028BE38 /* DrawerTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33C0072AAB32F90028BE38 /* DrawerTransitionManager.swift */; };
+		BC33C00B2AAB33B90028BE38 /* DrawerPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33C00A2AAB33B90028BE38 /* DrawerPresentationController.swift */; };
+		BC33C00D2AAB33C90028BE38 /* DrawerSlideAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC33C00C2AAB33C90028BE38 /* DrawerSlideAnimation.swift */; };
 		BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D362A9F111400E45602 /* AppDelegate.swift */; };
 		BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D382A9F111400E45602 /* SceneDelegate.swift */; };
 		BCC68D412A9F111400E45602 /* DailyCost.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D3F2A9F111400E45602 /* DailyCost.xcdatamodeld */; };
@@ -35,7 +40,6 @@
 		BCC68D942A9F384500E45602 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC68D922A9F384500E45602 /* SignInViewController.xib */; };
 		BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D972A9F482800E45602 /* UITextField+Ext.swift */; };
 		BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */; };
-		BCC68DA72AA0A25E00E45602 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC68DA62AA0A25E00E45602 /* CardData.swift */; };
 		E19FBE1E2A9FB4D900D4C276 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FBE1D2A9FB4D900D4C276 /* SignInViewModel.swift */; };
 		E19FBE242A9FB69400D4C276 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FBE232A9FB69400D4C276 /* SignInUseCase.swift */; };
 		E19FBE262A9FB87D00D4C276 /* LoginKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19FBE252A9FB87D00D4C276 /* LoginKey.swift */; };
@@ -89,6 +93,11 @@
 		BC33BFC42AA9F7190028BE38 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		BC33BFC62AA9F71E0028BE38 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		BC33BFC82AA9F7B30028BE38 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
+		BC33C0032AAB32950028BE38 /* DrawerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerMenuViewController.swift; sourceTree = "<group>"; };
+		BC33C0042AAB32950028BE38 /* DrawerMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerMenuViewController.xib; sourceTree = "<group>"; };
+		BC33C0072AAB32F90028BE38 /* DrawerTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerTransitionManager.swift; sourceTree = "<group>"; };
+		BC33C00A2AAB33B90028BE38 /* DrawerPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPresentationController.swift; sourceTree = "<group>"; };
+		BC33C00C2AAB33C90028BE38 /* DrawerSlideAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerSlideAnimation.swift; sourceTree = "<group>"; };
 		BCC68D332A9F111400E45602 /* DailyCost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyCost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC68D362A9F111400E45602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCC68D382A9F111400E45602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +121,6 @@
 		BCC68D922A9F384500E45602 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
 		BCC68D972A9F482800E45602 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		BCC68D992A9F528400E45602 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
-		BCC68DA62AA0A25E00E45602 /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		E19FBE1D2A9FB4D900D4C276 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		E19FBE232A9FB69400D4C276 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		E19FBE252A9FB87D00D4C276 /* LoginKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginKey.swift; sourceTree = "<group>"; };
@@ -207,6 +215,42 @@
 				E1EECB912AAA35190095E668 /* DepoModel.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		BC33BFFF2AAB2E600028BE38 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				BC33C0002AAB2E700028BE38 /* DrawerMenu */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		BC33C0002AAB2E700028BE38 /* DrawerMenu */ = {
+			isa = PBXGroup;
+			children = (
+				BC33C00E2AAB33DF0028BE38 /* DrawerMenuController */,
+				BC33C0092AAB339C0028BE38 /* DrawerTransitionManager */,
+			);
+			path = DrawerMenu;
+			sourceTree = "<group>";
+		};
+		BC33C0092AAB339C0028BE38 /* DrawerTransitionManager */ = {
+			isa = PBXGroup;
+			children = (
+				BC33C0072AAB32F90028BE38 /* DrawerTransitionManager.swift */,
+				BC33C00A2AAB33B90028BE38 /* DrawerPresentationController.swift */,
+				BC33C00C2AAB33C90028BE38 /* DrawerSlideAnimation.swift */,
+			);
+			path = DrawerTransitionManager;
+			sourceTree = "<group>";
+		};
+		BC33C00E2AAB33DF0028BE38 /* DrawerMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				BC33C0032AAB32950028BE38 /* DrawerMenuViewController.swift */,
+				BC33C0042AAB32950028BE38 /* DrawerMenuViewController.xib */,
+			);
+			path = DrawerMenuController;
 			sourceTree = "<group>";
 		};
 		BCC68D2A2A9F111400E45602 = {
@@ -359,7 +403,6 @@
 		BCC68D7F2A9F1FB000E45602 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				BCC68DA62AA0A25E00E45602 /* CardData.swift */,
 				BCC68D802A9F1FB800E45602 /* OnboardingPage.swift */,
 				E19FBE252A9FB87D00D4C276 /* LoginKey.swift */,
 				BC33BFBF2AA9F6A00028BE38 /* DataModel */,
@@ -477,6 +520,7 @@
 		E1AE61742A9FA71A00ED4BC8 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				BC33BFFF2AAB2E600028BE38 /* Feature */,
 				E1EECB982AAA38F20095E668 /* ViewModel */,
 				BC33BFB92AA9EB6A0028BE38 /* Cell */,
 				E1AE61752A9FA72800ED4BC8 /* DashboardViewController.swift */,
@@ -641,6 +685,7 @@
 				BCC68D432A9F111600E45602 /* Assets.xcassets in Resources */,
 				BCC68D902A9F383C00E45602 /* SignUpViewController.xib in Resources */,
 				BCC68D882A9F20F500E45602 /* OnboardingPageContentViewController.xib in Resources */,
+				BC33C0062AAB32950028BE38 /* DrawerMenuViewController.xib in Resources */,
 				E1AE61782A9FA72800ED4BC8 /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,21 +719,23 @@
 				E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */,
 				BC33BFB42AA9D4D70028BE38 /* LoginRegisterDataSource.swift in Sources */,
 				BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */,
+				BC33C0052AAB32950028BE38 /* DrawerMenuViewController.swift in Sources */,
 				BCC68D982A9F482800E45602 /* UITextField+Ext.swift in Sources */,
 				BCC68D412A9F111400E45602 /* DailyCost.xcdatamodeld in Sources */,
 				E1AE617D2A9FA82F00ED4BC8 /* TTGSnackbar.swift in Sources */,
 				BC33BFC92AA9F7B30028BE38 /* DataMapper.swift in Sources */,
+				BC33C00D2AAB33C90028BE38 /* DrawerSlideAnimation.swift in Sources */,
 				E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */,
 				E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */,
 				BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */,
 				E1EECB8E2AAA32E50095E668 /* DepoDataSource.swift in Sources */,
 				BC33BFC72AA9F71E0028BE38 /* LoginModel.swift in Sources */,
 				BCC68D8F2A9F383C00E45602 /* SignUpViewController.swift in Sources */,
+				BC33C0082AAB32F90028BE38 /* DrawerTransitionManager.swift in Sources */,
 				BC33BFC32AA9F7020028BE38 /* LoginResponse.swift in Sources */,
 				BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */,
 				E19FBE262A9FB87D00D4C276 /* LoginKey.swift in Sources */,
 				BCC68D8A2A9F266F00E45602 /* OnboardingViewController.swift in Sources */,
-				BCC68DA72AA0A25E00E45602 /* CardData.swift in Sources */,
 				E1EECB9A2AAA38FD0095E668 /* DashboardViewModel.swift in Sources */,
 				E19FBE242A9FB69400D4C276 /* SignInUseCase.swift in Sources */,
 				BCC68D932A9F384500E45602 /* SignInViewController.swift in Sources */,
@@ -703,6 +750,7 @@
 				BC33BFC52AA9F7190028BE38 /* RegisterModel.swift in Sources */,
 				E1AE617B2A9FA81200ED4BC8 /* Toast.swift in Sources */,
 				E1AE616B2A9FA42E00ED4BC8 /* Injection.swift in Sources */,
+				BC33C00B2AAB33B90028BE38 /* DrawerPresentationController.swift in Sources */,
 				BCC68D7A2A9F162400E45602 /* AppColor+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
