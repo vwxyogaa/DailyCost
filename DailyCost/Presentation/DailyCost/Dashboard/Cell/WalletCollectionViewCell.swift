@@ -31,17 +31,19 @@ class WalletCollectionViewCell: UICollectionViewCell {
         containerWalletView.layer.shadowOpacity = 0.1
         containerWalletView.layer.shadowOffset = CGSize(width: 0, height: 2)
         containerWalletView.layer.shadowRadius = 5
+        containerWalletView.backgroundColor = .systemOrange
         
         eyeButton.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
     }
     
-    func configureContent(depo: DepoModel?) {
+    func configureContent(depo: DepoModel?, spending: SpendingModel?) {
         currentData = depo
         
-        titleWalletLabel.text = String(depo?.dataUangRekening ?? 0) 
-        let secureText = String(repeating: "•", count: Int(depo?.dataUangRekening ?? 0))
+        let balanceString = String(format: "%.0f", depo?.dataUangRekening ?? 0)
+        titleWalletLabel.text = "Uang Rekening"
+        let secureText = String(repeating: "•", count: balanceString.count)
         balanceWalletLabel.text = "Rp \(secureText)"
-        expenseWalletLabel.text = "Monthly expenses Rp \(depo?.dataUangRekening ?? 0)"
+        expenseWalletLabel.text = "Monthly expenses Rp \(spending?.dataPengeluaran?.pengeluaranRekening ?? 0)"
     }
     
     // MARK: - Actions
@@ -50,9 +52,11 @@ class WalletCollectionViewCell: UICollectionViewCell {
         eyeButton.isSelected = !eyeButton.isSelected
         
         if eyeButton.isSelected, let balance = currentData?.dataUangRekening {
-            balanceWalletLabel.text = "Rp \(balance)"
-        } else if let secureLength = currentData?.dataUangRekening {
-            let secureText = String(repeating: "•", count: Int(secureLength))
+            let balanceString = String(format: "%.0f", balance)
+            balanceWalletLabel.text = "Rp \(balanceString)"
+        } else if let balance = currentData?.dataUangRekening {
+            let balanceString = String(format: "%.0f", balance)
+            let secureText = String(repeating: "•", count: balanceString.count)
             balanceWalletLabel.text = "Rp \(secureText)"
         }
         

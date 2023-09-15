@@ -23,6 +23,10 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var addWalletButton: UIButton!
     @IBOutlet weak var topupButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var recentlyActivityTableView: UITableView!
+    @IBOutlet weak var recentlyActivityTableViewHeightConstraint: NSLayoutConstraint! { didSet {
+        recentlyActivityTableViewHeightConstraint.activated()
+    }}
     
     private let disposeBag = DisposeBag()
     var viewModel: DashboardViewModel!
@@ -37,14 +41,37 @@ class DashboardViewController: UIViewController {
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        recentlyActivityTableView.addObserver(self, forKeyPath: UITableView.contentSizeKeyPath, options: .new, context: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        recentlyActivityTableView.removeObserver(self, forKeyPath: UITableView.contentSizeKeyPath, context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let newValue = change?[.newKey], keyPath == UITableView.contentSizeKeyPath {
+            let size = newValue as! CGSize
+            updateTableViewContentSize(size: size.height)
+        }
+    }
+    
     // MARK: - Helpers
     private func loadData() {
         viewModel.getSaldo(id: viewModel.userId)
+        viewModel.getPengeluaran(id: viewModel.userId)
     }
     
     private func initObserver() {
         viewModel.saldo.drive(onNext: { [weak self] saldo in
             self?.walletCollectionView.reloadData()
+        }).disposed(by: disposeBag)
+        
+        viewModel.spending.drive(onNext: { [weak self] spending in
+            self?.walletCollectionView.reloadData()
+            self?.recentlyActivityTableView.reloadData()
         }).disposed(by: disposeBag)
         
         viewModel.isLoading.drive(onNext: { [weak self] isLoading in
@@ -94,6 +121,10 @@ class DashboardViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
+        
+        recentlyActivityTableView.register(UINib(nibName: "RecentlyActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "RecentlyActivityTableViewCell")
+        recentlyActivityTableView.dataSource = self
+        recentlyActivityTableView.delegate = self
     }
     
     private func initListerner() {
@@ -114,6 +145,10 @@ class DashboardViewController: UIViewController {
         let rightImage = UIImage(named: "icon_notification")?.withRenderingMode(.alwaysOriginal)
         let rightButton = UIBarButtonItem(image: rightImage, style: .plain, target: self, action: #selector(rightButtonTapped))
         self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    private func updateTableViewContentSize(size: CGFloat) {
+        recentlyActivityTableViewHeightConstraint.constant = size
     }
     
     // MARK: - Actions
@@ -199,6 +234,11 @@ class DashboardViewController: UIViewController {
         }
         showSuccessSnackBar(message: "More Button Clicked!")
     }
+    
+    @objc
+    private func seeAllButtonTapped() {
+        showSuccessSnackBar(message: "See all Button Clicked!")
+    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
@@ -210,7 +250,8 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCollectionViewCell", for: indexPath) as? WalletCollectionViewCell else { return UICollectionViewCell() }
         let depo = viewModel.saldoValue
-        cell.configureContent(depo: depo)
+        let spending = viewModel.spendingValue
+        cell.configureContent(depo: depo, spending: spending)
         cell.delegate = self
         return cell
     }
@@ -233,5 +274,60 @@ extension DashboardViewController: WalletCollectionViewCellDelegate {
         if viewModel.isOpen {
             mainFloatingButtonTapped()
         }
+    }
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.spendingValue?.dataResults?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentlyActivityTableViewCell", for: indexPath) as? RecentlyActivityTableViewCell else { return UITableViewCell() }
+        let spending = viewModel.spendingValue?.dataResults?[indexPath.row]
+        cell.configureContent(spending: spending)
+        cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
+        cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.spendingValue?.dataResults?.count ?? 0) - 1 ? 0 : 12
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Recently activity"
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .text200
+        headerView.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+        ])
+        
+        let seeAllButton = UIButton()
+        seeAllButton.translatesAutoresizingMaskIntoConstraints = false
+        seeAllButton.setTitle("See all", for: .normal)
+        seeAllButton.setTitleColor(.text200, for: .normal)
+        let chevronImage = UIImage(named: "icon_arrow_right")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        seeAllButton.setImage(chevronImage, for: .normal)
+        seeAllButton.semanticContentAttribute = .forceRightToLeft
+        seeAllButton.addTarget(self, action: #selector(seeAllButtonTapped), for: .touchUpInside)
+        seeAllButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
+        headerView.addSubview(seeAllButton)
+        
+        NSLayoutConstraint.activate([
+            seeAllButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            seeAllButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+        ])
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }

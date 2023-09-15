@@ -9,16 +9,23 @@ import RxSwift
 
 protocol DashboardUseCaseProtocol {
     func getSaldo(id: Int) -> Observable<DepoModel>
+    func getPengeluaran(id: Int) -> Observable<SpendingModel>
 }
 
 final class DashboardUseCase: DashboardUseCaseProtocol {
-    private let repository: DepoRepositoryProtocol
+    private let depoRepository: DepoRepositoryProtocol
+    private let pengeluaranRepository: PengeluaranRepositoryProtocol
     
-    init(repository: DepoRepositoryProtocol) {
-        self.repository = repository
+    init(depoRepository: DepoRepositoryProtocol, pengeluaranRepository: PengeluaranRepositoryProtocol) {
+        self.depoRepository = depoRepository
+        self.pengeluaranRepository = pengeluaranRepository
     }
     
     func getSaldo(id: Int) -> Observable<DepoModel> {
-        return repository.getSaldo(id: id)
+        return depoRepository.getSaldo(id: id)
+    }
+    
+    func getPengeluaran(id: Int) -> Observable<SpendingModel> {
+        return pengeluaranRepository.getPengeluaran(id: id)
     }
 }

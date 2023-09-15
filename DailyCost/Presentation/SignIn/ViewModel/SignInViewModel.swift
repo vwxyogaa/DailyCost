@@ -37,6 +37,7 @@ class SignInViewModel: BaseViewModel {
                 self._login.accept(result)
                 LoginKey.userId = String(result.dataId ?? 0)
                 LoginKey.userName = result.dataNama ?? ""
+                LoginKey.token = result.token ?? ""
             } onError: { error in
                 self._isLoading.accept(false)
                 self._errorMessage.accept(error.localizedDescription)

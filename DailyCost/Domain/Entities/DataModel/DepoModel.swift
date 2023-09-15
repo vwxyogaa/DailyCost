@@ -6,8 +6,6 @@
 //
 
 struct DepoModel: Codable {
-    let status: String?
-    let message: String?
     let dataUserId: Int?
     let dataUangGopay: Double?
     let dataUangCash: Double?

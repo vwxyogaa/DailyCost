@@ -7,22 +7,28 @@
 
 final class Injection {
     func provideSignUpUseCase() -> SignUpUseCaseProtocol {
-        let repository = provideLoginRegisterRepository()
-        return SignUpUseCase(repository: repository)
+        let loginRegisterRepository = provideLoginRegisterRepository()
+        return SignUpUseCase(loginRegisterRepository: loginRegisterRepository)
     }
     
     func provideSignInUseCase() -> SignInUseCaseProtocol {
-        let repository = provideLoginRegisterRepository()
-        return SignInUseCase(repository: repository)
+        let loginRegisterRepository = provideLoginRegisterRepository()
+        return SignInUseCase(loginRegisterRepository: loginRegisterRepository)
     }
     
     func provideDashboardUseCase() -> DashboardUseCaseProtocol {
-        let repository = provideDepoRepository()
-        return DashboardUseCase(repository: repository)
+        let depoRepository = provideDepoRepository()
+        let pengeluaranRepository = providePengeluaranRepsitory()
+        return DashboardUseCase(depoRepository: depoRepository, pengeluaranRepository: pengeluaranRepository)
     }
 }
 
 extension Injection {
+    func providePengeluaranRepsitory() -> PengeluaranRepositoryProtocol {
+        let pengeluaranDataSource = PengeluaranDataSource()
+        return PengeluaranRepository.sharedInstance(pengeluaranDataSource)
+    }
+    
     func provideLoginRegisterRepository() -> LoginRegisterRepositoryProtocol {
         let loginRegisterDataSource = LoginRegisterDataSource()
         return LoginRegisterRepository.sharedInstance(loginRegisterDataSource)

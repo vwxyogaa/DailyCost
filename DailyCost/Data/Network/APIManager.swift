@@ -13,8 +13,13 @@ final class APIManager {
     static let shared = APIManager()
     
     func executeQuery<T> (url: URL, method: HTTPMethod, params: Parameters? = nil) -> Observable<T> where T: Codable {
+        let headers: HTTPHeaders = [
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + LoginKey.token
+        ]
         return Observable<T>.create { observer in
-            AF.request(url, method: method, parameters: params)
+            AF.request(url, method: method, parameters: params, headers: headers)
                 .validate(statusCode: 200...299)
                 .responseDecodable(of: T.self) { response in
                     switch response.result {
