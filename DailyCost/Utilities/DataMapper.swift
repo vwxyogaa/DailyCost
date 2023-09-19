@@ -56,4 +56,43 @@ final class DataMapper {
         
         return mappedModel
     }
+    
+    static func mapNoteResponseToModel(data: NoteResponse) -> NoteModel {
+        var catatanIds: [Int] = []
+        var titles: [String] = []
+        var bodies: [String] = []
+        var createdAts: [String] = []
+        var userIds: [Int] = []
+        
+        data.data?.forEach { dataItem in
+            if let catatanId = dataItem.catatanId {
+                catatanIds.append(catatanId)
+            }
+            
+            if let title = dataItem.title {
+                titles.append(title)
+            }
+            
+            if let body = dataItem.body {
+                bodies.append(body)
+            }
+            
+            if let createdAt = dataItem.createdAt {
+                createdAts.append(createdAt)
+            }
+            
+            if let userId = dataItem.userId {
+                userIds.append(userId)
+            }
+        }
+        let noteModel = NoteModel(
+            catatanId: catatanIds,
+            title: titles,
+            body: bodies,
+            createdAt: createdAts,
+            userId: userIds
+        )
+        
+        return noteModel
+    }
 }

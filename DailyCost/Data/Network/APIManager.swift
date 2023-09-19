@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import RxSwift
+import UIKit
 
 final class APIManager {
     static let shared = APIManager()
@@ -27,7 +28,11 @@ final class APIManager {
                         observer.onNext(value)
                         observer.onCompleted()
                     case .failure(let error):
-                        observer.onError(error)
+                        if let statusCode = response.response?.statusCode, statusCode == 403 {
+                            self.redirectToOnBoardingPage()
+                        } else {
+                            observer.onError(error)
+                        }
                     }
                 }
             return Disposables.create()
@@ -44,10 +49,36 @@ final class APIManager {
                         observer.onNext(value)
                         observer.onCompleted()
                     case .failure(let error):
-                        observer.onError(error)
+                        if let statusCode = response.response?.statusCode, statusCode == 403 {
+                            self.redirectToOnBoardingPage()
+                        } else {
+                            observer.onError(error)
+                        }
                     }
                 }
             return Disposables.create()
         }
+    }
+    
+    private func redirectToOnBoardingPage() {
+        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let firstWindow = firstScene.windows.first else { return }
+        
+        let rootController = OnboardingViewController()
+        let snapshot = firstWindow.snapshotView(afterScreenUpdates: true)!
+        rootController.view.addSubview(snapshot)
+        
+        firstWindow.rootViewController = rootController
+        
+        UIView.transition(with: snapshot,
+                          duration: 0.3,
+                          options: .curveEaseInOut,
+                          animations: {
+            snapshot.layer.opacity = 0
+        },
+                          completion: { status in
+            snapshot.removeFromSuperview()
+        })
+        firstWindow.makeKeyAndVisible()
     }
 }

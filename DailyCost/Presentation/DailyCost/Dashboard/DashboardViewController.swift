@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 
 class DashboardViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mainFloatingButton: UIButton!
     @IBOutlet weak var clueCloseContainerView: UIView!
     @IBOutlet weak var clueCloseView: UIView!
@@ -27,6 +28,8 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var recentlyActivityTableViewHeightConstraint: NSLayoutConstraint! { didSet {
         recentlyActivityTableViewHeightConstraint.activated()
     }}
+    @IBOutlet weak var noteTableView: UITableView!
+    @IBOutlet weak var noteTableViewHeightConstraint: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
     var viewModel: DashboardViewModel!
@@ -44,17 +47,23 @@ class DashboardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recentlyActivityTableView.addObserver(self, forKeyPath: UITableView.contentSizeKeyPath, options: .new, context: nil)
+        noteTableView.addObserver(self, forKeyPath: UITableView.contentSizeKeyPath, options: .new, context: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         recentlyActivityTableView.removeObserver(self, forKeyPath: UITableView.contentSizeKeyPath, context: nil)
+        noteTableView.removeObserver(self, forKeyPath: UITableView.contentSizeKeyPath, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let newValue = change?[.newKey], keyPath == UITableView.contentSizeKeyPath {
             let size = newValue as! CGSize
-            updateTableViewContentSize(size: size.height)
+            if object as? UITableView == recentlyActivityTableView {
+                updateTableViewContentSize(tableView: recentlyActivityTableView, size: size.height)
+            } else if object as? UITableView == noteTableView {
+                updateTableViewContentSize(tableView: noteTableView, size: size.height)
+            }
         }
     }
     
@@ -70,8 +79,21 @@ class DashboardViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         viewModel.spending.drive(onNext: { [weak self] spending in
+            if spending != nil {
+                self?.recentlyActivityTableView.isHidden = false
+            } else {
+                self?.recentlyActivityTableView.isHidden = true
+            }
             self?.walletCollectionView.reloadData()
             self?.recentlyActivityTableView.reloadData()
+        }).disposed(by: disposeBag)
+        
+        viewModel.catatan.drive(onNext: { [weak self] catatan in
+            if catatan != nil {
+                self?.noteTableView.isHidden = false
+            } else {
+                self?.noteTableView.isHidden = true
+            }
         }).disposed(by: disposeBag)
         
         viewModel.isLoading.drive(onNext: { [weak self] isLoading in
@@ -113,11 +135,11 @@ class DashboardViewController: UIViewController {
         notesButton.layer.cornerRadius = notesButton.frame.height / 2
         notesButton.layer.masksToBounds = true
         
-        clueCloseContainerView.alpha = 0
-        newActivityButton.alpha = 0
-        clueNewActivityContainerView.alpha = 0
-        notesButton.alpha = 0
-        clueNotesContainerView.alpha = 0
+        clueCloseContainerView.isHidden = true
+        newActivityButton.isHidden = true
+        clueNewActivityContainerView.isHidden = true
+        notesButton.isHidden = true
+        clueNotesContainerView.isHidden = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
@@ -125,6 +147,12 @@ class DashboardViewController: UIViewController {
         recentlyActivityTableView.register(UINib(nibName: "RecentlyActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "RecentlyActivityTableViewCell")
         recentlyActivityTableView.dataSource = self
         recentlyActivityTableView.delegate = self
+        
+        scrollView.delegate = self
+        
+        noteTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: "NoteTableViewCell")
+        noteTableView.dataSource = self
+        noteTableView.delegate = self
     }
     
     private func initListerner() {
@@ -147,8 +175,12 @@ class DashboardViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
     }
     
-    private func updateTableViewContentSize(size: CGFloat) {
-        recentlyActivityTableViewHeightConstraint.constant = size
+    private func updateTableViewContentSize(tableView: UITableView, size: CGFloat) {
+        if tableView == recentlyActivityTableView {
+            recentlyActivityTableViewHeightConstraint.constant = size
+        } else if tableView == noteTableView {
+            noteTableViewHeightConstraint.constant = size
+        }
     }
     
     // MARK: - Actions
@@ -164,23 +196,20 @@ class DashboardViewController: UIViewController {
     @objc
     private func mainFloatingButtonTapped() {
         viewModel.isOpen.toggle()
-        
-        UIView.animate(withDuration: 0.3) {
-            if self.viewModel.isOpen {
-                self.mainFloatingButton.setImage(UIImage(named: "icon_close"), for: .normal)
-                self.clueCloseContainerView.alpha = 1
-                self.newActivityButton.alpha = 1
-                self.clueNewActivityContainerView.alpha = 1
-                self.notesButton.alpha = 1
-                self.clueNotesContainerView.alpha = 1
-            } else {
-                self.mainFloatingButton.setImage(UIImage(named: "icon_add"), for: .normal)
-                self.clueCloseContainerView.alpha = 0
-                self.newActivityButton.alpha = 0
-                self.clueNewActivityContainerView.alpha = 0
-                self.notesButton.alpha = 0
-                self.clueNotesContainerView.alpha = 0
-            }
+        if self.viewModel.isOpen {
+            self.mainFloatingButton.setImage(UIImage(named: "icon_close"), for: .normal)
+            self.clueCloseContainerView.isHidden = false
+            self.newActivityButton.isHidden = false
+            self.clueNewActivityContainerView.isHidden = false
+            self.notesButton.isHidden = false
+            self.clueNotesContainerView.isHidden = false
+        } else {
+            self.mainFloatingButton.setImage(UIImage(named: "icon_add"), for: .normal)
+            self.clueCloseContainerView.isHidden = true
+            self.newActivityButton.isHidden = true
+            self.clueNewActivityContainerView.isHidden = true
+            self.notesButton.isHidden = true
+            self.clueNotesContainerView.isHidden = true
         }
     }
     
@@ -236,8 +265,13 @@ class DashboardViewController: UIViewController {
     }
     
     @objc
-    private func seeAllButtonTapped() {
-        showSuccessSnackBar(message: "See all Button Clicked!")
+    private func seeAllRecentlyActivityButtonTapped() {
+        showSuccessSnackBar(message: "See all recently activity Button Clicked!")
+    }
+    
+    @objc
+    private func seeAllNoteButtonTapped() {
+        showSuccessSnackBar(message: "See all note Button Clicked!")
     }
 }
 
@@ -280,54 +314,130 @@ extension DashboardViewController: WalletCollectionViewCellDelegate {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.spendingValue?.dataResults?.count ?? 0
+        switch tableView {
+        case recentlyActivityTableView:
+            return min(viewModel.spendingValue?.dataResults?.count ?? 0, 5)
+        case noteTableView:
+            return min(viewModel.catatanValue?.catatanId?.count ?? 0, 5)
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentlyActivityTableViewCell", for: indexPath) as? RecentlyActivityTableViewCell else { return UITableViewCell() }
-        let spending = viewModel.spendingValue?.dataResults?[indexPath.row]
-        cell.configureContent(spending: spending)
-        cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
-        cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.spendingValue?.dataResults?.count ?? 0) - 1 ? 0 : 12
-        return cell
+        switch tableView {
+        case recentlyActivityTableView:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentlyActivityTableViewCell", for: indexPath) as? RecentlyActivityTableViewCell else { return UITableViewCell() }
+            
+            let spending = viewModel.spendingValue?.dataResults?[indexPath.row]
+            cell.configureContent(spending: spending)
+            cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
+            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.spendingValue?.dataResults?.count ?? 0) - 1 ? 0 : 12
+            return cell
+        case noteTableView:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableViewCell", for: indexPath) as? NoteTableViewCell else { return UITableViewCell() }
+            let note = viewModel.catatanValue
+            cell.configureContent(body: note?.body?[indexPath.row], title: note?.title?[indexPath.row], category: note?.title?[indexPath.row], createdAt: note?.createdAt?[indexPath.row])
+            cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
+            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.catatanValue?.catatanId?.count ?? 0) - 1 ? 0 : 12
+            return cell
+        default:
+            break
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Recently activity"
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .text200
-        headerView.addSubview(label)
-        
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
-        ])
-        
-        let seeAllButton = UIButton()
-        seeAllButton.translatesAutoresizingMaskIntoConstraints = false
-        seeAllButton.setTitle("See all", for: .normal)
-        seeAllButton.setTitleColor(.text200, for: .normal)
-        let chevronImage = UIImage(named: "icon_arrow_right")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        seeAllButton.setImage(chevronImage, for: .normal)
-        seeAllButton.semanticContentAttribute = .forceRightToLeft
-        seeAllButton.addTarget(self, action: #selector(seeAllButtonTapped), for: .touchUpInside)
-        seeAllButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
-        headerView.addSubview(seeAllButton)
-        
-        NSLayoutConstraint.activate([
-            seeAllButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            seeAllButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
-        ])
-        
-        return headerView
+        switch tableView {
+        case recentlyActivityTableView:
+            let headerView = UIView()
+            headerView.backgroundColor = .clear
+            
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "Recently activity"
+            label.font = .systemFont(ofSize: 16, weight: .medium)
+            label.textColor = .text200
+            headerView.addSubview(label)
+            
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+                label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+            ])
+            
+            let seeAllButton = UIButton()
+            seeAllButton.translatesAutoresizingMaskIntoConstraints = false
+            seeAllButton.setTitle("See all", for: .normal)
+            seeAllButton.setTitleColor(.text200, for: .normal)
+            let chevronImage = UIImage(named: "icon_arrow_right")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            seeAllButton.setImage(chevronImage, for: .normal)
+            seeAllButton.semanticContentAttribute = .forceRightToLeft
+            seeAllButton.addTarget(self, action: #selector(seeAllRecentlyActivityButtonTapped), for: .touchUpInside)
+            seeAllButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
+            headerView.addSubview(seeAllButton)
+            
+            NSLayoutConstraint.activate([
+                seeAllButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+                seeAllButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+            ])
+            
+            return headerView
+        case noteTableView:
+            let headerView = UIView()
+            headerView.backgroundColor = .clear
+            
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "Note"
+            label.font = .systemFont(ofSize: 16, weight: .medium)
+            label.textColor = .text200
+            headerView.addSubview(label)
+            
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+                label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+            ])
+            
+            let seeAllButton = UIButton()
+            seeAllButton.translatesAutoresizingMaskIntoConstraints = false
+            seeAllButton.setTitle("See all", for: .normal)
+            seeAllButton.setTitleColor(.text200, for: .normal)
+            let chevronImage = UIImage(named: "icon_arrow_right")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            seeAllButton.setImage(chevronImage, for: .normal)
+            seeAllButton.semanticContentAttribute = .forceRightToLeft
+            seeAllButton.addTarget(self, action: #selector(seeAllNoteButtonTapped), for: .touchUpInside)
+            seeAllButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
+            headerView.addSubview(seeAllButton)
+            
+            NSLayoutConstraint.activate([
+                seeAllButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+                seeAllButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+            ])
+            
+            return headerView
+        default:
+            break
+        }
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        switch tableView {
+        case recentlyActivityTableView:
+            return 50
+        case noteTableView:
+            return 50
+        default:
+            return 0
+        }
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension DashboardViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if viewModel.isOpen {
+            mainFloatingButtonTapped()
+        }
     }
 }

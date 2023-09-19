@@ -35,7 +35,19 @@ class RecentlyActivityTableViewCell: UITableViewCell {
         nameLabel.text = spending?.nama ?? "-"
         let date = spending?.tanggal?.convertDateString(fromFormat: .dayMonthYearWithTimeV2, toFormat: .weekDayDateMonthYear) ?? "-"
         dateLabel.text = date
-        categoryLabel.text = spending?.kategori ?? "-"
-        totalLabel.text = "-Rp\(spending?.jumlah ?? 0)"
+        if let kategori = spending?.kategori, !kategori.isEmpty {
+            let firstLetterCapitalized = kategori.prefix(1).uppercased() + kategori.dropFirst()
+            categoryLabel.text = firstLetterCapitalized
+        } else {
+            categoryLabel.text = "-"
+        }
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = "."
+        
+        let spendingAmount = spending?.jumlah ?? 0
+        let spendingString = numberFormatter.string(from: NSNumber(value: spendingAmount)) ?? "0"
+        totalLabel.text = "-Rp\(spendingString)"
     }
 }

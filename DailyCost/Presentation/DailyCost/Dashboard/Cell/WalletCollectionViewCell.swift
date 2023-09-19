@@ -38,25 +38,36 @@ class WalletCollectionViewCell: UICollectionViewCell {
     
     func configureContent(depo: DepoModel?, spending: SpendingModel?) {
         currentData = depo
-        
-        let balanceString = String(format: "%.0f", depo?.dataUangRekening ?? 0)
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = "."
+
+        let balance = depo?.dataUangRekening ?? 0
+        let balanceString = numberFormatter.string(from: NSNumber(value: balance)) ?? "0"
         titleWalletLabel.text = "Uang Rekening"
-        let secureText = String(repeating: "•", count: balanceString.count)
+        let secureText = String(repeating: "•", count: String(format: "%.0f", balance).count)
         balanceWalletLabel.text = "Rp \(secureText)"
-        expenseWalletLabel.text = "Monthly expenses Rp \(spending?.dataPengeluaran?.pengeluaranRekening ?? 0)"
+        
+        let spendingAmount = spending?.dataPengeluaran?.pengeluaranRekening ?? 0
+        let spendingString = numberFormatter.string(from: NSNumber(value: spendingAmount)) ?? "0"
+        expenseWalletLabel.text = "Monthly expenses Rp \(spendingString)"
     }
     
     // MARK: - Actions
     @objc
     private func eyeButtonTapped() {
         eyeButton.isSelected = !eyeButton.isSelected
-        
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = "."
+
         if eyeButton.isSelected, let balance = currentData?.dataUangRekening {
-            let balanceString = String(format: "%.0f", balance)
+            let balanceString = numberFormatter.string(from: NSNumber(value: balance)) ?? "0"
             balanceWalletLabel.text = "Rp \(balanceString)"
         } else if let balance = currentData?.dataUangRekening {
-            let balanceString = String(format: "%.0f", balance)
-            let secureText = String(repeating: "•", count: balanceString.count)
+            let secureText = String(repeating: "•", count: String(format: "%.0f", balance).count)
             balanceWalletLabel.text = "Rp \(secureText)"
         }
         

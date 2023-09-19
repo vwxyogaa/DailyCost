@@ -18,13 +18,19 @@ final class Injection {
     
     func provideDashboardUseCase() -> DashboardUseCaseProtocol {
         let depoRepository = provideDepoRepository()
-        let pengeluaranRepository = providePengeluaranRepsitory()
-        return DashboardUseCase(depoRepository: depoRepository, pengeluaranRepository: pengeluaranRepository)
+        let pengeluaranRepository = providePengeluaranRepository()
+        let catatanRepository = provideCatatanRepository()
+        return DashboardUseCase(depoRepository: depoRepository, pengeluaranRepository: pengeluaranRepository, catatanRepository: catatanRepository)
     }
 }
 
 extension Injection {
-    func providePengeluaranRepsitory() -> PengeluaranRepositoryProtocol {
+    func provideCatatanRepository() -> CatatanRepositoryProtocol {
+        let catatanDataSource = CatatanDataSource()
+        return CatatanRepository.sharedInstance(catatanDataSource)
+    }
+    
+    func providePengeluaranRepository() -> PengeluaranRepositoryProtocol {
         let pengeluaranDataSource = PengeluaranDataSource()
         return PengeluaranRepository.sharedInstance(pengeluaranDataSource)
     }
