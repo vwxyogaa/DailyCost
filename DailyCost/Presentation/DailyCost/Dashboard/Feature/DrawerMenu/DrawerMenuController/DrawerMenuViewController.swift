@@ -69,6 +69,28 @@ class DrawerMenuViewController: UIViewController {
         signOutView.addGestureRecognizer(tapGestureSignOutView)
     }
     
+    private func redirectToOnBoardingPage() {
+        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let firstWindow = firstScene.windows.first else { return }
+        
+        let rootController = OnboardingViewController()
+        let snapshot = firstWindow.snapshotView(afterScreenUpdates: true)!
+        rootController.view.addSubview(snapshot)
+        
+        firstWindow.rootViewController = rootController
+        
+        UIView.transition(with: snapshot,
+                          duration: 0.3,
+                          options: .curveEaseInOut,
+                          animations: {
+            snapshot.layer.opacity = 0
+        },
+                          completion: { status in
+            snapshot.removeFromSuperview()
+        })
+        firstWindow.makeKeyAndVisible()
+    }
+    
     // MARK: - Actions
     @objc
     private func backButtonTapped() {
@@ -115,7 +137,7 @@ class DrawerMenuViewController: UIViewController {
         let alert = UIAlertController(title: "", message: "Apakah anda ingin sign out?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Ya", style: .default) { _ in
             if LoginKey.deleteAllKey() {
-                self.showSuccessSnackBar(message: "yes sign out")
+                self.redirectToOnBoardingPage()
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

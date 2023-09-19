@@ -27,6 +27,7 @@ final class DepoRepository {
 
 extension DepoRepository: DepoRepositoryProtocol {
     func getSaldo(id: Int) -> Observable<DepoModel> {
-        return remote.getSaldo(id: id).map({ DataMapper.mapDepoResponseToModel(data: $0) })
+        return remote.getSaldo(id: id)
+            .map({ DataMapper.mapDepoResponseToModel(data: $0) })
     }
 }

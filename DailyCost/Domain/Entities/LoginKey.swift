@@ -11,6 +11,7 @@ struct LoginKey {
     static let stateLoginKey = "stateLoginKey"
     static let userIdKey = "userIdKey"
     static let userNameKey = "userNameKey"
+    static let tokenKey = "tokenKey"
     
     static var stateLogin: Bool {
         get {
@@ -33,6 +34,14 @@ struct LoginKey {
             return UserDefaults.standard.string(forKey: userNameKey) ?? ""
         } set {
             UserDefaults.standard.set(newValue, forKey: userNameKey)
+        }
+    }
+    
+    static var token: String {
+        get {
+            return UserDefaults.standard.string(forKey: tokenKey) ?? ""
+        } set {
+            UserDefaults.standard.set(newValue, forKey: tokenKey)
         }
     }
     

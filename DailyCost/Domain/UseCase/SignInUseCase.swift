@@ -12,13 +12,13 @@ protocol SignInUseCaseProtocol {
 }
 
 final class SignInUseCase: SignInUseCaseProtocol {
-    private let repository: LoginRegisterRepositoryProtocol
+    private let loginRegisterRepository: LoginRegisterRepositoryProtocol
     
-    init(repository: LoginRegisterRepositoryProtocol) {
-        self.repository = repository
+    init(loginRegisterRepository: LoginRegisterRepositoryProtocol) {
+        self.loginRegisterRepository = loginRegisterRepository
     }
     
     func postLogin(email: String, password: String) -> Observable<LoginModel> {
-        return repository.postLogin(email: email, password: password)
+        return loginRegisterRepository.postLogin(email: email, password: password)
     }
 }

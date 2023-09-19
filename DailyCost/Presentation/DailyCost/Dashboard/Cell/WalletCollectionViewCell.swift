@@ -31,28 +31,43 @@ class WalletCollectionViewCell: UICollectionViewCell {
         containerWalletView.layer.shadowOpacity = 0.1
         containerWalletView.layer.shadowOffset = CGSize(width: 0, height: 2)
         containerWalletView.layer.shadowRadius = 5
+        containerWalletView.backgroundColor = .systemOrange
         
         eyeButton.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
     }
     
-    func configureContent(depo: DepoModel?) {
+    func configureContent(depo: DepoModel?, spending: SpendingModel?) {
         currentData = depo
-        
-        titleWalletLabel.text = String(depo?.dataUangRekening ?? 0) 
-        let secureText = String(repeating: "•", count: Int(depo?.dataUangRekening ?? 0))
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = "."
+
+        let balance = depo?.dataUangRekening ?? 0
+        let balanceString = numberFormatter.string(from: NSNumber(value: balance)) ?? "0"
+        titleWalletLabel.text = "Uang Rekening"
+        let secureText = String(repeating: "•", count: String(format: "%.0f", balance).count)
         balanceWalletLabel.text = "Rp \(secureText)"
-        expenseWalletLabel.text = "Monthly expenses Rp \(depo?.dataUangRekening ?? 0)"
+        
+        let spendingAmount = spending?.dataPengeluaran?.pengeluaranRekening ?? 0
+        let spendingString = numberFormatter.string(from: NSNumber(value: spendingAmount)) ?? "0"
+        expenseWalletLabel.text = "Monthly expenses Rp \(spendingString)"
     }
     
     // MARK: - Actions
     @objc
     private func eyeButtonTapped() {
         eyeButton.isSelected = !eyeButton.isSelected
-        
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = "."
+
         if eyeButton.isSelected, let balance = currentData?.dataUangRekening {
-            balanceWalletLabel.text = "Rp \(balance)"
-        } else if let secureLength = currentData?.dataUangRekening {
-            let secureText = String(repeating: "•", count: Int(secureLength))
+            let balanceString = numberFormatter.string(from: NSNumber(value: balance)) ?? "0"
+            balanceWalletLabel.text = "Rp \(balanceString)"
+        } else if let balance = currentData?.dataUangRekening {
+            let secureText = String(repeating: "•", count: String(format: "%.0f", balance).count)
             balanceWalletLabel.text = "Rp \(secureText)"
         }
         
