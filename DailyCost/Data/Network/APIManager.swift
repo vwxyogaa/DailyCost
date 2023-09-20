@@ -65,10 +65,11 @@ final class APIManager {
         guard let firstWindow = firstScene.windows.first else { return }
         
         let rootController = OnboardingViewController()
+        let navigationController = UINavigationController(rootViewController: rootController)
         let snapshot = firstWindow.snapshotView(afterScreenUpdates: true)!
-        rootController.view.addSubview(snapshot)
+        navigationController.view.addSubview(snapshot)
         
-        firstWindow.rootViewController = rootController
+        firstWindow.rootViewController = navigationController
         
         UIView.transition(with: snapshot,
                           duration: 0.3,
