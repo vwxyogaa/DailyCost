@@ -237,7 +237,8 @@ class DashboardViewController: UIViewController {
         if viewModel.isOpen {
             mainFloatingButtonTapped()
         }
-        showSuccessSnackBar(message: "Notification Button Clicked!")
+        let notificationViewController = NotificationViewController()
+        navigationController?.pushViewController(notificationViewController, animated: true)
     }
     
     @objc
