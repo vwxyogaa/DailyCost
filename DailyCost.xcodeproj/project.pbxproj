@@ -17,6 +17,10 @@
 		BC0C92862ABC11A0008A4F93 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0C92842ABC11A0008A4F93 /* NotificationViewController.xib */; };
 		BC0C928A2ABC130C008A4F93 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92882ABC130C008A4F93 /* NotificationTableViewCell.swift */; };
 		BC0C928B2ABC130C008A4F93 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0C92892ABC130C008A4F93 /* NotificationTableViewCell.xib */; };
+		BC0C928F2ABC1CB7008A4F93 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C928D2ABC1CB7008A4F93 /* NoteViewController.swift */; };
+		BC0C92902ABC1CB7008A4F93 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0C928E2ABC1CB7008A4F93 /* NoteViewController.xib */; };
+		BC0C929C2ABC247E008A4F93 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C929A2ABC247E008A4F93 /* NotesTableViewCell.swift */; };
+		BC0C929D2ABC247E008A4F93 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0C929B2ABC247E008A4F93 /* NotesTableViewCell.xib */; };
 		BC2F76252AB46DBB001C5C83 /* SpendingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76242AB46DBB001C5C83 /* SpendingResponse.swift */; };
 		BC2F76272AB46E71001C5C83 /* SpendingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76262AB46E71001C5C83 /* SpendingModel.swift */; };
 		BC2F762A2AB46F22001C5C83 /* PengeluaranDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76292AB46F22001C5C83 /* PengeluaranDataSource.swift */; };
@@ -116,6 +120,10 @@
 		BC0C92842ABC11A0008A4F93 /* NotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
 		BC0C92882ABC130C008A4F93 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		BC0C92892ABC130C008A4F93 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		BC0C928D2ABC1CB7008A4F93 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		BC0C928E2ABC1CB7008A4F93 /* NoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
+		BC0C929A2ABC247E008A4F93 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		BC0C929B2ABC247E008A4F93 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
 		BC2F76242AB46DBB001C5C83 /* SpendingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingResponse.swift; sourceTree = "<group>"; };
 		BC2F76262AB46E71001C5C83 /* SpendingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingModel.swift; sourceTree = "<group>"; };
 		BC2F76292AB46F22001C5C83 /* PengeluaranDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengeluaranDataSource.swift; sourceTree = "<group>"; };
@@ -247,6 +255,25 @@
 			children = (
 				BC0C92882ABC130C008A4F93 /* NotificationTableViewCell.swift */,
 				BC0C92892ABC130C008A4F93 /* NotificationTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BC0C928C2ABC1CA1008A4F93 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				BC0C92912ABC1FF7008A4F93 /* Cell */,
+				BC0C928D2ABC1CB7008A4F93 /* NoteViewController.swift */,
+				BC0C928E2ABC1CB7008A4F93 /* NoteViewController.xib */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		BC0C92912ABC1FF7008A4F93 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC0C929A2ABC247E008A4F93 /* NotesTableViewCell.swift */,
+				BC0C929B2ABC247E008A4F93 /* NotesTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -486,6 +513,7 @@
 		BCC68D712A9F141B00E45602 /* DailyCost */ = {
 			isa = PBXGroup;
 			children = (
+				BC0C928C2ABC1CA1008A4F93 /* Note */,
 				BC0C92822ABC1190008A4F93 /* Notification */,
 				E1AE61742A9FA71A00ED4BC8 /* Dashboard */,
 			);
@@ -807,8 +835,10 @@
 				BC0C92812AB98723008A4F93 /* NoteTableViewCell.xib in Resources */,
 				BCC68D432A9F111600E45602 /* Assets.xcassets in Resources */,
 				BCC68D902A9F383C00E45602 /* SignUpViewController.xib in Resources */,
+				BC0C92902ABC1CB7008A4F93 /* NoteViewController.xib in Resources */,
 				BC2F76312AB47303001C5C83 /* RecentlyActivityTableViewCell.xib in Resources */,
 				BCC68D882A9F20F500E45602 /* OnboardingPageContentViewController.xib in Resources */,
+				BC0C929D2ABC247E008A4F93 /* NotesTableViewCell.xib in Resources */,
 				BC0C928B2ABC130C008A4F93 /* NotificationTableViewCell.xib in Resources */,
 				BC33C0062AAB32950028BE38 /* DrawerMenuViewController.xib in Resources */,
 				E1AE61782A9FA72800ED4BC8 /* DashboardViewController.xib in Resources */,
@@ -865,6 +895,7 @@
 				BC2F76392AB48CCB001C5C83 /* String+Ext.swift in Sources */,
 				E1EECB8E2AAA32E50095E668 /* DepoDataSource.swift in Sources */,
 				BC0C92852ABC11A0008A4F93 /* NotificationViewController.swift in Sources */,
+				BC0C928F2ABC1CB7008A4F93 /* NoteViewController.swift in Sources */,
 				BC0C92802AB98723008A4F93 /* NoteTableViewCell.swift in Sources */,
 				BC33BFC72AA9F71E0028BE38 /* LoginModel.swift in Sources */,
 				BCC68D8F2A9F383C00E45602 /* SignUpViewController.swift in Sources */,
@@ -890,6 +921,7 @@
 				BC33BFB82AA9D5360028BE38 /* LoginRegisterRepository.swift in Sources */,
 				E1AE61732A9FA53F00ED4BC8 /* SignUpUseCase.swift in Sources */,
 				BC2F763C2AB48CEB001C5C83 /* SharedEnum.swift in Sources */,
+				BC0C929C2ABC247E008A4F93 /* NotesTableViewCell.swift in Sources */,
 				E19FBE1E2A9FB4D900D4C276 /* SignInViewModel.swift in Sources */,
 				BC33BFC52AA9F7190028BE38 /* RegisterModel.swift in Sources */,
 				E1AE617B2A9FA81200ED4BC8 /* Toast.swift in Sources */,

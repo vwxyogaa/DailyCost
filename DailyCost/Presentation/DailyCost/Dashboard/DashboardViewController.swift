@@ -220,7 +220,11 @@ class DashboardViewController: UIViewController {
     
     @objc
     private func notesButtonTapped() {
-        showSuccessSnackBar(message: "Notes button tapped!")
+        if viewModel.isOpen {
+            mainFloatingButtonTapped()
+        }
+        let noteViewController = NoteViewController()
+        navigationController?.pushViewController(noteViewController, animated: true)
     }
     
     @objc
