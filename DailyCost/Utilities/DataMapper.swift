@@ -32,14 +32,14 @@ final class DataMapper {
         )
     }
     
-    static func mapSpendingResponseToModel(data: SpendingResponse) -> SpendingModel {
-        let mappedPengeluaran = SpendingModel.Pengeluaran(
+    static func mapSpendingResponseToModel(data: ExpenseResponse) -> ExpenseModel {
+        let mappedPengeluaran = ExpenseModel.Pengeluaran(
             pengeluaranGopay: data.data?.pengeluaran?.pengeluaranGopay,
             pengeluaranRekening: data.data?.pengeluaran?.pengeluaranRekening,
             pengeluaranCash: data.data?.pengeluaran?.pengeluaranCash
         )
         let mappedResults = data.data?.results?.map { result in
-            return SpendingModel.Result(
+            return ExpenseModel.Result(
                 pengeluaranID: result.pengeluaranID,
                 nama: result.nama,
                 tanggal: result.tanggal,
@@ -49,7 +49,7 @@ final class DataMapper {
                 kategori: result.kategori
             )
         }
-        let mappedModel = SpendingModel(
+        let mappedModel = ExpenseModel(
             dataResults: mappedResults,
             dataPengeluaran: mappedPengeluaran
         )
@@ -94,5 +94,50 @@ final class DataMapper {
         )
         
         return noteModel
+    }
+    
+    static func mapIncomeResponseToModel(data: IncomeResponse) -> IncomeModel {
+        var pemasukanIds: [Int] = []
+        var namas: [String] = []
+        var tanggals: [String] = []
+        var jumlahs: [Int] = []
+        var pembayarans: [String] = []
+        var kategoris: [String] = []
+        
+        data.data?.forEach({ dataItem in
+            if let pemasukanId = dataItem.pemasukanId {
+                pemasukanIds.append(pemasukanId)
+            }
+            
+            if let nama = dataItem.nama {
+                namas.append(nama)
+            }
+            
+            if let tanggal = dataItem.tanggal {
+                tanggals.append(tanggal)
+            }
+            
+            if let jumlah = dataItem.jumlah {
+                jumlahs.append(jumlah)
+            }
+            
+            if let pembayaran = dataItem.pembayaran {
+                pembayarans.append(pembayaran)
+            }
+            
+            if let kategori = dataItem.kategori {
+                kategoris.append(kategori)
+            }
+        })
+        let incomeModel = IncomeModel(
+            pemasukanId: pemasukanIds,
+            nama: namas,
+            tanggal: tanggals,
+            jumlah: jumlahs,
+            pembayaran: pembayarans,
+            kategori: kategoris
+        )
+        
+        return incomeModel
     }
 }

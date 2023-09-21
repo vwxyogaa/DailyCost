@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC0C92762AB975FD008A4F93 /* CatatanDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92752AB975FD008A4F93 /* CatatanDataSource.swift */; };
+		BC08673D2ABC7466009FE80E /* IncomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08673C2ABC7466009FE80E /* IncomeDataSource.swift */; };
+		BC08673F2ABC74CD009FE80E /* IncomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08673E2ABC74CD009FE80E /* IncomeResponse.swift */; };
+		BC0867412ABC74FE009FE80E /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867402ABC74FE009FE80E /* IncomeModel.swift */; };
+		BC0867422ABC752C009FE80E /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867402ABC74FE009FE80E /* IncomeModel.swift */; };
+		BC0867452ABC7583009FE80E /* IncomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867442ABC7583009FE80E /* IncomeRepository.swift */; };
+		BC0C92762AB975FD008A4F93 /* NoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92752AB975FD008A4F93 /* NoteDataSource.swift */; };
 		BC0C92782AB97620008A4F93 /* NoteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92772AB97620008A4F93 /* NoteResponse.swift */; };
 		BC0C927A2AB97700008A4F93 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92792AB97700008A4F93 /* NoteModel.swift */; };
-		BC0C927D2AB978F1008A4F93 /* CatatanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C927C2AB978F1008A4F93 /* CatatanRepository.swift */; };
+		BC0C927D2AB978F1008A4F93 /* NoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C927C2AB978F1008A4F93 /* NoteRepository.swift */; };
 		BC0C92802AB98723008A4F93 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C927E2AB98723008A4F93 /* NoteTableViewCell.swift */; };
 		BC0C92812AB98723008A4F93 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0C927F2AB98723008A4F93 /* NoteTableViewCell.xib */; };
 		BC0C92852ABC11A0008A4F93 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92832ABC11A0008A4F93 /* NotificationViewController.swift */; };
@@ -21,10 +26,10 @@
 		BC0C92902ABC1CB7008A4F93 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0C928E2ABC1CB7008A4F93 /* NoteViewController.xib */; };
 		BC0C929C2ABC247E008A4F93 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C929A2ABC247E008A4F93 /* NotesTableViewCell.swift */; };
 		BC0C929D2ABC247E008A4F93 /* NotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0C929B2ABC247E008A4F93 /* NotesTableViewCell.xib */; };
-		BC2F76252AB46DBB001C5C83 /* SpendingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76242AB46DBB001C5C83 /* SpendingResponse.swift */; };
-		BC2F76272AB46E71001C5C83 /* SpendingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76262AB46E71001C5C83 /* SpendingModel.swift */; };
-		BC2F762A2AB46F22001C5C83 /* PengeluaranDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76292AB46F22001C5C83 /* PengeluaranDataSource.swift */; };
-		BC2F762D2AB46FA9001C5C83 /* PengeluaranRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F762C2AB46FA9001C5C83 /* PengeluaranRepository.swift */; };
+		BC2F76252AB46DBB001C5C83 /* ExpenseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76242AB46DBB001C5C83 /* ExpenseResponse.swift */; };
+		BC2F76272AB46E71001C5C83 /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76262AB46E71001C5C83 /* ExpenseModel.swift */; };
+		BC2F762A2AB46F22001C5C83 /* ExpenseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76292AB46F22001C5C83 /* ExpenseDataSource.swift */; };
+		BC2F762D2AB46FA9001C5C83 /* ExpenseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F762C2AB46FA9001C5C83 /* ExpenseRepository.swift */; };
 		BC2F76302AB47303001C5C83 /* RecentlyActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F762E2AB47303001C5C83 /* RecentlyActivityTableViewCell.swift */; };
 		BC2F76312AB47303001C5C83 /* RecentlyActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2F762F2AB47303001C5C83 /* RecentlyActivityTableViewCell.xib */; };
 		BC2F76352AB47F68001C5C83 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F76342AB47F68001C5C83 /* UITableView+Ext.swift */; };
@@ -110,10 +115,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC0C92752AB975FD008A4F93 /* CatatanDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatatanDataSource.swift; sourceTree = "<group>"; };
+		BC08673C2ABC7466009FE80E /* IncomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDataSource.swift; sourceTree = "<group>"; };
+		BC08673E2ABC74CD009FE80E /* IncomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeResponse.swift; sourceTree = "<group>"; };
+		BC0867402ABC74FE009FE80E /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
+		BC0867442ABC7583009FE80E /* IncomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeRepository.swift; sourceTree = "<group>"; };
+		BC0C92752AB975FD008A4F93 /* NoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataSource.swift; sourceTree = "<group>"; };
 		BC0C92772AB97620008A4F93 /* NoteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteResponse.swift; sourceTree = "<group>"; };
 		BC0C92792AB97700008A4F93 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
-		BC0C927C2AB978F1008A4F93 /* CatatanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatatanRepository.swift; sourceTree = "<group>"; };
+		BC0C927C2AB978F1008A4F93 /* NoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepository.swift; sourceTree = "<group>"; };
 		BC0C927E2AB98723008A4F93 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		BC0C927F2AB98723008A4F93 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		BC0C92832ABC11A0008A4F93 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -124,10 +133,10 @@
 		BC0C928E2ABC1CB7008A4F93 /* NoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		BC0C929A2ABC247E008A4F93 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		BC0C929B2ABC247E008A4F93 /* NotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesTableViewCell.xib; sourceTree = "<group>"; };
-		BC2F76242AB46DBB001C5C83 /* SpendingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingResponse.swift; sourceTree = "<group>"; };
-		BC2F76262AB46E71001C5C83 /* SpendingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingModel.swift; sourceTree = "<group>"; };
-		BC2F76292AB46F22001C5C83 /* PengeluaranDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengeluaranDataSource.swift; sourceTree = "<group>"; };
-		BC2F762C2AB46FA9001C5C83 /* PengeluaranRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengeluaranRepository.swift; sourceTree = "<group>"; };
+		BC2F76242AB46DBB001C5C83 /* ExpenseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseResponse.swift; sourceTree = "<group>"; };
+		BC2F76262AB46E71001C5C83 /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
+		BC2F76292AB46F22001C5C83 /* ExpenseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDataSource.swift; sourceTree = "<group>"; };
+		BC2F762C2AB46FA9001C5C83 /* ExpenseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRepository.swift; sourceTree = "<group>"; };
 		BC2F762E2AB47303001C5C83 /* RecentlyActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyActivityTableViewCell.swift; sourceTree = "<group>"; };
 		BC2F762F2AB47303001C5C83 /* RecentlyActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentlyActivityTableViewCell.xib; sourceTree = "<group>"; };
 		BC2F76342AB47F68001C5C83 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
@@ -224,20 +233,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC0C92742AB975E5008A4F93 /* Catatan */ = {
+		BC08673B2ABC745E009FE80E /* Income */ = {
 			isa = PBXGroup;
 			children = (
-				BC0C92752AB975FD008A4F93 /* CatatanDataSource.swift */,
+				BC08673C2ABC7466009FE80E /* IncomeDataSource.swift */,
 			);
-			path = Catatan;
+			path = Income;
 			sourceTree = "<group>";
 		};
-		BC0C927B2AB978E8008A4F93 /* Catatan */ = {
+		BC0867432ABC7578009FE80E /* Income */ = {
 			isa = PBXGroup;
 			children = (
-				BC0C927C2AB978F1008A4F93 /* CatatanRepository.swift */,
+				BC0867442ABC7583009FE80E /* IncomeRepository.swift */,
 			);
-			path = Catatan;
+			path = Income;
+			sourceTree = "<group>";
+		};
+		BC0C92742AB975E5008A4F93 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				BC0C92752AB975FD008A4F93 /* NoteDataSource.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		BC0C927B2AB978E8008A4F93 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				BC0C927C2AB978F1008A4F93 /* NoteRepository.swift */,
+			);
+			path = Note;
 			sourceTree = "<group>";
 		};
 		BC0C92822ABC1190008A4F93 /* Notification */ = {
@@ -278,20 +303,20 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		BC2F76282AB46F00001C5C83 /* Pengeluaran */ = {
+		BC2F76282AB46F00001C5C83 /* Expense */ = {
 			isa = PBXGroup;
 			children = (
-				BC2F76292AB46F22001C5C83 /* PengeluaranDataSource.swift */,
+				BC2F76292AB46F22001C5C83 /* ExpenseDataSource.swift */,
 			);
-			path = Pengeluaran;
+			path = Expense;
 			sourceTree = "<group>";
 		};
-		BC2F762B2AB46FA0001C5C83 /* Pengeluaran */ = {
+		BC2F762B2AB46FA0001C5C83 /* Expense */ = {
 			isa = PBXGroup;
 			children = (
-				BC2F762C2AB46FA9001C5C83 /* PengeluaranRepository.swift */,
+				BC2F762C2AB46FA9001C5C83 /* ExpenseRepository.swift */,
 			);
-			path = Pengeluaran;
+			path = Expense;
 			sourceTree = "<group>";
 		};
 		BC2F763A2AB48CE4001C5C83 /* Shared */ = {
@@ -337,8 +362,9 @@
 				BC33BFC02AA9F6E80028BE38 /* RegisterResponse.swift */,
 				BC33BFC22AA9F7020028BE38 /* LoginResponse.swift */,
 				E1EECB8F2AAA33690095E668 /* DepoResponse.swift */,
-				BC2F76242AB46DBB001C5C83 /* SpendingResponse.swift */,
+				BC2F76242AB46DBB001C5C83 /* ExpenseResponse.swift */,
 				BC0C92772AB97620008A4F93 /* NoteResponse.swift */,
+				BC08673E2ABC74CD009FE80E /* IncomeResponse.swift */,
 			);
 			path = DataResponse;
 			sourceTree = "<group>";
@@ -349,8 +375,9 @@
 				BC33BFC42AA9F7190028BE38 /* RegisterModel.swift */,
 				BC33BFC62AA9F71E0028BE38 /* LoginModel.swift */,
 				E1EECB912AAA35190095E668 /* DepoModel.swift */,
-				BC2F76262AB46E71001C5C83 /* SpendingModel.swift */,
+				BC2F76262AB46E71001C5C83 /* ExpenseModel.swift */,
 				BC0C92792AB97700008A4F93 /* NoteModel.swift */,
+				BC0867402ABC74FE009FE80E /* IncomeModel.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -622,8 +649,9 @@
 		E1AE615C2A9FA13000ED4BC8 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				BC0C92742AB975E5008A4F93 /* Catatan */,
-				BC2F76282AB46F00001C5C83 /* Pengeluaran */,
+				BC08673B2ABC745E009FE80E /* Income */,
+				BC0C92742AB975E5008A4F93 /* Note */,
+				BC2F76282AB46F00001C5C83 /* Expense */,
 				E1EECB8C2AAA32D70095E668 /* Depo */,
 				BC33BFB52AA9D4F40028BE38 /* LoginRegister */,
 			);
@@ -633,8 +661,9 @@
 		E1AE61632A9FA38D00ED4BC8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				BC0C927B2AB978E8008A4F93 /* Catatan */,
-				BC2F762B2AB46FA0001C5C83 /* Pengeluaran */,
+				BC0867432ABC7578009FE80E /* Income */,
+				BC0C927B2AB978E8008A4F93 /* Note */,
+				BC2F762B2AB46FA0001C5C83 /* Expense */,
 				E1EECB932AAA35C40095E668 /* Depo */,
 				BC33BFB62AA9D52B0028BE38 /* LoginRegister */,
 			);
@@ -871,12 +900,13 @@
 				E1AE61772A9FA72800ED4BC8 /* DashboardViewController.swift in Sources */,
 				BC33BFBC2AA9EB850028BE38 /* WalletCollectionViewCell.swift in Sources */,
 				BC33BFC12AA9F6E80028BE38 /* RegisterResponse.swift in Sources */,
-				BC2F76252AB46DBB001C5C83 /* SpendingResponse.swift in Sources */,
+				BC2F76252AB46DBB001C5C83 /* ExpenseResponse.swift in Sources */,
 				E1EECB902AAA33690095E668 /* DepoResponse.swift in Sources */,
-				BC0C927D2AB978F1008A4F93 /* CatatanRepository.swift in Sources */,
+				BC0C927D2AB978F1008A4F93 /* NoteRepository.swift in Sources */,
 				E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */,
 				BC2F76372AB47FA2001C5C83 /* NSLayoutConstraint+Ext.swift in Sources */,
-				BC2F762A2AB46F22001C5C83 /* PengeluaranDataSource.swift in Sources */,
+				BC08673D2ABC7466009FE80E /* IncomeDataSource.swift in Sources */,
+				BC2F762A2AB46F22001C5C83 /* ExpenseDataSource.swift in Sources */,
 				BC33BFB42AA9D4D70028BE38 /* LoginRegisterDataSource.swift in Sources */,
 				BCC68D372A9F111400E45602 /* AppDelegate.swift in Sources */,
 				BC33C0052AAB32950028BE38 /* DrawerMenuViewController.swift in Sources */,
@@ -903,18 +933,19 @@
 				BC33BFC32AA9F7020028BE38 /* LoginResponse.swift in Sources */,
 				BCC68D392A9F111400E45602 /* SceneDelegate.swift in Sources */,
 				E19FBE262A9FB87D00D4C276 /* LoginKey.swift in Sources */,
-				BC2F76272AB46E71001C5C83 /* SpendingModel.swift in Sources */,
+				BC2F76272AB46E71001C5C83 /* ExpenseModel.swift in Sources */,
 				BCC68D8A2A9F266F00E45602 /* OnboardingViewController.swift in Sources */,
 				E1EECB9A2AAA38FD0095E668 /* DashboardViewModel.swift in Sources */,
 				E19FBE242A9FB69400D4C276 /* SignInUseCase.swift in Sources */,
-				BC2F762D2AB46FA9001C5C83 /* PengeluaranRepository.swift in Sources */,
+				BC2F762D2AB46FA9001C5C83 /* ExpenseRepository.swift in Sources */,
 				BC0C92782AB97620008A4F93 /* NoteResponse.swift in Sources */,
 				BC2F763E2AB48D0D001C5C83 /* Constants.swift in Sources */,
 				BCC68D932A9F384500E45602 /* SignInViewController.swift in Sources */,
-				BC0C92762AB975FD008A4F93 /* CatatanDataSource.swift in Sources */,
+				BC0C92762AB975FD008A4F93 /* NoteDataSource.swift in Sources */,
 				BC0C927A2AB97700008A4F93 /* NoteModel.swift in Sources */,
 				BCC68D812A9F1FB800E45602 /* OnboardingPage.swift in Sources */,
 				E1EECB972AAA36F80095E668 /* DashboardUseCase.swift in Sources */,
+				BC0867452ABC7583009FE80E /* IncomeRepository.swift in Sources */,
 				BCC68D872A9F20F500E45602 /* OnboardingPageContentViewController.swift in Sources */,
 				E1EECB952AAA35CC0095E668 /* DepoRepository.swift in Sources */,
 				E1EECB922AAA35190095E668 /* DepoModel.swift in Sources */,
@@ -922,6 +953,8 @@
 				E1AE61732A9FA53F00ED4BC8 /* SignUpUseCase.swift in Sources */,
 				BC2F763C2AB48CEB001C5C83 /* SharedEnum.swift in Sources */,
 				BC0C929C2ABC247E008A4F93 /* NotesTableViewCell.swift in Sources */,
+				BC0867412ABC74FE009FE80E /* IncomeModel.swift in Sources */,
+				BC08673F2ABC74CD009FE80E /* IncomeResponse.swift in Sources */,
 				E19FBE1E2A9FB4D900D4C276 /* SignInViewModel.swift in Sources */,
 				BC33BFC52AA9F7190028BE38 /* RegisterModel.swift in Sources */,
 				E1AE617B2A9FA81200ED4BC8 /* Toast.swift in Sources */,
@@ -935,6 +968,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC0867422ABC752C009FE80E /* IncomeModel.swift in Sources */,
 				BCC68D512A9F111600E45602 /* DailyCostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

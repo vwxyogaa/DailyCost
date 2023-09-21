@@ -1,11 +1,11 @@
 //
-//  SpendingResponse.swift
+//  ExpenseResponse.swift
 //  DailyCost
 //
 //  Created by Panji Yoga on 15/09/23.
 //
 
-struct SpendingResponse: Codable {
+struct ExpenseResponse: Codable {
     let status, message: String?
     let data: DataClass?
     

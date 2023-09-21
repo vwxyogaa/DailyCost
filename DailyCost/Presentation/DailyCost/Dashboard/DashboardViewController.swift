@@ -70,7 +70,7 @@ class DashboardViewController: UIViewController {
     // MARK: - Helpers
     private func loadData() {
         viewModel.getSaldo(id: viewModel.userId)
-        viewModel.getPengeluaran(id: viewModel.userId)
+        viewModel.getPemasukan(id: viewModel.userId)
     }
     
     private func initObserver() {
@@ -78,8 +78,8 @@ class DashboardViewController: UIViewController {
             self?.walletCollectionView.reloadData()
         }).disposed(by: disposeBag)
         
-        viewModel.spending.drive(onNext: { [weak self] spending in
-            if spending != nil {
+        viewModel.expense.drive(onNext: { [weak self] expense in
+            if expense != nil {
                 self?.recentlyActivityTableView.isHidden = false
             } else {
                 self?.recentlyActivityTableView.isHidden = true
@@ -289,7 +289,7 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCollectionViewCell", for: indexPath) as? WalletCollectionViewCell else { return UICollectionViewCell() }
         let depo = viewModel.saldoValue
-        let spending = viewModel.spendingValue
+        let spending = viewModel.expenseValue
         cell.configureContent(depo: depo, spending: spending)
         cell.delegate = self
         return cell
@@ -321,7 +321,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
         case recentlyActivityTableView:
-            return min(viewModel.spendingValue?.dataResults?.count ?? 0, 5)
+            return min(viewModel.expenseValue?.dataResults?.count ?? 0, 5)
         case noteTableView:
             return min(viewModel.catatanValue?.catatanId?.count ?? 0, 5)
         default:
@@ -334,10 +334,10 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         case recentlyActivityTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentlyActivityTableViewCell", for: indexPath) as? RecentlyActivityTableViewCell else { return UITableViewCell() }
             
-            let spending = viewModel.spendingValue?.dataResults?[indexPath.row]
+            let spending = viewModel.expenseValue?.dataResults?[indexPath.row]
             cell.configureContent(spending: spending)
             cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
-            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.spendingValue?.dataResults?.count ?? 0) - 1 ? 0 : 12
+            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.expenseValue?.dataResults?.count ?? 0) - 1 ? 0 : 12
             return cell
         case noteTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableViewCell", for: indexPath) as? NoteTableViewCell else { return UITableViewCell() }

@@ -31,7 +31,7 @@ class RecentlyActivityTableViewCell: UITableViewCell {
         iconImageView.layer.masksToBounds = true
     }
     
-    func configureContent(spending: SpendingModel.Result?) {
+    func configureContent(spending: ExpenseModel.Result?) {
         nameLabel.text = spending?.nama ?? "-"
         let date = spending?.tanggal?.convertDateString(fromFormat: .dayMonthYearWithTimeV2, toFormat: .weekDayDateMonthYear) ?? "-"
         dateLabel.text = date

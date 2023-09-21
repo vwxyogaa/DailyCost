@@ -1,11 +1,11 @@
 //
-//  SpendingModel.swift
+//  ExpenseModel.swift
 //  DailyCost
 //
 //  Created by Panji Yoga on 15/09/23.
 //
 
-struct SpendingModel: Codable {
+struct ExpenseModel: Codable {
     let dataResults: [Result]?
     let dataPengeluaran: Pengeluaran?
     
