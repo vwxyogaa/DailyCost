@@ -168,13 +168,13 @@ class DashboardViewController: UIViewController {
     }
     
     private func configureButtonNavBar() {
-        let leftImage = UIImage(named: "icon_dashboard")?.withRenderingMode(.alwaysOriginal)
-        let leftButton = UIBarButtonItem(image: leftImage, style: .plain, target: self, action: #selector(leftButtonTapped))
-        self.navigationItem.leftBarButtonItem = leftButton
+        let dashboardImage = UIImage(named: "icon_dashboard")?.withRenderingMode(.alwaysOriginal)
+        let dashboardButton = UIBarButtonItem(image: dashboardImage, style: .plain, target: self, action: #selector(leftButtonTapped))
+        self.navigationItem.leftBarButtonItem = dashboardButton
         
-        let rightImage = UIImage(named: "icon_notification")?.withRenderingMode(.alwaysOriginal)
-        let rightButton = UIBarButtonItem(image: rightImage, style: .plain, target: self, action: #selector(rightButtonTapped))
-        self.navigationItem.rightBarButtonItem = rightButton
+        let notificationImage = UIImage(named: "icon_notification")?.withRenderingMode(.alwaysOriginal)
+        let notificationButton = UIBarButtonItem(image: notificationImage, style: .plain, target: self, action: #selector(rightButtonTapped))
+        self.navigationItem.rightBarButtonItem = notificationButton
     }
     
     private func updateTableViewContentSize(tableView: UITableView, size: CGFloat) {
@@ -217,7 +217,11 @@ class DashboardViewController: UIViewController {
     
     @objc
     private func newActivityButtonTapped() {
-        showSuccessSnackBar(message: "New activity button tapped!")
+        if viewModel.isOpen {
+            mainFloatingButtonTapped()
+        }
+        let newActivityViewController = NewActivityViewController()
+        navigationController?.pushViewController(newActivityViewController, animated: true)
     }
     
     @objc
