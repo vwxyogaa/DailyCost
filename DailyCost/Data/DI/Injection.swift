@@ -23,6 +23,12 @@ final class Injection {
         let incomeRepository = provideIncomeRepository()
         return DashboardUseCase(depoRepository: depoRepository, expenseRepository: expenseRepository, noteRepository: noteRepository, incomeRepository: incomeRepository)
     }
+    
+    func provideRecentlyActivityUseCase() -> RecentlyActivityUseCaseProtocol {
+        let expenseRepository = provideExpenseRepository()
+        let incomeRepository = provideIncomeRepository()
+        return RecentlyActivityUseCase(expenseRepository: expenseRepository, incomeRepository: incomeRepository)
+    }
 }
 
 extension Injection {

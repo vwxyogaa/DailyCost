@@ -273,7 +273,13 @@ class DashboardViewController: UIViewController {
     
     @objc
     private func seeAllRecentlyActivityButtonTapped() {
-        showSuccessSnackBar(message: "See all recently activity Button Clicked!")
+        if viewModel.isOpen {
+            mainFloatingButtonTapped()
+        }
+        let recentlyActivityViewController = RecentlyActivityViewController()
+        let viewModel = RecentlyActivityViewModel(recentlyActivityUseCase: Injection().provideRecentlyActivityUseCase(), userId: viewModel.userId)
+        recentlyActivityViewController.viewModel = viewModel
+        navigationController?.pushViewController(recentlyActivityViewController, animated: true)
     }
     
     @objc

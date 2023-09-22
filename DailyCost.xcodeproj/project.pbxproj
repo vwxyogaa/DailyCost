@@ -13,6 +13,11 @@
 		BC0867422ABC752C009FE80E /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867402ABC74FE009FE80E /* IncomeModel.swift */; };
 		BC0867452ABC7583009FE80E /* IncomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867442ABC7583009FE80E /* IncomeRepository.swift */; };
 		BC08674B2ABD7604009FE80E /* RecentlyActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08674A2ABD7604009FE80E /* RecentlyActivity.swift */; };
+		BC08674F2ABD92BA009FE80E /* RecentlyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08674D2ABD92BA009FE80E /* RecentlyActivityViewController.swift */; };
+		BC0867502ABD92BA009FE80E /* RecentlyActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC08674E2ABD92BA009FE80E /* RecentlyActivityViewController.xib */; };
+		BC0867532ABD9451009FE80E /* RecentlyActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867522ABD9451009FE80E /* RecentlyActivityViewModel.swift */; };
+		BC0867562ABD9A00009FE80E /* RecentlyActivityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867552ABD9A00009FE80E /* RecentlyActivityUseCase.swift */; };
+		BC0867582ABD9E77009FE80E /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867572ABD9E77009FE80E /* Array+Ext.swift */; };
 		BC0C92762AB975FD008A4F93 /* NoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92752AB975FD008A4F93 /* NoteDataSource.swift */; };
 		BC0C92782AB97620008A4F93 /* NoteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92772AB97620008A4F93 /* NoteResponse.swift */; };
 		BC0C927A2AB97700008A4F93 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92792AB97700008A4F93 /* NoteModel.swift */; };
@@ -121,6 +126,11 @@
 		BC0867402ABC74FE009FE80E /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
 		BC0867442ABC7583009FE80E /* IncomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeRepository.swift; sourceTree = "<group>"; };
 		BC08674A2ABD7604009FE80E /* RecentlyActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyActivity.swift; sourceTree = "<group>"; };
+		BC08674D2ABD92BA009FE80E /* RecentlyActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyActivityViewController.swift; sourceTree = "<group>"; };
+		BC08674E2ABD92BA009FE80E /* RecentlyActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentlyActivityViewController.xib; sourceTree = "<group>"; };
+		BC0867522ABD9451009FE80E /* RecentlyActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyActivityViewModel.swift; sourceTree = "<group>"; };
+		BC0867552ABD9A00009FE80E /* RecentlyActivityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyActivityUseCase.swift; sourceTree = "<group>"; };
+		BC0867572ABD9E77009FE80E /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		BC0C92752AB975FD008A4F93 /* NoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataSource.swift; sourceTree = "<group>"; };
 		BC0C92772AB97620008A4F93 /* NoteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteResponse.swift; sourceTree = "<group>"; };
 		BC0C92792AB97700008A4F93 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
@@ -249,6 +259,24 @@
 				BC0867442ABC7583009FE80E /* IncomeRepository.swift */,
 			);
 			path = Income;
+			sourceTree = "<group>";
+		};
+		BC08674C2ABD92A7009FE80E /* RecentlyActivity */ = {
+			isa = PBXGroup;
+			children = (
+				BC0867542ABD9457009FE80E /* ViewModel */,
+				BC08674D2ABD92BA009FE80E /* RecentlyActivityViewController.swift */,
+				BC08674E2ABD92BA009FE80E /* RecentlyActivityViewController.xib */,
+			);
+			path = RecentlyActivity;
+			sourceTree = "<group>";
+		};
+		BC0867542ABD9457009FE80E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC0867522ABD9451009FE80E /* RecentlyActivityViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		BC0C92742AB975E5008A4F93 /* Note */ = {
@@ -542,6 +570,7 @@
 		BCC68D712A9F141B00E45602 /* DailyCost */ = {
 			isa = PBXGroup;
 			children = (
+				BC08674C2ABD92A7009FE80E /* RecentlyActivity */,
 				BC0C928C2ABC1CA1008A4F93 /* Note */,
 				BC0C92822ABC1190008A4F93 /* Notification */,
 				E1AE61742A9FA71A00ED4BC8 /* Dashboard */,
@@ -571,6 +600,7 @@
 				BC2F76362AB47FA2001C5C83 /* NSLayoutConstraint+Ext.swift */,
 				BC2F76382AB48CCB001C5C83 /* String+Ext.swift */,
 				BC2F763F2AB48F4C001C5C83 /* Date+Ext.swift */,
+				BC0867572ABD9E77009FE80E /* Array+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -679,6 +709,7 @@
 				E1AE61722A9FA53F00ED4BC8 /* SignUpUseCase.swift */,
 				E19FBE232A9FB69400D4C276 /* SignInUseCase.swift */,
 				E1EECB962AAA36F80095E668 /* DashboardUseCase.swift */,
+				BC0867552ABD9A00009FE80E /* RecentlyActivityUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -865,6 +896,7 @@
 				BC33BFBD2AA9EB850028BE38 /* WalletCollectionViewCell.xib in Resources */,
 				BCC68D462A9F111600E45602 /* LaunchScreen.storyboard in Resources */,
 				BC0C92812AB98723008A4F93 /* NoteTableViewCell.xib in Resources */,
+				BC0867502ABD92BA009FE80E /* RecentlyActivityViewController.xib in Resources */,
 				BCC68D432A9F111600E45602 /* Assets.xcassets in Resources */,
 				BCC68D902A9F383C00E45602 /* SignUpViewController.xib in Resources */,
 				BC0C92902ABC1CB7008A4F93 /* NoteViewController.xib in Resources */,
@@ -906,6 +938,7 @@
 				BC2F76252AB46DBB001C5C83 /* ExpenseResponse.swift in Sources */,
 				E1EECB902AAA33690095E668 /* DepoResponse.swift in Sources */,
 				BC0C927D2AB978F1008A4F93 /* NoteRepository.swift in Sources */,
+				BC0867582ABD9E77009FE80E /* Array+Ext.swift in Sources */,
 				E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */,
 				BC2F76372AB47FA2001C5C83 /* NSLayoutConstraint+Ext.swift in Sources */,
 				BC08673D2ABC7466009FE80E /* IncomeDataSource.swift in Sources */,
@@ -920,6 +953,7 @@
 				BC0C928A2ABC130C008A4F93 /* NotificationTableViewCell.swift in Sources */,
 				BC33BFC92AA9F7B30028BE38 /* DataMapper.swift in Sources */,
 				BC33C00D2AAB33C90028BE38 /* DrawerSlideAnimation.swift in Sources */,
+				BC0867532ABD9451009FE80E /* RecentlyActivityViewModel.swift in Sources */,
 				BC2F76352AB47F68001C5C83 /* UITableView+Ext.swift in Sources */,
 				E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */,
 				E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */,
@@ -939,8 +973,10 @@
 				BC2F76272AB46E71001C5C83 /* ExpenseModel.swift in Sources */,
 				BCC68D8A2A9F266F00E45602 /* OnboardingViewController.swift in Sources */,
 				E1EECB9A2AAA38FD0095E668 /* DashboardViewModel.swift in Sources */,
+				BC08674F2ABD92BA009FE80E /* RecentlyActivityViewController.swift in Sources */,
 				E19FBE242A9FB69400D4C276 /* SignInUseCase.swift in Sources */,
 				BC2F762D2AB46FA9001C5C83 /* ExpenseRepository.swift in Sources */,
+				BC0867562ABD9A00009FE80E /* RecentlyActivityUseCase.swift in Sources */,
 				BC0C92782AB97620008A4F93 /* NoteResponse.swift in Sources */,
 				BC2F763E2AB48D0D001C5C83 /* Constants.swift in Sources */,
 				BCC68D932A9F384500E45602 /* SignInViewController.swift in Sources */,
