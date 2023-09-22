@@ -6,32 +6,21 @@
 //
 
 struct ExpenseModel: Codable {
-    let dataResults: [Result]?
-    let dataPengeluaran: Pengeluaran?
+    let pengeluaranId: [Int]?
+    let nama, tanggal: [String]?
+    let jumlah: [Int]?
+    let pembayaran: [String]?
+    let userId: [Int]?
+    let kategori: [String]?
+    let pengeluaranGopay, pengeluaranRekening, pengeluaranCash: Int?
     
-    struct Result: Codable {
-        let pengeluaranID: Int?
-        let nama, tanggal: String?
-        let jumlah: Int?
-        let pembayaran: String?
-        let userID: Int?
-        let kategori: String?
-        
-        enum CodingKeys: String, CodingKey {
-            case pengeluaranID = "pengeluaran_id"
-            case nama, tanggal, jumlah, pembayaran
-            case userID = "user_id"
-            case kategori
-        }
-    }
-    
-    struct Pengeluaran: Codable {
-        let pengeluaranGopay, pengeluaranRekening, pengeluaranCash: Int?
-        
-        enum CodingKeys: String, CodingKey {
-            case pengeluaranGopay = "pengeluaran_gopay"
-            case pengeluaranRekening = "pengeluaran_rekening"
-            case pengeluaranCash = "pengeluaran_cash"
-        }
+    enum CodingKeys: String, CodingKey {
+        case pengeluaranId = "pengeluaran_id"
+        case nama, tanggal, jumlah, pembayaran
+        case userId = "user_id"
+        case kategori
+        case pengeluaranGopay = "pengeluaran_gopay"
+        case pengeluaranRekening = "pengeluaran_rekening"
+        case pengeluaranCash = "pengeluaran_cash"
     }
 }

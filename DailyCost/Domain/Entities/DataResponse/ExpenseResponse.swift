@@ -14,17 +14,17 @@ struct ExpenseResponse: Codable {
         let pengeluaran: Pengeluaran?
         
         struct Result: Codable {
-            let pengeluaranID: Int?
+            let pengeluaranId: Int?
             let nama, tanggal: String?
             let jumlah: Int?
             let pembayaran: String?
-            let userID: Int?
+            let userId: Int?
             let kategori: String?
             
             enum CodingKeys: String, CodingKey {
-                case pengeluaranID = "pengeluaran_id"
+                case pengeluaranId = "pengeluaran_id"
                 case nama, tanggal, jumlah, pembayaran
-                case userID = "user_id"
+                case userId = "user_id"
                 case kategori
             }
         }

@@ -70,16 +70,17 @@ class DashboardViewController: UIViewController {
     // MARK: - Helpers
     private func loadData() {
         viewModel.getSaldo(id: viewModel.userId)
-        viewModel.getPemasukan(id: viewModel.userId)
+        viewModel.getPengeluaran(id: viewModel.userId)
+        viewModel.getCatatan(id: viewModel.userId)
     }
     
     private func initObserver() {
-        viewModel.saldo.drive(onNext: { [weak self] saldo in
+        viewModel.balance.drive(onNext: { [weak self] saldo in
             self?.walletCollectionView.reloadData()
         }).disposed(by: disposeBag)
         
-        viewModel.expense.drive(onNext: { [weak self] expense in
-            if expense != nil {
+        viewModel.recentlyActivity.drive(onNext: { [weak self] recentlyActivity in
+            if recentlyActivity != nil {
                 self?.recentlyActivityTableView.isHidden = false
             } else {
                 self?.recentlyActivityTableView.isHidden = true
@@ -89,11 +90,12 @@ class DashboardViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         viewModel.catatan.drive(onNext: { [weak self] catatan in
-            if catatan != nil {
+            if let catatan, catatan.catatanId?.count != 0 {
                 self?.noteTableView.isHidden = false
             } else {
                 self?.noteTableView.isHidden = true
             }
+            self?.noteTableView.reloadData()
         }).disposed(by: disposeBag)
         
         viewModel.isLoading.drive(onNext: { [weak self] isLoading in
@@ -288,7 +290,7 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCollectionViewCell", for: indexPath) as? WalletCollectionViewCell else { return UICollectionViewCell() }
-        let depo = viewModel.saldoValue
+        let depo = viewModel.balanceValue
         let spending = viewModel.expenseValue
         cell.configureContent(depo: depo, spending: spending)
         cell.delegate = self
@@ -321,7 +323,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
         case recentlyActivityTableView:
-            return min(viewModel.expenseValue?.dataResults?.count ?? 0, 5)
+            return min(viewModel.recentlyActivityValue?.count ?? 0, 5)
         case noteTableView:
             return min(viewModel.catatanValue?.catatanId?.count ?? 0, 5)
         default:
@@ -333,11 +335,10 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         switch tableView {
         case recentlyActivityTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentlyActivityTableViewCell", for: indexPath) as? RecentlyActivityTableViewCell else { return UITableViewCell() }
-            
-            let spending = viewModel.expenseValue?.dataResults?[indexPath.row]
-            cell.configureContent(spending: spending)
+            let activity = viewModel.recentlyActivityValue?[indexPath.row]
+            cell.configureContent(name: activity?.name, date: activity?.date, category: activity?.category, total: activity?.amount, type: activity?.type ?? .expense)
             cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
-            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.expenseValue?.dataResults?.count ?? 0) - 1 ? 0 : 12
+            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.expenseValue?.userId?.count ?? 0) - 1 ? 0 : 12
             return cell
         case noteTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableViewCell", for: indexPath) as? NoteTableViewCell else { return UITableViewCell() }

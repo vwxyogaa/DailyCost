@@ -33,28 +33,41 @@ final class DataMapper {
     }
     
     static func mapSpendingResponseToModel(data: ExpenseResponse) -> ExpenseModel {
-        let mappedPengeluaran = ExpenseModel.Pengeluaran(
-            pengeluaranGopay: data.data?.pengeluaran?.pengeluaranGopay,
-            pengeluaranRekening: data.data?.pengeluaran?.pengeluaranRekening,
-            pengeluaranCash: data.data?.pengeluaran?.pengeluaranCash
-        )
-        let mappedResults = data.data?.results?.map { result in
-            return ExpenseModel.Result(
-                pengeluaranID: result.pengeluaranID,
-                nama: result.nama,
-                tanggal: result.tanggal,
-                jumlah: result.jumlah,
-                pembayaran: result.pembayaran,
-                userID: result.userID,
-                kategori: result.kategori
-            )
-        }
-        let mappedModel = ExpenseModel(
-            dataResults: mappedResults,
-            dataPengeluaran: mappedPengeluaran
-        )
+        var pengeluaranIds: [Int] = []
+        var namas: [String] = []
+        var tanggals: [String] = []
+        var jumlahs: [Int] = []
+        var pembayarans: [String] = []
+        var userIds: [Int] = []
+        var kategoris: [String] = []
         
-        return mappedModel
+        if let results = data.data?.results {
+            for result in results {
+                pengeluaranIds.append(result.pengeluaranId ?? 0)
+                namas.append(result.nama ?? "")
+                tanggals.append(result.tanggal ?? "")
+                jumlahs.append(result.jumlah ?? 0)
+                pembayarans.append(result.pembayaran ?? "")
+                userIds.append(result.userId ?? 0)
+                kategoris.append(result.kategori ?? "")
+            }
+        }
+        
+        let pengeluaranGopay = data.data?.pengeluaran?.pengeluaranGopay
+        let pengeluaranRekening = data.data?.pengeluaran?.pengeluaranRekening
+        let pengeluaranCash = data.data?.pengeluaran?.pengeluaranCash
+        return ExpenseModel(
+            pengeluaranId: pengeluaranIds,
+            nama: namas,
+            tanggal: tanggals,
+            jumlah: jumlahs,
+            pembayaran: pembayarans,
+            userId: userIds,
+            kategori: kategoris,
+            pengeluaranGopay: pengeluaranGopay,
+            pengeluaranRekening: pengeluaranRekening,
+            pengeluaranCash: pengeluaranCash
+        )
     }
     
     static func mapNoteResponseToModel(data: NoteResponse) -> NoteModel {

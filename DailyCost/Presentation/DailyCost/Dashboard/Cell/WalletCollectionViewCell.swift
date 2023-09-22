@@ -48,7 +48,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
         let secureText = String(repeating: "•", count: String(format: "%.0f", balance).count)
         balanceWalletLabel.text = "Rp \(secureText)"
         
-        let spendingAmount = spending?.dataPengeluaran?.pengeluaranRekening ?? 0
+        let spendingAmount = spending?.pengeluaranRekening ?? 0
         let spendingString = numberFormatter.string(from: NSNumber(value: spendingAmount)) ?? "0"
         expenseWalletLabel.text = "Monthly expenses Rp \(spendingString)"
     }
