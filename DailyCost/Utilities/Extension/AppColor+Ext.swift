@@ -29,9 +29,9 @@ private extension AppColor {
         case .accent200:
             return color(named: AppColor.accent200.title)
         case .accent300:
-            return color(named: AppColor.accent200.title)
+            return color(named: AppColor.accent300.title)
         case .accent400:
-            return color(named: AppColor.accent200.title)
+            return color(named: AppColor.accent400.title)
         case .accent401:
             return color(named: AppColor.accent401.title)
         case .bg100:

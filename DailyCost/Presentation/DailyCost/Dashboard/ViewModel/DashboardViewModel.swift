@@ -12,9 +12,11 @@ class DashboardViewModel: BaseViewModel {
     private let disposeBag = DisposeBag()
     private let dashboardUseCase: DashboardUseCaseProtocol
     
-    private let _saldo = BehaviorRelay<DepoModel?>(value: nil)
-    private let _spending = BehaviorRelay<SpendingModel?>(value: nil)
-    private let _catatan = BehaviorRelay<NoteModel?>(value: nil)
+    private let _balance = BehaviorRelay<DepoModel?>(value: nil)
+    private let _expense = BehaviorRelay<ExpenseModel?>(value: nil)
+    private let _note = BehaviorRelay<NoteModel?>(value: nil)
+    private let _income = BehaviorRelay<IncomeModel?>(value: nil)
+    private let _recentlyActivity = BehaviorRelay<[ActivityModel]?>(value: nil)
     
     var userId: Int
     var isOpen: Bool = false
@@ -25,12 +27,12 @@ class DashboardViewModel: BaseViewModel {
     }
     
     // MARK: - Saldo
-    var saldo: Driver<DepoModel?> {
-        return _saldo.asDriver()
+    var balance: Driver<DepoModel?> {
+        return _balance.asDriver()
     }
     
-    var saldoValue: DepoModel? {
-        return _saldo.value
+    var balanceValue: DepoModel? {
+        return _balance.value
     }
     
     func getSaldo(id: Int) {
@@ -39,20 +41,16 @@ class DashboardViewModel: BaseViewModel {
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self._isLoading.accept(false)
-                self._saldo.accept(result)
+                self._balance.accept(result)
             } onError: { error in
                 self._isLoading.accept(false)
                 self._errorMessage.accept(error.localizedDescription)
             }.disposed(by: disposeBag)
     }
     
-    // MARK: - Pengeluaran
-    var spending: Driver<SpendingModel?> {
-        return _spending.asDriver()
-    }
-    
-    var spendingValue: SpendingModel? {
-        return _spending.value
+    // MARK: - Expense
+    var expenseValue: ExpenseModel? {
+        return _expense.value
     }
     
     func getPengeluaran(id: Int) {
@@ -61,20 +59,86 @@ class DashboardViewModel: BaseViewModel {
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self._isLoading.accept(false)
-                self._spending.accept(result)
+                self._expense.accept(result)
+                self.getPemasukan(id: self.userId)
             } onError: { error in
                 self._isLoading.accept(false)
                 self._errorMessage.accept(error.localizedDescription)
             }.disposed(by: disposeBag)
     }
     
+    // MARK: - Income
+    var incomeValue: IncomeModel? {
+        return _income.value
+    }
+    
+    func getPemasukan(id: Int) {
+        self._isLoading.accept(true)
+        dashboardUseCase.getPemasukan(id: id)
+            .observe(on: MainScheduler.instance)
+            .subscribe { result in
+                self._isLoading.accept(false)
+                self._income.accept(result)
+                self.combineAndSortActivities()
+            } onError: { error in
+                self._isLoading.accept(false)
+                self._errorMessage.accept(error.localizedDescription)
+            }.disposed(by: disposeBag)
+    }
+    
+    // MARK: - Recently activity
+    var recentlyActivity: Driver<[ActivityModel]?> {
+        return _recentlyActivity.asDriver()
+    }
+    
+    var recentlyActivityValue: [ActivityModel]? {
+        return _recentlyActivity.value
+    }
+    
+    func combineAndSortActivities() {
+        var combined: [ActivityModel] = []
+
+        if let expenses = self.expenseValue {
+            for i in 0..<(expenses.userId?.count ?? 0) {
+                if let originalDate = expenses.tanggal?[i] {
+                    let convertedDate = originalDate.convertDateString(fromFormat: .dayMonthYearWithTimeV2, toFormat: .serverDate)
+                    let activity = ActivityModel(id: expenses.pengeluaranId?[i],
+                                                 name: expenses.nama?[i],
+                                                 date: convertedDate,
+                                                 amount: expenses.jumlah?[i],
+                                                 category: expenses.kategori?[i],
+                                                 type: .expense)
+                    combined.append(activity)
+                }
+            }
+        }
+
+        if let incomes = self.incomeValue {
+            for i in 0..<(incomes.pemasukanId?.count ?? 0) {
+                if let originalDate = incomes.tanggal?[i] {
+                    let convertedDate = originalDate.convertDateString(fromFormat: .serverDateWitTimeAndTandZ, toFormat: .serverDate)
+                    let activity = ActivityModel(id: incomes.pemasukanId?[i],
+                                                 name: incomes.nama?[i],
+                                                 date: convertedDate,
+                                                 amount: incomes.jumlah?[i],
+                                                 category: incomes.kategori?[i],
+                                                 type: .income)
+                    combined.append(activity)
+                }
+            }
+        }
+
+        let recentlyActivities = combined.sorted { $0.date ?? "0" > $1.date ?? "0" }
+        self._recentlyActivity.accept(recentlyActivities)
+    }
+    
     // MARK: - Catatan
     var catatan: Driver<NoteModel?> {
-        return _catatan.asDriver()
+        return _note.asDriver()
     }
     
     var catatanValue: NoteModel? {
-        return _catatan.value
+        return _note.value
     }
     
     func getCatatan(id: Int) {
@@ -83,7 +147,7 @@ class DashboardViewModel: BaseViewModel {
             .observe(on: MainScheduler.instance)
             .subscribe { result in
                 self._isLoading.accept(false)
-                self._catatan.accept(result)
+                self._note.accept(result)
             } onError: { error in
                 self._isLoading.accept(false)
                 self._errorMessage.accept(error.localizedDescription)

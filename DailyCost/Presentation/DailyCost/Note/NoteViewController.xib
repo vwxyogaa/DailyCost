@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoteViewController" customModule="DailyCost" customModuleProvider="target">
+            <connections>
+                <outlet property="containerAddNewNoteView" destination="w8l-ro-2NT" id="VYV-Q5-en5"/>
+                <outlet property="noteTableView" destination="0q1-i9-YB1" id="BPC-uF-bO7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0q1-i9-YB1">
+                    <rect key="frame" x="0.0" y="59" width="393" height="691"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8l-ro-2NT">
+                    <rect key="frame" x="16" y="766" width="361" height="44"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aBe-5p-CdV">
+                            <rect key="frame" x="10" y="10" width="341" height="24"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new note to record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3U-ol-KsB">
+                                    <rect key="frame" x="0.0" y="0.0" width="309" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <color key="textColor" name="bg100"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_add" translatesAutoresizingMaskIntoConstraints="NO" id="aIz-FU-zK7">
+                                    <rect key="frame" x="317" y="0.0" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="5vB-7A-Xd9"/>
+                                        <constraint firstAttribute="width" constant="24" id="9go-Ma-OAp"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" name="primary100"/>
+                    <constraints>
+                        <constraint firstItem="aBe-5p-CdV" firstAttribute="leading" secondItem="w8l-ro-2NT" secondAttribute="leading" constant="10" id="Dap-R2-ZIR"/>
+                        <constraint firstItem="aBe-5p-CdV" firstAttribute="top" secondItem="w8l-ro-2NT" secondAttribute="top" constant="10" id="I1c-Ke-nM5"/>
+                        <constraint firstAttribute="bottom" secondItem="aBe-5p-CdV" secondAttribute="bottom" constant="10" id="U7e-zP-iwR"/>
+                        <constraint firstAttribute="trailing" secondItem="aBe-5p-CdV" secondAttribute="trailing" constant="10" id="unZ-i5-ayd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="0q1-i9-YB1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="3MJ-oX-t6F"/>
+                <constraint firstItem="0q1-i9-YB1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4e1-YK-hhU"/>
+                <constraint firstItem="w8l-ro-2NT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HaK-xM-SEp"/>
+                <constraint firstItem="w8l-ro-2NT" firstAttribute="top" secondItem="0q1-i9-YB1" secondAttribute="bottom" constant="16" id="O6A-WJ-TH1"/>
+                <constraint firstItem="0q1-i9-YB1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aJw-pd-Qs5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="w8l-ro-2NT" secondAttribute="bottom" constant="8" id="bbd-2Z-QNs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="w8l-ro-2NT" secondAttribute="trailing" constant="16" id="clM-dY-3Cb"/>
+            </constraints>
+            <point key="canvasLocation" x="130.53435114503816" y="-12.67605633802817"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_add" width="24" height="24"/>
+        <namedColor name="bg100">
+            <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary100">
+            <color red="0.24705882352941178" green="0.80392156862745101" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

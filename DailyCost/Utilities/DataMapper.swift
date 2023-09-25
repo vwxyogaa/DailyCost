@@ -32,29 +32,42 @@ final class DataMapper {
         )
     }
     
-    static func mapSpendingResponseToModel(data: SpendingResponse) -> SpendingModel {
-        let mappedPengeluaran = SpendingModel.Pengeluaran(
-            pengeluaranGopay: data.data?.pengeluaran?.pengeluaranGopay,
-            pengeluaranRekening: data.data?.pengeluaran?.pengeluaranRekening,
-            pengeluaranCash: data.data?.pengeluaran?.pengeluaranCash
-        )
-        let mappedResults = data.data?.results?.map { result in
-            return SpendingModel.Result(
-                pengeluaranID: result.pengeluaranID,
-                nama: result.nama,
-                tanggal: result.tanggal,
-                jumlah: result.jumlah,
-                pembayaran: result.pembayaran,
-                userID: result.userID,
-                kategori: result.kategori
-            )
-        }
-        let mappedModel = SpendingModel(
-            dataResults: mappedResults,
-            dataPengeluaran: mappedPengeluaran
-        )
+    static func mapSpendingResponseToModel(data: ExpenseResponse) -> ExpenseModel {
+        var pengeluaranIds: [Int] = []
+        var namas: [String] = []
+        var tanggals: [String] = []
+        var jumlahs: [Int] = []
+        var pembayarans: [String] = []
+        var userIds: [Int] = []
+        var kategoris: [String] = []
         
-        return mappedModel
+        if let results = data.data?.results {
+            for result in results {
+                pengeluaranIds.append(result.pengeluaranId ?? 0)
+                namas.append(result.nama ?? "")
+                tanggals.append(result.tanggal ?? "")
+                jumlahs.append(result.jumlah ?? 0)
+                pembayarans.append(result.pembayaran ?? "")
+                userIds.append(result.userId ?? 0)
+                kategoris.append(result.kategori ?? "")
+            }
+        }
+        
+        let pengeluaranGopay = data.data?.pengeluaran?.pengeluaranGopay
+        let pengeluaranRekening = data.data?.pengeluaran?.pengeluaranRekening
+        let pengeluaranCash = data.data?.pengeluaran?.pengeluaranCash
+        return ExpenseModel(
+            pengeluaranId: pengeluaranIds,
+            nama: namas,
+            tanggal: tanggals,
+            jumlah: jumlahs,
+            pembayaran: pembayarans,
+            userId: userIds,
+            kategori: kategoris,
+            pengeluaranGopay: pengeluaranGopay,
+            pengeluaranRekening: pengeluaranRekening,
+            pengeluaranCash: pengeluaranCash
+        )
     }
     
     static func mapNoteResponseToModel(data: NoteResponse) -> NoteModel {
@@ -94,5 +107,50 @@ final class DataMapper {
         )
         
         return noteModel
+    }
+    
+    static func mapIncomeResponseToModel(data: IncomeResponse) -> IncomeModel {
+        var pemasukanIds: [Int] = []
+        var namas: [String] = []
+        var tanggals: [String] = []
+        var jumlahs: [Int] = []
+        var pembayarans: [String] = []
+        var kategoris: [String] = []
+        
+        data.data?.forEach({ dataItem in
+            if let pemasukanId = dataItem.pemasukanId {
+                pemasukanIds.append(pemasukanId)
+            }
+            
+            if let nama = dataItem.nama {
+                namas.append(nama)
+            }
+            
+            if let tanggal = dataItem.tanggal {
+                tanggals.append(tanggal)
+            }
+            
+            if let jumlah = dataItem.jumlah {
+                jumlahs.append(jumlah)
+            }
+            
+            if let pembayaran = dataItem.pembayaran {
+                pembayarans.append(pembayaran)
+            }
+            
+            if let kategori = dataItem.kategori {
+                kategoris.append(kategori)
+            }
+        })
+        let incomeModel = IncomeModel(
+            pemasukanId: pemasukanIds,
+            nama: namas,
+            tanggal: tanggals,
+            jumlah: jumlahs,
+            pembayaran: pembayarans,
+            kategori: kategoris
+        )
+        
+        return incomeModel
     }
 }

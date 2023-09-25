@@ -36,7 +36,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
         eyeButton.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
     }
     
-    func configureContent(depo: DepoModel?, spending: SpendingModel?) {
+    func configureContent(depo: DepoModel?, spending: ExpenseModel?) {
         currentData = depo
 
         let numberFormatter = NumberFormatter()
@@ -44,12 +44,11 @@ class WalletCollectionViewCell: UICollectionViewCell {
         numberFormatter.groupingSeparator = "."
 
         let balance = depo?.dataUangRekening ?? 0
-        let balanceString = numberFormatter.string(from: NSNumber(value: balance)) ?? "0"
         titleWalletLabel.text = "Uang Rekening"
         let secureText = String(repeating: "•", count: String(format: "%.0f", balance).count)
         balanceWalletLabel.text = "Rp \(secureText)"
         
-        let spendingAmount = spending?.dataPengeluaran?.pengeluaranRekening ?? 0
+        let spendingAmount = spending?.pengeluaranRekening ?? 0
         let spendingString = numberFormatter.string(from: NSNumber(value: spendingAmount)) ?? "0"
         expenseWalletLabel.text = "Monthly expenses Rp \(spendingString)"
     }

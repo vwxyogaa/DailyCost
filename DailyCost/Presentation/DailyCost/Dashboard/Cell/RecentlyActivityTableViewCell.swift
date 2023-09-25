@@ -31,11 +31,13 @@ class RecentlyActivityTableViewCell: UITableViewCell {
         iconImageView.layer.masksToBounds = true
     }
     
-    func configureContent(spending: SpendingModel.Result?) {
-        nameLabel.text = spending?.nama ?? "-"
-        let date = spending?.tanggal?.convertDateString(fromFormat: .dayMonthYearWithTimeV2, toFormat: .weekDayDateMonthYear) ?? "-"
-        dateLabel.text = date
-        if let kategori = spending?.kategori, !kategori.isEmpty {
+    func configureContent(name: String?, date: String?, category: String?, total: Int?, type: ActivityType) {
+        nameLabel.text = name ?? "-"
+        
+        let dateConvert = date?.convertDateString(fromFormat: .serverDate, toFormat: .weekDayDateMonthYear) ?? "-"
+        dateLabel.text = dateConvert
+        
+        if let kategori = category, !kategori.isEmpty {
             let firstLetterCapitalized = kategori.prefix(1).uppercased() + kategori.dropFirst()
             categoryLabel.text = firstLetterCapitalized
         } else {
@@ -46,8 +48,14 @@ class RecentlyActivityTableViewCell: UITableViewCell {
         numberFormatter.numberStyle = .decimal
         numberFormatter.groupingSeparator = "."
         
-        let spendingAmount = spending?.jumlah ?? 0
+        let spendingAmount = total ?? 0
         let spendingString = numberFormatter.string(from: NSNumber(value: spendingAmount)) ?? "0"
-        totalLabel.text = "-Rp\(spendingString)"
+        if type == .income {
+            totalLabel.textColor = .accent100
+            totalLabel.text = "+Rp\(spendingString)"
+        } else {
+            totalLabel.textColor = .accent300
+            totalLabel.text = "-Rp\(spendingString)"
+        }
     }
 }

@@ -71,15 +71,16 @@ class DashboardViewController: UIViewController {
     private func loadData() {
         viewModel.getSaldo(id: viewModel.userId)
         viewModel.getPengeluaran(id: viewModel.userId)
+        viewModel.getCatatan(id: viewModel.userId)
     }
     
     private func initObserver() {
-        viewModel.saldo.drive(onNext: { [weak self] saldo in
+        viewModel.balance.drive(onNext: { [weak self] saldo in
             self?.walletCollectionView.reloadData()
         }).disposed(by: disposeBag)
         
-        viewModel.spending.drive(onNext: { [weak self] spending in
-            if spending != nil {
+        viewModel.recentlyActivity.drive(onNext: { [weak self] recentlyActivity in
+            if recentlyActivity != nil {
                 self?.recentlyActivityTableView.isHidden = false
             } else {
                 self?.recentlyActivityTableView.isHidden = true
@@ -89,11 +90,12 @@ class DashboardViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         viewModel.catatan.drive(onNext: { [weak self] catatan in
-            if catatan != nil {
+            if let catatan, catatan.catatanId?.count != 0 {
                 self?.noteTableView.isHidden = false
             } else {
                 self?.noteTableView.isHidden = true
             }
+            self?.noteTableView.reloadData()
         }).disposed(by: disposeBag)
         
         viewModel.isLoading.drive(onNext: { [weak self] isLoading in
@@ -166,13 +168,13 @@ class DashboardViewController: UIViewController {
     }
     
     private func configureButtonNavBar() {
-        let leftImage = UIImage(named: "icon_dashboard")?.withRenderingMode(.alwaysOriginal)
-        let leftButton = UIBarButtonItem(image: leftImage, style: .plain, target: self, action: #selector(leftButtonTapped))
-        self.navigationItem.leftBarButtonItem = leftButton
+        let dashboardImage = UIImage(named: "icon_dashboard")?.withRenderingMode(.alwaysOriginal)
+        let dashboardButton = UIBarButtonItem(image: dashboardImage, style: .plain, target: self, action: #selector(leftButtonTapped))
+        self.navigationItem.leftBarButtonItem = dashboardButton
         
-        let rightImage = UIImage(named: "icon_notification")?.withRenderingMode(.alwaysOriginal)
-        let rightButton = UIBarButtonItem(image: rightImage, style: .plain, target: self, action: #selector(rightButtonTapped))
-        self.navigationItem.rightBarButtonItem = rightButton
+        let notificationImage = UIImage(named: "icon_notification")?.withRenderingMode(.alwaysOriginal)
+        let notificationButton = UIBarButtonItem(image: notificationImage, style: .plain, target: self, action: #selector(rightButtonTapped))
+        self.navigationItem.rightBarButtonItem = notificationButton
     }
     
     private func updateTableViewContentSize(tableView: UITableView, size: CGFloat) {
@@ -215,12 +217,20 @@ class DashboardViewController: UIViewController {
     
     @objc
     private func newActivityButtonTapped() {
-        showSuccessSnackBar(message: "New activity button tapped!")
+        if viewModel.isOpen {
+            mainFloatingButtonTapped()
+        }
+        let newActivityViewController = NewActivityViewController()
+        navigationController?.pushViewController(newActivityViewController, animated: true)
     }
     
     @objc
     private func notesButtonTapped() {
-        showSuccessSnackBar(message: "Notes button tapped!")
+        if viewModel.isOpen {
+            mainFloatingButtonTapped()
+        }
+        let noteViewController = NoteViewController()
+        navigationController?.pushViewController(noteViewController, animated: true)
     }
     
     @objc
@@ -237,7 +247,8 @@ class DashboardViewController: UIViewController {
         if viewModel.isOpen {
             mainFloatingButtonTapped()
         }
-        showSuccessSnackBar(message: "Notification Button Clicked!")
+        let notificationViewController = NotificationViewController()
+        navigationController?.pushViewController(notificationViewController, animated: true)
     }
     
     @objc
@@ -266,7 +277,13 @@ class DashboardViewController: UIViewController {
     
     @objc
     private func seeAllRecentlyActivityButtonTapped() {
-        showSuccessSnackBar(message: "See all recently activity Button Clicked!")
+        if viewModel.isOpen {
+            mainFloatingButtonTapped()
+        }
+        let recentlyActivityViewController = RecentlyActivityViewController()
+        let viewModel = RecentlyActivityViewModel(recentlyActivityUseCase: Injection().provideRecentlyActivityUseCase(), userId: viewModel.userId)
+        recentlyActivityViewController.viewModel = viewModel
+        navigationController?.pushViewController(recentlyActivityViewController, animated: true)
     }
     
     @objc
@@ -283,8 +300,8 @@ extension DashboardViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletCollectionViewCell", for: indexPath) as? WalletCollectionViewCell else { return UICollectionViewCell() }
-        let depo = viewModel.saldoValue
-        let spending = viewModel.spendingValue
+        let depo = viewModel.balanceValue
+        let spending = viewModel.expenseValue
         cell.configureContent(depo: depo, spending: spending)
         cell.delegate = self
         return cell
@@ -316,7 +333,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
         case recentlyActivityTableView:
-            return min(viewModel.spendingValue?.dataResults?.count ?? 0, 5)
+            return min(viewModel.recentlyActivityValue?.count ?? 0, 5)
         case noteTableView:
             return min(viewModel.catatanValue?.catatanId?.count ?? 0, 5)
         default:
@@ -328,11 +345,10 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         switch tableView {
         case recentlyActivityTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecentlyActivityTableViewCell", for: indexPath) as? RecentlyActivityTableViewCell else { return UITableViewCell() }
-            
-            let spending = viewModel.spendingValue?.dataResults?[indexPath.row]
-            cell.configureContent(spending: spending)
+            let activity = viewModel.recentlyActivityValue?[indexPath.row]
+            cell.configureContent(name: activity?.name, date: activity?.date, category: activity?.category, total: activity?.amount, type: activity?.type ?? .expense)
             cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
-            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.spendingValue?.dataResults?.count ?? 0) - 1 ? 0 : 12
+            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.expenseValue?.userId?.count ?? 0) - 1 ? 0 : 12
             return cell
         case noteTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableViewCell", for: indexPath) as? NoteTableViewCell else { return UITableViewCell() }

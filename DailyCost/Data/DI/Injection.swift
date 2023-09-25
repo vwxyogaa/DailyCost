@@ -18,21 +18,33 @@ final class Injection {
     
     func provideDashboardUseCase() -> DashboardUseCaseProtocol {
         let depoRepository = provideDepoRepository()
-        let pengeluaranRepository = providePengeluaranRepository()
-        let catatanRepository = provideCatatanRepository()
-        return DashboardUseCase(depoRepository: depoRepository, pengeluaranRepository: pengeluaranRepository, catatanRepository: catatanRepository)
+        let expenseRepository = provideExpenseRepository()
+        let noteRepository = provideNoteRepository()
+        let incomeRepository = provideIncomeRepository()
+        return DashboardUseCase(depoRepository: depoRepository, expenseRepository: expenseRepository, noteRepository: noteRepository, incomeRepository: incomeRepository)
+    }
+    
+    func provideRecentlyActivityUseCase() -> RecentlyActivityUseCaseProtocol {
+        let expenseRepository = provideExpenseRepository()
+        let incomeRepository = provideIncomeRepository()
+        return RecentlyActivityUseCase(expenseRepository: expenseRepository, incomeRepository: incomeRepository)
     }
 }
 
 extension Injection {
-    func provideCatatanRepository() -> CatatanRepositoryProtocol {
-        let catatanDataSource = CatatanDataSource()
-        return CatatanRepository.sharedInstance(catatanDataSource)
+    func provideIncomeRepository() -> IncomeRepositoryProtocol {
+        let incomeDataSource = IncomeDataSource()
+        return IncomeRepository.sharedInstance(incomeDataSource)
     }
     
-    func providePengeluaranRepository() -> PengeluaranRepositoryProtocol {
-        let pengeluaranDataSource = PengeluaranDataSource()
-        return PengeluaranRepository.sharedInstance(pengeluaranDataSource)
+    func provideNoteRepository() -> NoteRepositoryProtocol {
+        let noteDataSource = NoteDataSource()
+        return NoteRepository.sharedInstance(noteDataSource)
+    }
+    
+    func provideExpenseRepository() -> ExpenseRepositoryProtocol {
+        let expenseDataSource = ExpenseDataSource()
+        return ExpenseRepository.sharedInstance(expenseDataSource)
     }
     
     func provideLoginRegisterRepository() -> LoginRegisterRepositoryProtocol {
