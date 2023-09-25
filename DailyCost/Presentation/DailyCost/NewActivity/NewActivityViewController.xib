@@ -66,7 +66,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DlU-pb-gFT">
                                     <rect key="frame" x="0.0" y="17" width="361" height="43"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Beli makan siang" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVl-uo-VbL">
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fill the title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVl-uo-VbL">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="mfb-rr-HHG"/>
@@ -109,7 +109,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="255-XL-7Aw">
                                     <rect key="frame" x="0.0" y="24" width="361" height="43"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subscription" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aw0-Fi-sTV">
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select wallet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aw0-Fi-sTV">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="wue-6U-L8Y"/>
@@ -152,7 +152,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="15T-uh-l0d">
                                     <rect key="frame" x="0.0" y="24" width="361" height="43"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Comunications" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1UZ-HZ-IU8">
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1UZ-HZ-IU8">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="9NE-4Y-fpE"/>
@@ -183,7 +183,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vbN-uv-HZ7">
                                     <rect key="frame" x="0.0" y="17" width="361" height="43"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="23/08/2023" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mIc-Ms-PxI">
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mIc-Ms-PxI">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="42" id="Zc4-AW-5Vm"/>
@@ -223,7 +223,7 @@
                                                         <constraint firstAttribute="width" constant="17" id="5sX-YP-Yi7"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUU-PV-hlm">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUU-PV-hlm">
                                                     <rect key="frame" x="21" y="0.0" width="299" height="42"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="42" id="zgD-ed-8Q2"/>

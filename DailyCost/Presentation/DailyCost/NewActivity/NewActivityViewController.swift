@@ -18,12 +18,14 @@ class NewActivityViewController: UIViewController {
     
     var selectedWallet: Wallet?
     var selectedCategory: Wallet?
+    var datePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
         configureViews()
         configureTextField()
+        configureDatePicker()
     }
     
     // MARK: - Helpers
@@ -58,10 +60,32 @@ class NewActivityViewController: UIViewController {
         amountTextField.delegate = self
     }
     
+    private func configureDatePicker() {
+        datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
+        datePicker.date = Date()
+        datePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+        datePicker.locale = Constants.DefaultLocale
+        
+        if #available(iOS 14.0, *) {
+            datePicker.preferredDatePickerStyle = .inline
+        }
+        
+        dateTextField.inputView = datePicker
+    }
+    
     // MARK: - Actions
     @objc
     private func saveButtonTapped() {
         showSuccessSnackBar(message: "Save Button Clicked!")
+    }
+    
+    @objc
+    private func datePickerChanged(picker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.locale = Constants.DefaultLocale
+        dateTextField.text = dateFormatter.string(from: picker.date)
     }
 }
 
@@ -86,6 +110,15 @@ extension NewActivityViewController: UITextFieldDelegate {
             self.view.endEditing(true)
             return false
         case dateTextField:
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Constants.DefaultLocale
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            
+            if dateTextField.text?.isEmpty ?? true {
+                dateTextField.text = dateFormatter.string(from: Date())
+            } else if let date = dateFormatter.date(from: textField.text ?? "") {
+                datePicker.date = date
+            }
             return true
         case amountTextField:
             return true
@@ -110,9 +143,24 @@ extension NewActivityViewController: UITextFieldDelegate {
         case dateTextField:
             return true
         case amountTextField:
-            return true
+            let currentText = textField.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else { return false }
+            
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+            
+            return updatedText.count <= 13
         default:
             break
+        }
+        return true
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if dateTextField.isFirstResponder {
+            DispatchQueue.main.async(execute: {
+                (sender as? UIMenuController)?.hideMenu()
+            })
+            return false
         }
         return true
     }
