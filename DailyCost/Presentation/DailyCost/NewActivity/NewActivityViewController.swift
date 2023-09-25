@@ -10,12 +10,20 @@ import UIKit
 class NewActivityViewController: UIViewController {
     @IBOutlet weak var containerSegmentedControl: UIView!
     @IBOutlet weak var typeFinanceSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var walletTextField: UITextField!
+    @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var amountTextField: UITextField!
+    
+    var selectedWallet: Wallet?
+    var selectedCategory: Wallet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
         configureViews()
+        configureTextField()
     }
     
     // MARK: - Helpers
@@ -42,9 +50,86 @@ class NewActivityViewController: UIViewController {
         dateTextField.setRightView(dateIcon)
     }
     
+    private func configureTextField() {
+        titleTextField.delegate = self
+        walletTextField.delegate = self
+        categoryTextField.delegate = self
+        dateTextField.delegate = self
+        amountTextField.delegate = self
+    }
+    
     // MARK: - Actions
     @objc
     private func saveButtonTapped() {
         showSuccessSnackBar(message: "Save Button Clicked!")
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension NewActivityViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch textField {
+        case titleTextField:
+            return true
+        case walletTextField:
+            let walletViewController = WalletViewController()
+            walletViewController.delegate = self
+            walletViewController.previouslySelectedWallet = selectedWallet
+            self.navigationController?.pushViewController(walletViewController, animated: true)
+            self.view.endEditing(true)
+            return false
+        case categoryTextField:
+            let categoryViewController = CategoryViewController()
+            categoryViewController.delegate = self
+            categoryViewController.previouslySelectedCategory = selectedCategory
+            self.navigationController?.pushViewController(categoryViewController, animated: true)
+            self.view.endEditing(true)
+            return false
+        case dateTextField:
+            return true
+        case amountTextField:
+            return true
+        default:
+            break
+        }
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        switch textField {
+        case titleTextField:
+            return true
+        case walletTextField:
+            let walletViewController = WalletViewController()
+            self.navigationController?.pushViewController(walletViewController, animated: true)
+            return false
+        case categoryTextField:
+            let categoryViewController = CategoryViewController()
+            self.navigationController?.pushViewController(categoryViewController, animated: true)
+            return false
+        case dateTextField:
+            return true
+        case amountTextField:
+            return true
+        default:
+            break
+        }
+        return true
+    }
+}
+
+// MARK: - WalletViewControllerDelegate
+extension NewActivityViewController: WalletViewControllerDelegate {
+    func walletSelected(_ wallet: Wallet) {
+        walletTextField.text = wallet.title
+        selectedWallet = wallet
+    }
+}
+
+// MARK: - CategoryViewControllerDelegate
+extension NewActivityViewController: CategoryViewControllerDelegate {
+    func categorySelected(_ wallet: Wallet) {
+        categoryTextField.text = wallet.title
+        selectedCategory = wallet
     }
 }

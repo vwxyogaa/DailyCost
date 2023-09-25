@@ -20,6 +20,15 @@
 		BC0867582ABD9E77009FE80E /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867572ABD9E77009FE80E /* Array+Ext.swift */; };
 		BC08675C2ABDAA9C009FE80E /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08675A2ABDAA9C009FE80E /* NewActivityViewController.swift */; };
 		BC08675D2ABDAA9C009FE80E /* NewActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC08675B2ABDAA9C009FE80E /* NewActivityViewController.xib */; };
+		BC0867622AC19233009FE80E /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867602AC19233009FE80E /* WalletViewController.swift */; };
+		BC0867632AC19233009FE80E /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0867612AC19233009FE80E /* WalletViewController.xib */; };
+		BC0867672AC19258009FE80E /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867652AC19258009FE80E /* CategoryViewController.swift */; };
+		BC0867682AC19258009FE80E /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0867662AC19258009FE80E /* CategoryViewController.xib */; };
+		BC08676C2AC197CC009FE80E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08676A2AC197CC009FE80E /* CategoryTableViewCell.swift */; };
+		BC08676D2AC197CC009FE80E /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC08676B2AC197CC009FE80E /* CategoryTableViewCell.xib */; };
+		BC0867722AC19C3B009FE80E /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867702AC19C3B009FE80E /* WalletTableViewCell.swift */; };
+		BC0867732AC19C3B009FE80E /* WalletTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC0867712AC19C3B009FE80E /* WalletTableViewCell.xib */; };
+		BC0867752AC1A27A009FE80E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0867742AC1A27A009FE80E /* Category.swift */; };
 		BC0C92762AB975FD008A4F93 /* NoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92752AB975FD008A4F93 /* NoteDataSource.swift */; };
 		BC0C92782AB97620008A4F93 /* NoteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92772AB97620008A4F93 /* NoteResponse.swift */; };
 		BC0C927A2AB97700008A4F93 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C92792AB97700008A4F93 /* NoteModel.swift */; };
@@ -135,6 +144,15 @@
 		BC0867572ABD9E77009FE80E /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		BC08675A2ABDAA9C009FE80E /* NewActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
 		BC08675B2ABDAA9C009FE80E /* NewActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewActivityViewController.xib; sourceTree = "<group>"; };
+		BC0867602AC19233009FE80E /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		BC0867612AC19233009FE80E /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
+		BC0867652AC19258009FE80E /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		BC0867662AC19258009FE80E /* CategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
+		BC08676A2AC197CC009FE80E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		BC08676B2AC197CC009FE80E /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
+		BC0867702AC19C3B009FE80E /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
+		BC0867712AC19C3B009FE80E /* WalletTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTableViewCell.xib; sourceTree = "<group>"; };
+		BC0867742AC1A27A009FE80E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BC0C92752AB975FD008A4F93 /* NoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDataSource.swift; sourceTree = "<group>"; };
 		BC0C92772AB97620008A4F93 /* NoteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteResponse.swift; sourceTree = "<group>"; };
 		BC0C92792AB97700008A4F93 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
@@ -286,10 +304,58 @@
 		BC0867592ABDAA8B009FE80E /* NewActivity */ = {
 			isa = PBXGroup;
 			children = (
+				BC08675E2AC19222009FE80E /* Feature */,
 				BC08675A2ABDAA9C009FE80E /* NewActivityViewController.swift */,
 				BC08675B2ABDAA9C009FE80E /* NewActivityViewController.xib */,
 			);
 			path = NewActivity;
+			sourceTree = "<group>";
+		};
+		BC08675E2AC19222009FE80E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				BC0867642AC19250009FE80E /* Category */,
+				BC08675F2AC19227009FE80E /* Wallet */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		BC08675F2AC19227009FE80E /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				BC08676F2AC19C33009FE80E /* Cell */,
+				BC0867602AC19233009FE80E /* WalletViewController.swift */,
+				BC0867612AC19233009FE80E /* WalletViewController.xib */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		BC0867642AC19250009FE80E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BC0867692AC197C1009FE80E /* Cell */,
+				BC0867652AC19258009FE80E /* CategoryViewController.swift */,
+				BC0867662AC19258009FE80E /* CategoryViewController.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		BC0867692AC197C1009FE80E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC08676A2AC197CC009FE80E /* CategoryTableViewCell.swift */,
+				BC08676B2AC197CC009FE80E /* CategoryTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BC08676F2AC19C33009FE80E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC0867702AC19C3B009FE80E /* WalletTableViewCell.swift */,
+				BC0867712AC19C3B009FE80E /* WalletTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		BC0C92742AB975E5008A4F93 /* Note */ = {
@@ -622,11 +688,12 @@
 		BCC68D7F2A9F1FB000E45602 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				BC08674A2ABD7604009FE80E /* RecentlyActivity.swift */,
 				BCC68D802A9F1FB800E45602 /* OnboardingPage.swift */,
 				E19FBE252A9FB87D00D4C276 /* LoginKey.swift */,
 				BC33BFBF2AA9F6A00028BE38 /* DataModel */,
 				BC33BFBE2AA9F6950028BE38 /* DataResponse */,
-				BC08674A2ABD7604009FE80E /* RecentlyActivity.swift */,
+				BC0867742AC1A27A009FE80E /* Category.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -918,10 +985,14 @@
 				BC2F76312AB47303001C5C83 /* RecentlyActivityTableViewCell.xib in Resources */,
 				BCC68D882A9F20F500E45602 /* OnboardingPageContentViewController.xib in Resources */,
 				BC0C929D2ABC247E008A4F93 /* NotesTableViewCell.xib in Resources */,
+				BC0867732AC19C3B009FE80E /* WalletTableViewCell.xib in Resources */,
 				BC0C928B2ABC130C008A4F93 /* NotificationTableViewCell.xib in Resources */,
 				BC33C0062AAB32950028BE38 /* DrawerMenuViewController.xib in Resources */,
+				BC08676D2AC197CC009FE80E /* CategoryTableViewCell.xib in Resources */,
+				BC0867682AC19258009FE80E /* CategoryViewController.xib in Resources */,
 				E1AE61782A9FA72800ED4BC8 /* DashboardViewController.xib in Resources */,
 				BC0C92862ABC11A0008A4F93 /* NotificationViewController.xib in Resources */,
+				BC0867632AC19233009FE80E /* WalletViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -951,9 +1022,11 @@
 				BC33BFBC2AA9EB850028BE38 /* WalletCollectionViewCell.swift in Sources */,
 				BC33BFC12AA9F6E80028BE38 /* RegisterResponse.swift in Sources */,
 				BC2F76252AB46DBB001C5C83 /* ExpenseResponse.swift in Sources */,
+				BC0867622AC19233009FE80E /* WalletViewController.swift in Sources */,
 				E1EECB902AAA33690095E668 /* DepoResponse.swift in Sources */,
 				BC0C927D2AB978F1008A4F93 /* NoteRepository.swift in Sources */,
 				BC0867582ABD9E77009FE80E /* Array+Ext.swift in Sources */,
+				BC0867722AC19C3B009FE80E /* WalletTableViewCell.swift in Sources */,
 				E1AE61712A9FA4BA00ED4BC8 /* BaseViewModel.swift in Sources */,
 				BC2F76372AB47FA2001C5C83 /* NSLayoutConstraint+Ext.swift in Sources */,
 				BC08673D2ABC7466009FE80E /* IncomeDataSource.swift in Sources */,
@@ -974,10 +1047,12 @@
 				E1AE616F2A9FA48900ED4BC8 /* SignUpViewModel.swift in Sources */,
 				E1AE61622A9FA2F100ED4BC8 /* Utils.swift in Sources */,
 				BC2F76302AB47303001C5C83 /* RecentlyActivityTableViewCell.swift in Sources */,
+				BC08676C2AC197CC009FE80E /* CategoryTableViewCell.swift in Sources */,
 				BCC68D9A2A9F528400E45602 /* UIViewController+Ext.swift in Sources */,
 				BC2F76392AB48CCB001C5C83 /* String+Ext.swift in Sources */,
 				E1EECB8E2AAA32E50095E668 /* DepoDataSource.swift in Sources */,
 				BC0C92852ABC11A0008A4F93 /* NotificationViewController.swift in Sources */,
+				BC0867672AC19258009FE80E /* CategoryViewController.swift in Sources */,
 				BC0C928F2ABC1CB7008A4F93 /* NoteViewController.swift in Sources */,
 				BC0C92802AB98723008A4F93 /* NoteTableViewCell.swift in Sources */,
 				BC33BFC72AA9F71E0028BE38 /* LoginModel.swift in Sources */,
@@ -1001,6 +1076,7 @@
 				BCC68D812A9F1FB800E45602 /* OnboardingPage.swift in Sources */,
 				E1EECB972AAA36F80095E668 /* DashboardUseCase.swift in Sources */,
 				BC0867452ABC7583009FE80E /* IncomeRepository.swift in Sources */,
+				BC0867752AC1A27A009FE80E /* Category.swift in Sources */,
 				BCC68D872A9F20F500E45602 /* OnboardingPageContentViewController.swift in Sources */,
 				E1EECB952AAA35CC0095E668 /* DepoRepository.swift in Sources */,
 				E1EECB922AAA35190095E668 /* DepoModel.swift in Sources */,

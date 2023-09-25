@@ -12,10 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewActivityViewController" customModule="DailyCost" customModuleProvider="target">
             <connections>
+                <outlet property="amountTextField" destination="QUU-PV-hlm" id="kjd-EN-Zlq"/>
+                <outlet property="categoryTextField" destination="1UZ-HZ-IU8" id="Ulw-eC-T2F"/>
                 <outlet property="containerSegmentedControl" destination="puD-cL-WxR" id="Qd0-2r-o5C"/>
                 <outlet property="dateTextField" destination="mIc-Ms-PxI" id="K2x-5i-0wz"/>
+                <outlet property="titleTextField" destination="pVl-uo-VbL" id="mcq-IO-0CA"/>
                 <outlet property="typeFinanceSegmentedControl" destination="14j-0y-ZO4" id="HQk-Rz-Uwm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="walletTextField" destination="aw0-Fi-sTV" id="1xZ-98-f6q"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -219,13 +223,13 @@
                                                         <constraint firstAttribute="width" constant="17" id="5sX-YP-Yi7"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUU-PV-hlm">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUU-PV-hlm">
                                                     <rect key="frame" x="21" y="0.0" width="299" height="42"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="42" id="zgD-ed-8Q2"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IDR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHC-KT-3r0">
                                                     <rect key="frame" x="324" y="0.0" width="37" height="42"/>
