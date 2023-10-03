@@ -9,11 +9,14 @@ import UIKit
 import RxSwift
 
 class RecentlyActivityViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var recentlyActivityTableView: UITableView!
     
+    // MARK: - Properties
     private let disposeBag = DisposeBag()
     var viewModel: RecentlyActivityViewModel!
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
@@ -22,7 +25,7 @@ class RecentlyActivityViewController: UIViewController {
         loadData()
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     private func loadData() {
         viewModel.getPengeluaran(id: viewModel.userId)
     }

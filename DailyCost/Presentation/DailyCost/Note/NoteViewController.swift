@@ -8,15 +8,18 @@
 import UIKit
 
 class NoteViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var noteTableView: UITableView!
     @IBOutlet weak var containerAddNewNoteView: UIView!
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
         configureViews()
     }
     
+    // MARK: - Methods
     private func configureViews() {
         title = "Note"
         

@@ -7,16 +7,18 @@
 
 import UIKit
 
+// MARK: - Protocols
 protocol CategoryViewControllerDelegate {
     func categorySelected(_ wallet: Wallet)
 }
 
 class CategoryViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var categoryTableView: UITableView!
     
+    // MARK: - Properties
     var selectedIndexPath: IndexPath?
     var previouslySelectedCategory: Wallet?
-    
     let categories: [Wallet] = [
         Wallet(image: "icon_category_food_drinks", title: "Food & Drinks", subtitle: "", backgroundColor: "systemOrange"),
         Wallet(image: "icon_category_shopping", title: "Shopping", subtitle: "", backgroundColor: "systemPurple"),
@@ -30,10 +32,9 @@ class CategoryViewController: UIViewController {
         Wallet(image: "icon_category_income", title: "Income", subtitle: "", backgroundColor: "systemOrange"),
         Wallet(image: "icon_category_others", title: "Others", subtitle: "", backgroundColor: "systemPurple"),
     ]
-    
     var delegate: CategoryViewControllerDelegate?
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
@@ -44,7 +45,7 @@ class CategoryViewController: UIViewController {
         }
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     private func configureViews() {
         title = "Category"
         

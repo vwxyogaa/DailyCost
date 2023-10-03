@@ -8,6 +8,7 @@
 import UIKit
 
 class OnboardingPageContentViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var onboardingProgressView: UIProgressView!
     @IBOutlet weak var onboardingImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,6 +16,7 @@ class OnboardingPageContentViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
+    // MARK: - Properties
     var pageIndex: Int!
     var page: OnboardingPage!
     
@@ -25,6 +27,7 @@ class OnboardingPageContentViewController: UIViewController {
         initListener()
     }
     
+    // MARK: - Methods
     private func configureViews() {
         onboardingProgressView.layer.cornerRadius = 5
         onboardingProgressView.layer.masksToBounds = true

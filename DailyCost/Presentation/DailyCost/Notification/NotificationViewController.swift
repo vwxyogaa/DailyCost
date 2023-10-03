@@ -8,14 +8,17 @@
 import UIKit
 
 class NotificationViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var notificationTableView: UITableView!
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
         configureViews()
     }
     
+    // MARK: - Methods
     private func configureViews() {
         title = "Notification"
         

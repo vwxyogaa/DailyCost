@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 
 class SignUpViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var usernameErrorLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -29,10 +30,11 @@ class SignUpViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Properties
     private let disposeBag = DisposeBag()
     var viewModel: SignUpViewModel!
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
@@ -42,7 +44,7 @@ class SignUpViewController: UIViewController {
         initObserver()
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     private func configureViews() {
         usernameTextField.layer.borderColor = UIColor.bg200.cgColor
         usernameTextField.layer.borderWidth = 1

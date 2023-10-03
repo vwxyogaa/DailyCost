@@ -8,12 +8,14 @@
 import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
         configureViews()
@@ -23,6 +25,7 @@ class NotificationTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // MARK: - Methods
     private func configureViews() {
         containerView.layer.cornerRadius = 12
         containerView.layer.masksToBounds = true

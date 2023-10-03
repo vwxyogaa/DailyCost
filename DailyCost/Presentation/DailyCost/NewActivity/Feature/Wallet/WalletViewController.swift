@@ -7,25 +7,26 @@
 
 import UIKit
 
+// MARK: - Protocols
 protocol WalletViewControllerDelegate {
     func walletSelected(_ wallet: Wallet)
 }
 
 class WalletViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var walletTableView: UITableView!
     
+    // MARK: - Properties
     var selectedIndexPath: IndexPath?
     var previouslySelectedWallet: Wallet?
-    
     let wallets: [Wallet] = [
         Wallet(image: "icon_empty_wallet", title: "Subscriptions", subtitle: "General", backgroundColor: "systemOrange"),
         Wallet(image: "icon_wallet_loan", title: "Saving", subtitle: "Loan", backgroundColor: "systemPurple"),
         Wallet(image: "icon_coin", title: "Investasi rumah", subtitle: "Invest", backgroundColor: "systemGreen")
     ]
-    
     var delegate: WalletViewControllerDelegate?
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
@@ -36,7 +37,7 @@ class WalletViewController: UIViewController {
         }
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     private func configureViews() {
         title = "Wallet"
         

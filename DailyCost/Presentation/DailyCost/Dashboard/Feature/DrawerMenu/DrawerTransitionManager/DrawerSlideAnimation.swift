@@ -8,7 +8,6 @@
 import UIKit
 
 class DrawerSlideAnimation: NSObject, UIViewControllerAnimatedTransitioning {
-    
     var isPresenting: Bool = true
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {

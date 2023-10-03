@@ -8,6 +8,7 @@
 import UIKit
 
 class DrawerMenuViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var recentlyActivityView: UIView!
@@ -19,8 +20,10 @@ class DrawerMenuViewController: UIViewController {
     @IBOutlet weak var signOutView: UIView!
     @IBOutlet weak var emailLabel: UILabel!
     
+    // MARK: - Properties
     let transitionManager = DrawerTransitionManager()
     
+    // MARK: - Lifecycles
     init() {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .custom
@@ -37,6 +40,7 @@ class DrawerMenuViewController: UIViewController {
         initListener()
     }
     
+    // MARK: - Methods
     private func configureViews() {
         emailLabel.text = LoginKey.userName
     }

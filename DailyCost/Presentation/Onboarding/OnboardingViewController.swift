@@ -8,14 +8,13 @@
 import UIKit
 
 class OnboardingViewController: UIPageViewController {
-    
+    // MARK: - Properties
     var pages: [OnboardingPage] = [
         OnboardingPage(progress: 0.25, imageName: "icon_wallet_with_cash", title: "You can see where the money goes", subtitle: "It’s easy to spot the categories that draw more resources than you’d think", nextButtonText: "Next", skipButtonText: "Skip"),
         OnboardingPage(progress: 0.50, imageName: "icon_coins", title: "Achieving your goals is easier", subtitle: "Spending plan show how much money is free to be used for the new goals", nextButtonText: "Next", skipButtonText: "Skip"),
         OnboardingPage(progress: 0.75, imageName: "icon_credit_card", title: "All card and accounts in one app", subtitle: "Secure synchronization with banks", nextButtonText: "Next", skipButtonText: "Skip"),
         OnboardingPage(progress: 1.00, imageName: "icon_calculator", title: "No need to add expenses manually", subtitle: "Your bank transactions are deliverd automatically", nextButtonText: "Sign In", skipButtonText: "Sign Up")
     ]
-    
     var currentIndex: Int = 0
     
     // MARK: - Lifecycles
@@ -44,7 +43,7 @@ class OnboardingViewController: UIPageViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     func viewControllerAtIndex(index: Int) -> OnboardingPageContentViewController? {
         if index >= pages.count { return nil }
         

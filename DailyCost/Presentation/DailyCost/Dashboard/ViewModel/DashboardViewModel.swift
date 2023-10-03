@@ -26,7 +26,7 @@ class DashboardViewModel: BaseViewModel {
         self.userId = userId
     }
     
-    // MARK: - Saldo
+    // MARK: - Balance
     var balance: Driver<DepoModel?> {
         return _balance.asDriver()
     }
@@ -132,12 +132,12 @@ class DashboardViewModel: BaseViewModel {
         self._recentlyActivity.accept(recentlyActivities)
     }
     
-    // MARK: - Catatan
-    var catatan: Driver<NoteModel?> {
+    // MARK: - Note
+    var note: Driver<NoteModel?> {
         return _note.asDriver()
     }
     
-    var catatanValue: NoteModel? {
+    var noteValue: NoteModel? {
         return _note.value
     }
     
