@@ -80,7 +80,32 @@ class NewActivityViewController: UIViewController {
     // MARK: - Actions
     @objc
     private func saveButtonTapped() {
-        showSuccessSnackBar(message: "Save Button Clicked!")
+        if titleTextField.text?.isEmpty ?? true {
+            showErrorSnackBar(message: "Add a title first.")
+            return
+        }
+        
+        if walletTextField.text?.isEmpty ?? true {
+            showErrorSnackBar(message: "Add a wallet.")
+            return
+        }
+        
+        if categoryTextField.text?.isEmpty ?? true {
+            showErrorSnackBar(message: "Add a category.")
+            return
+        }
+        
+        if dateTextField.text?.isEmpty ?? true {
+            showErrorSnackBar(message: "Add a date.")
+            return
+        }
+        
+        if amountTextField.text?.isEmpty ?? true {
+            showErrorSnackBar(message: "Add an amount first.")
+            return
+        }
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc
