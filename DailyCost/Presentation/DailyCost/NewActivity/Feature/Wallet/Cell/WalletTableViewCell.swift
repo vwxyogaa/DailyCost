@@ -8,6 +8,7 @@
 import UIKit
 
 class WalletTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var containerIconView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,6 +16,7 @@ class WalletTableViewCell: UITableViewCell {
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
     
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
     }

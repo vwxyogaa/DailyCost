@@ -8,6 +8,7 @@
 import UIKit
 
 class NewActivityViewController: UIViewController {
+    // MARK: - IBOutlet
     @IBOutlet weak var containerSegmentedControl: UIView!
     @IBOutlet weak var typeFinanceSegmentedControl: UISegmentedControl!
     @IBOutlet weak var titleTextField: UITextField!
@@ -16,10 +17,12 @@ class NewActivityViewController: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     
+    // MARK: - Properties
     var selectedWallet: Wallet?
     var selectedCategory: Wallet?
     var datePicker = UIDatePicker()
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
@@ -28,7 +31,7 @@ class NewActivityViewController: UIViewController {
         configureDatePicker()
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     private func configureViews() {
         title = "New Activity"
         
@@ -145,9 +148,7 @@ extension NewActivityViewController: UITextFieldDelegate {
         case amountTextField:
             let currentText = textField.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
-            
             let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-            
             return updatedText.count <= 13
         default:
             break

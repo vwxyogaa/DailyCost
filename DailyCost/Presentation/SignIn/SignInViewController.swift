@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 
 class SignInViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -28,9 +29,11 @@ class SignInViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Properties
     private let disposeBag = DisposeBag()
     var viewModel: SignInViewModel!
     
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldHideBackButtonText = true
@@ -40,7 +43,7 @@ class SignInViewController: UIViewController {
         initObserver()
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     private func configureViews() {
         emailTextField.layer.borderColor = UIColor.bg200.cgColor
         emailTextField.layer.borderWidth = 1

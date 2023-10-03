@@ -8,6 +8,7 @@
 import UIKit
 
 class NoteTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
@@ -16,6 +17,7 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
     
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -24,6 +26,7 @@ class NoteTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // MARK: - Methods
     func configureContent(body: String?, title: String?, category: String?, createdAt: String?) {
         bodyLabel.text = body
         titleLabel.text = title

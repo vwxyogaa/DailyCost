@@ -8,9 +8,10 @@
 import UIKit
 
 class DrawerTransitionManager: NSObject, UIViewControllerTransitioningDelegate {
-    
+    // MARK: - Properties
     let slideAnimation = DrawerSlideAnimation()
     
+    // MARK: - Methods
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return DrawerPresentationController(presentedViewController: presented, presenting: presenting)
     }

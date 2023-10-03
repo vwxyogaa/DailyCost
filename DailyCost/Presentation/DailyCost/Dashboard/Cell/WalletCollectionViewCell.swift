@@ -7,25 +7,30 @@
 
 import UIKit
 
+// MARK: - Protocols
 protocol WalletCollectionViewCellDelegate {
     func eyeButtonWasTapped()
 }
 
 class WalletCollectionViewCell: UICollectionViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var containerWalletView: UIView!
     @IBOutlet weak var titleWalletLabel: UILabel!
     @IBOutlet weak var balanceWalletLabel: UILabel!
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var expenseWalletLabel: UILabel!
     
+    // MARK: - Properties
     var delegate: WalletCollectionViewCellDelegate?
     private var currentData: DepoModel?
     
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
         configureViews()
     }
     
+    // MARK: - Methods
     private func configureViews() {
         containerWalletView.layer.cornerRadius = 15
         containerWalletView.layer.shadowOpacity = 0.1

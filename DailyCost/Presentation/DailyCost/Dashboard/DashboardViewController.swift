@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 
 class DashboardViewController: UIViewController {
+    // MARK: - IBOutlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mainFloatingButton: UIButton!
     @IBOutlet weak var clueCloseContainerView: UIView!
@@ -31,10 +32,11 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var noteTableView: UITableView!
     @IBOutlet weak var noteTableViewHeightConstraint: NSLayoutConstraint!
     
+    // MARK: - Properties
     private let disposeBag = DisposeBag()
     var viewModel: DashboardViewModel!
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         configureButtonNavBar()
@@ -67,7 +69,7 @@ class DashboardViewController: UIViewController {
         }
     }
     
-    // MARK: - Helpers
+    // MARK: - Methods
     private func loadData() {
         viewModel.getSaldo(id: viewModel.userId)
         viewModel.getPengeluaran(id: viewModel.userId)
@@ -89,8 +91,8 @@ class DashboardViewController: UIViewController {
             self?.recentlyActivityTableView.reloadData()
         }).disposed(by: disposeBag)
         
-        viewModel.catatan.drive(onNext: { [weak self] catatan in
-            if let catatan, catatan.catatanId?.count != 0 {
+        viewModel.note.drive(onNext: { [weak self] note in
+            if let note, note.catatanId?.count != 0 {
                 self?.noteTableView.isHidden = false
             } else {
                 self?.noteTableView.isHidden = true
@@ -335,7 +337,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         case recentlyActivityTableView:
             return min(viewModel.recentlyActivityValue?.count ?? 0, 5)
         case noteTableView:
-            return min(viewModel.catatanValue?.catatanId?.count ?? 0, 5)
+            return min(viewModel.noteValue?.catatanId?.count ?? 0, 5)
         default:
             return 0
         }
@@ -352,10 +354,10 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case noteTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteTableViewCell", for: indexPath) as? NoteTableViewCell else { return UITableViewCell() }
-            let note = viewModel.catatanValue
+            let note = viewModel.noteValue
             cell.configureContent(body: note?.body?[indexPath.row], title: note?.title?[indexPath.row], category: note?.title?[indexPath.row], createdAt: note?.createdAt?[indexPath.row])
             cell.containerViewTopConstraint.constant = indexPath.row == 0 ? 0 : 12
-            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.catatanValue?.catatanId?.count ?? 0) - 1 ? 0 : 12
+            cell.containerViewBottomConstraint.constant = indexPath.row == (viewModel.noteValue?.catatanId?.count ?? 0) - 1 ? 0 : 12
             return cell
         default:
             break

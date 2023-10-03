@@ -8,6 +8,7 @@
 import UIKit
 
 class RecentlyActivityTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -16,6 +17,7 @@ class RecentlyActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
         configureViews()
@@ -25,6 +27,7 @@ class RecentlyActivityTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // MARK: - Methods
     func configureViews() {
         iconImageView.backgroundColor = .systemOrange
         iconImageView.layer.cornerRadius = iconImageView.frame.height / 2

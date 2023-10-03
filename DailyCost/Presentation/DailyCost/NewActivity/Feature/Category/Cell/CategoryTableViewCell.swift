@@ -8,15 +8,18 @@
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var containerIconView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    // MARK: - Lifecycles
     override func awakeFromNib() {
         super.awakeFromNib()
         configureViews()
     }
     
+    // MARK: - Methods
     private func configureViews() {
         containerIconView.layer.cornerRadius = 20
         containerIconView.layer.masksToBounds = true

@@ -8,7 +8,6 @@
 import UIKit
 
 class DrawerPresentationController: UIPresentationController {
-    
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSize(width: parentSize.width * 0.8, height: parentSize.height)
     }
